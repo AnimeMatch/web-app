@@ -1,0 +1,49 @@
+.navbar{
+    margin: auto;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
+.brandingArea {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#title{
+    margin-left: 5px;
+    color: var(--white);
+    font-family: var(--font-third);
+    font-size: var(--font-size-title);
+}
+
+.navList{
+    list-style: none;
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-family: var(--font-secundary);
+    font-weight: 500;
+}
+
+.navList li {
+    margin: 0px 15px;
+}
+
+#login{
+    color: var(--white);
+}
+
+.userArea{
+    display: flex;
+    align-items: center;
+}
+
+#btn-login{
+    margin-right: 15px;
+}
+
