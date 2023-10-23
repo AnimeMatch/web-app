@@ -47,3 +47,84 @@
     margin-right: 15px;
 }
 
+/* -------------------------MODAIS------------------------------ */
+
+.modal-login, .overlay-modal {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+}
+
+.modal-register, .overlay-modal {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+}
+
+.overlay-modal {
+    background: rgba(49,49,49,0.4);
+}
+.modal-content {  
+    color: var(--white); 
+    display: flex; 
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 1.4;
+    background: var(--dark-blue);
+    padding: 0px 15px 0px 0px;
+    border-radius:var(--btn-border-radius);
+    max-width: 800px;
+    min-width: 800px;
+    border: solid 0.1px rgba(123, 123, 123, 0.4)
+
+}
+.close{
+    top: 2%;
+    left: 97%;
+    position: absolute;
+    cursor: pointer;
+    color: var(--dark-yellow);
+    font-family: var(--font-primary);
+    font-weight: 700;
+}
+.modal-right-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 35px 8px 0px ;
+}
+.modal-right-content h1 {
+    font-family: var(--font-primary);
+}
+
+#loginImg{
+    max-width: 400px;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+}
+
+.tinyText{
+    font-size: 10px;
+}
+.modal-right-content label{
+    font-family: var(--font-third);
+}
+.modal-right-content input{
+    text-align: start;
+    border: none;
+}
