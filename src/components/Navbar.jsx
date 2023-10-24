@@ -19,6 +19,11 @@ export default function Navbar(){
         setModal2(!modal2)
     }
 
+    const swap = () =>{
+        setModal(!modal)
+        setModal2(!modal2)
+    }
+
     return (
         <>
             <nav className='navbar'>
@@ -56,24 +61,27 @@ export default function Navbar(){
                             <form action="" method="post" className='form'>
                                 <label htmlFor="email">E-mail</label>
                                 <input type="email" name="" id="" placeholder='email@example.com'/>
-                                <span className='tinyText'>Esqueceu seu e-mail?</span>
+                                <span className='tinyText'><a href="" id='fEmail'>Esqueceu seu e-mail?</a></span>
                                 <label htmlFor="password">Senha</label>
                                 <input type="password" name="" id=""placeholder='**************'/>
                                 <div className='underLabel'>
-                                    <input type="checkbox" name="" id="" />
-                                    <span className='tinyText'>Lembrar de mim</span>
-                                    <span className='tinyText'>Esqueceu sua senha?</span>
+                                    <div className="remember">
+                                        <input type="checkbox" name="" id="" />
+                                        <span className='tinyText'>Lembrar de mim</span>
+                                    </div>
+                                    <span className='tinyText'><a href="">Esqueceu sua senha?</a></span>
                                 </div>
                                 <button className='btn-secundary'> Login </button>
                                 <div className="separate"></div>
                                 <div className="register">
-                                    <span>Ou se conectar com</span>
+                                    <span id='topRegister'>Ou se conectar com</span>
                                     <div className="socialLogos">
-                                        <img src={googleLogo} alt="google" />
-                                        <img src={facebookLogo} alt="facebook" />
-                                        <img src={twitterLogo} alt="twitter" />
+                                        <img src={googleLogo} id='google' alt="google" />
+                                        <img src={facebookLogo} id='facebook' alt="facebook" />
+                                        <img src={twitterLogo} id='twitter' alt="twitter" />
                                     </div>
-                                    <span>Não tem conta ? <a href="">Cadastre-se</a></span>
+                                    <span id='botRegister'>Não tem conta ? <a id='registerBtn'
+                                    onClick={swap}>Cadastre-se</a></span>
 
                                 </div>
                             </form>
