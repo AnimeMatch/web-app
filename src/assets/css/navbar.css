@@ -210,3 +210,9 @@ a{
 #google,#facebook,#twitter, #registerBtn{
     cursor: pointer;
 }
+.modal-register .btn-secundary{
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
