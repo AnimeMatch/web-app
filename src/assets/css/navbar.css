@@ -216,3 +216,8 @@ a{
     align-items: center;
     justify-content: center;
 }
+
+.btr1{
+    position: relative;
+    right: -12%;
+}

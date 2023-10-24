@@ -122,8 +122,8 @@ export default function Navbar(){
                                         <img src={facebookLogo} id='facebook' alt="facebook" />
                                         <img src={twitterLogo} id='twitter' alt="twitter" />
                                     </div>
-                                    <span id='botRegister'>Não tem conta ? <a id='registerBtn'
-                                    onClick={swap}>Cadastre-se</a></span>
+                                    <span id='botRegister' className='btr1'>Tem uma conta ?  <a id='registerBtn'
+                                    onClick={swap}>Logar</a></span>
 
                                 </div>
                             </form>
