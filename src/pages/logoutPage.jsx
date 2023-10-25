@@ -1,4 +1,5 @@
 import Navbar from "../components/Navbar"
+import "../assets/css/logoutPage.css"
 import { useNavigate } from 'react-router-dom';
 
 export default function logoutPage(){
@@ -8,17 +9,18 @@ export default function logoutPage(){
     const logout = () => {
         sessionStorage.removeItem('authToken');
         sessionStorage.removeItem('usuario');
-        navigate('/Main');
+        navigate('/');
     }
     return (
         <>
             <Navbar/>
-            <h1>Bem vindo ao teste da Anime Match</h1>
-            <h2>{username}</h2>
-            <button
-            onClick={logout}>
-                Logout
-            </button>
+            <div className="msgTest">
+                <div>
+                <h1>Bem vindo ao teste da Anime Match</h1>
+                <h2>{username}</h2>
+                </div>
+                <button onClick={logout}>Logout</button>
+            </div>
         </>
     )
 }

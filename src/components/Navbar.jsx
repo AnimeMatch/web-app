@@ -9,10 +9,8 @@ import twitterLogo from '../assets/images/logos/twitter 1.svg';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { injectStyle } from "react-toastify/dist/inject-style";
 
 export default function Navbar(){
-    injectStyle();
 
     const [modal, setModal] = useState(false);
     const [modal2,setModal2] = useState(false);
@@ -32,7 +30,7 @@ export default function Navbar(){
         setModal(!modal)
         setModal2(!modal2)
     }
-    // const navigate = uleNavigate();
+    const navigate = useNavigate();
     
     const logar = (e) => {
         e.preventDefault();
