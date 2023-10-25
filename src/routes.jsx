@@ -1,5 +1,5 @@
 import React from "react";
-import Home from "./pages/Navbar";
+import Main from "./pages/main";
 import LogoutPage from "./pages/logoutPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 function Rotas() {
@@ -7,8 +7,8 @@ function Rotas() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/welcome" element={<LogoutPage />} />
+          <Route path="/Main" element={<Main />} />
+          <Route path="/LogoutPage" element={<LogoutPage />} />
         </Routes>
       </BrowserRouter>
     </>

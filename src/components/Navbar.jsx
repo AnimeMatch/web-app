@@ -7,8 +7,12 @@ import facebookLogo from '../assets/images/logos/facebook 1.svg';
 import googleLogo from '../assets/images/logos/search 1.svg';
 import twitterLogo from '../assets/images/logos/twitter 1.svg';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { injectStyle } from "react-toastify/dist/inject-style";
 
 export default function Navbar(){
+    injectStyle();
 
     const [modal, setModal] = useState(false);
     const [modal2,setModal2] = useState(false);
@@ -23,34 +27,38 @@ export default function Navbar(){
     const regsiterModal = () => {
         setModal2(!modal2)
     }
-
+    
     const swap = () =>{
         setModal(!modal)
         setModal2(!modal2)
     }
-
+    // const navigate = uleNavigate();
+    
     const logar = (e) => {
         e.preventDefault();
-    
+        
         api.post('/users/login', {
-          email: username,
-          password: password
+            email: username,
+            password: password
         }, {
-          headers: {
-            'Content-Type': 'application/json'
+            headers: {
+                'Content-Type': 'application/json'
           }
         })
-          .then(response => {
+        .then(response => {
             if (response.status === 200 && response.data?.token) {
-              sessionStorage.setItem('authToken', response.data.token);
-              sessionStorage.setItem('usuario', response.data.name);
-    
-              navigate('/LogoutPage');
+                sessionStorage.setItem('authToken', response.data.token);
+                sessionStorage.setItem('usuario', response.data.name);
+                
+                // toast.success('Login realizado com sucesso!');
+                navigate('/LogoutPage');
             } else {
               throw new Error('Ops! Ocorreu um erro interno.');
             }
           })
           .catch(error => {
+            toast.error(error.message);
+            console.log(error.message)
             console.log("Falha no login")
         });
       };
