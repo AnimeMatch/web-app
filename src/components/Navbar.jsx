@@ -1,4 +1,5 @@
 import '../assets/css/navbar.css';
+import api from '../api.js';
 import logo from '../assets/images/logos/logoNavbar.png';
 import imgLogin from '../assets/images/backgrounds/4258797 1.svg';
 import imgRegister from '../assets/images/backgrounds/4302417 1.svg'; 
@@ -12,6 +13,9 @@ export default function Navbar(){
     const [modal, setModal] = useState(false);
     const [modal2,setModal2] = useState(false);
 
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+
     const loginModal = () => {
         setModal(!modal)
     }
@@ -24,6 +28,32 @@ export default function Navbar(){
         setModal(!modal)
         setModal2(!modal2)
     }
+
+    const logar = (e) => {
+        e.preventDefault();
+    
+        api.post('/users/login', {
+          email: username,
+          password: password
+        }, {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+          .then(response => {
+            if (response.status === 200 && response.data?.token) {
+              sessionStorage.setItem('authToken', response.data.token);
+              sessionStorage.setItem('usuario', response.data.name);
+    
+              navigate('/LogoutPage');
+            } else {
+              throw new Error('Ops! Ocorreu um erro interno.');
+            }
+          })
+          .catch(error => {
+            console.log("Falha no login")
+        });
+      };
 
     return (
         <>
@@ -61,10 +91,23 @@ export default function Navbar(){
                             <h1>Login</h1>
                             <form action="" method="post" className='form'>
                                 <label htmlFor="email">E-mail</label>
-                                <input type="email" name="" id="" placeholder='email@example.com'/>
+                                
+                                <input 
+                                type="text" 
+                                name="" id="emailId" 
+                                placeholder='email@example.com'
+                                onChange={(e) => setUsername(e.target.value)}
+                                />
+                                
                                 <span className='tinyText'><a href="" id='fEmail'>Esqueceu seu e-mail?</a></span>
                                 <label htmlFor="password">Senha</label>
-                                <input type="password" name="" id=""placeholder='**************'/>
+                                <input 
+                                type="password" 
+                                name="" id="passwordId"
+                                placeholder='**************'
+                                onChange={(e) => setPassword(e.target.value)}
+                                />
+
                                 <div className='underLabel'>
                                     <div className="remember">
                                         <input type="checkbox" name="" id="" />
@@ -72,7 +115,7 @@ export default function Navbar(){
                                     </div>
                                     <span className='tinyText'><a href="">Esqueceu sua senha?</a></span>
                                 </div>
-                                <button className='btn-secundary'> Login </button>
+                                <button className='btn-secundary' onClick={logar}> Login </button>
                                 <div className="separate"></div>
                                 <div className="register">
                                     <span id='topRegister'>Ou se conectar com</span>
@@ -99,8 +142,13 @@ export default function Navbar(){
                             <span className="close" onClick={regsiterModal}>X</span>
                             <h1>Cadastro</h1>
                             <form action="" method="post" className='form'>
+                                
                                 <label htmlFor="email">E-mail</label>
-                                <input type="email" name="" id="" placeholder='email@example.com'/>
+                                <input 
+                                type="email" 
+                                name="" id="" 
+                                placeholder='email@example.com'
+                                />
                                 <label htmlFor="password">Nome de usuario</label>
                                 <input type="password" name="" id=""placeholder='**************'/>
                                 <label htmlFor="password">Senha</label>
