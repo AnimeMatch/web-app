@@ -1,10 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import Navbar from '../components/Navbar.jsx'
-import '../assets/css/index.css'
+import '/src/assets/css/index.css'
+import Rotas from './src/Rotas.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <Navbar/>
+    <Rotas/>
   </React.StrictMode>,
 )
