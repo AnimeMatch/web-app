@@ -58,8 +58,8 @@ export default function CarroselHome(props) {
         scrollbar={{ draggable: true }}
         className="swiperHome"
       >
-        {getList.map((item, index) => (
-          <div key={index}>
+        {getList.map((item) => (
+          <div key={item.uuid}>
             <SwiperSlide>
               <div className="cardContent">
                 <div className="cardImage">

@@ -13,10 +13,10 @@ export default function Home(){
           nomeLista="gatos"          
           listTitle="Mangas mais lidos essa semana"
         />
-        <CarroselHome
+        {/* <CarroselHome
           nomeLista="musicas" 
           listTitle="Mangas atualizados recentemente"         
-        />
+        /> */}
         </>
     )
 }
