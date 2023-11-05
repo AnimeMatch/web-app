@@ -59,8 +59,7 @@ export default function CarroselHome(props) {
         className="swiperHome"
       >
         {getList.map((item) => (
-          <div key={item.uuid}>
-            <SwiperSlide>
+            <SwiperSlide key={item.uuid}>
               <div className="cardContent">
                 <div className="cardImage">
                   <img src={item.imagem} alt="" />
@@ -70,7 +69,6 @@ export default function CarroselHome(props) {
                 </div>
               </div>
             </SwiperSlide>
-          </div>
         ))}
       </Swiper>
     </>
