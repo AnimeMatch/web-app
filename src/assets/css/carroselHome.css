@@ -1,0 +1,51 @@
+.swiper,
+.listTitle{
+    margin: auto;
+    width: 90%;
+}
+.swiper-button-prev,
+.swiper-button-next{
+    color: var(--yellow);
+    top: 40%
+}
+
+.swiper-slide {
+    height: 325px; 
+    text-align: center;
+    font-size: 12px;
+    background: var(--dark-blue);
+    color: var(--white);
+    /* Center slide text vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+  }
+.swiper-slide img{
+    height: 230px;
+    width: 150px;   
+    display: block;
+    object-fit: cover;
+    border-radius: var(--btn-border-radius);
+}
+
+.cardContent{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 3px;
+}
+.cardTitle{
+    width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    transform: translateX(0);   
+}
+
+.listTitle{
+    color: var(--white);
+    font-family: var(--font-third);
+}
