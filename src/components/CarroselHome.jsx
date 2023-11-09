@@ -1,4 +1,5 @@
 import mockApi from "../mockApi";
+import api from "../api";
 import React, { useState, useEffect } from "react";
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -31,11 +32,11 @@ export default function CarroselHome(props) {
   },[])
 
   useEffect(() => {
-    mockApi
-      .get(`${props.nomeLista}`)
+    api
+      .get(`/animes/cards?page=${props.pagina}&qtdPaginas=15`)
       .then((response) => {
         console.log(response);
-        setList(response.data);
+        setList(response.data.media);
       })
       .catch((error) => {
         console.log(error);
@@ -59,13 +60,13 @@ export default function CarroselHome(props) {
         className="swiperHome"
       >
         {getList.map((item) => (
-            <SwiperSlide key={item.uuid}>
+            <SwiperSlide key={item.id}>
               <div className="cardContent">
                 <div className="cardImage">
-                  <img src={item.imagem} alt="" />
+                  <img src={item.coverImage.large} alt="" />
                 </div>
                 <div className="cardTitle">
-                  <span>{item.nome}</span>
+                  <span>{item.title.romaji}</span>
                 </div>
               </div>
             </SwiperSlide>
