@@ -1,10 +1,12 @@
 import Navbar from "../components/Navbar";
 import CarroselHome from "../components/CarroselHome";
+import Banner from "../components/Banner"
 
 export default function Home(){
     return (
         <>
-        <Navbar/>
+        <Navbar/>      
+        <Banner/>
         <CarroselHome
           pagina="1" 
           listTitle="Animes mais curtidos de todos os tempos"       
