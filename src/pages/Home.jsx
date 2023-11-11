@@ -1,11 +1,9 @@
-import Navbar from "../components/Navbar";
 import CarroselHome from "../components/CarroselHome";
 import Banner from "../components/Banner"
 
 export default function Home(){
     return (
-        <>
-        <Navbar/>      
+        <>    
         <Banner/>
         <CarroselHome
           pagina="1" 
