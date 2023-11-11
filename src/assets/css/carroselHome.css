@@ -6,7 +6,7 @@
 .swiper-button-prev,
 .swiper-button-next{
     color: var(--yellow);
-    top: 40%
+    top: 50%
 }
 
 .swiper-slide {
