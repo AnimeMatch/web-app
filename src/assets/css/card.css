@@ -1,0 +1,20 @@
+.cardContent{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 3px;
+}
+.cardTitle{
+    width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    transform: translateX(0);   
+}
+
+.listTitle{
+    color: var(--white);
+    font-family: var(--font-third);
+}
