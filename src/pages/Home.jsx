@@ -6,19 +6,16 @@ export default function Home(){
         <>
         <Navbar/>
         <CarroselHome
-          pagina="1"
-          nomeLista="musicas" 
-          listTitle="Mangas atualizados recentemente"         
+          pagina="1" 
+          listTitle="Animes mais curtidos de todos os tempos"       
         />
         <CarroselHome
           pagina="2"
-          nomeLista="gatos"          
-          listTitle="Mangas mais lidos essa semana"
+          listTitle="Animes lançados na semana"
         />
         <CarroselHome
-          pagina="3"
-          nomeLista="musicas" 
-          listTitle="Mangas atualizados recentemente"         
+          pagina="3"  
+          listTitle="Melhores animes da temporada"     
         />
         </>
     )
