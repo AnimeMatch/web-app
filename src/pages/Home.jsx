@@ -1,10 +1,12 @@
 import Navbar from "../components/Navbar";
 import CarroselHome from "../components/CarroselHome";
+import Banner from "../components/Banner"
 
 export default function Home(){
     return (
         <>
-        <Navbar/>
+        <Navbar/>      
+        <Banner/>
         <CarroselHome
           nomeLista="musicas" 
           listTitle="Mangas atualizados recentemente"         
