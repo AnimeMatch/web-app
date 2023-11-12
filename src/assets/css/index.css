@@ -15,7 +15,7 @@
     --font-secundary: 'Manjari', sans-serif;
     --font-third: 'Poppins', sans-serif;
 
-    --font-size-title: 24px;
+    --font-size-title: 18px;
 }
 
 body {
@@ -29,34 +29,4 @@ body {
 
 #root{
     width: 100%;
-}
-
-
-button {
-    padding: 0.35em 1em;
-    font-size: 1em;
-    font-weight: 500;
-    font-family: var(--font-secundary);
-    cursor: pointer;
-    transition: border-color 0.25s;
-    border-radius: var(--btn-border-radius);
-}
-
-button:hover {
-    border-color: #646cff;
-}
-
-button:focus,
-button:focus-visible {
-    outline: 4px auto -webkit-focus-ring-color;
-}
-
-.btn-primary{
-    border: 1px solid var(--dark-yellow);
-    background-color: var(--dark-blue);
-}
-
-.btn-secundary{
-    border: 1px solid transparent;
-    background-color: var(--yellow);
 }
