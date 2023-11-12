@@ -1,3 +1,98 @@
-h1{
-    color: aliceblue;
+.animeOverview {
+  margin: auto;
+  width: 90%;
+  display: flex;
+  gap: 55px;
+}
+
+.addToList {
+  margin-top: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+.add{
+    height: 36px;
+    width: 150px;
+    background-color: var(--dark-yellow);
+    border-radius: 4%;
+}
+#isFavorite{
+    width: 38px;
+}
+
+.usersOverview {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 50%;
+}
+.textInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.titleAnime{
+    font-size: 18px;
+}
+.topInfo{
+    display: flex;
+    margin-bottom: 10px;
+    width: 95%;
+    justify-content: space-between;
+}
+.viewers {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+.iconViewers {
+  width: 25px;
+}
+
+.characterTitle {
+  font-family: var(--font-third);
+  top: 50%;
+}
+h1,
+span {
+  color: var(--white);
+}
+
+.swiper,
+.listTitle {
+  margin: auto;
+  width: 90%;
+}
+.charactersList
+.swiper-button-prev,
+.charactersList
+.swiper-button-next {
+  /* color: var(--yellow); */
+  color: rgba(1,1,1, 0.7);
+  top: 50%;
+}
+
+.charactersList .swiper-slide {
+  height: 155px;
+  text-align: center;
+  font-size: 12px;
+  background: var(--contrast-dark-blue);
+  color: var(--white);
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.charactersList .swiper-slide img {
+  height: 100px;
+  width: 75px;
+  display: block;
+  object-fit: cover;
+  border-radius: 0%;
+}
+.charactersList {
+  width: 650px;
+  background-color: var(--contrast-dark-blue);
+  position: relative;
 }
