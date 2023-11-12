@@ -9,6 +9,7 @@ import twitterLogo from '../assets/images/logos/twitter 1.svg';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
 
 export default function Navbar(){
 
@@ -64,10 +65,12 @@ export default function Navbar(){
     return (
         <>
             <nav className='navbar'>
-                <div className="brandingArea">
-                    <img src={logo} alt="" />
-                    <span id='title'>Anime Match</span>
-                </div>
+                <Link>
+                    <div className="brandingArea">
+                        <img src={logo} alt="" />
+                        <span id='title'>Anime Match</span>
+                    </div>
+                </Link>
                 <div className="navigationItens">
                     <ol className='navList'>
                         <li>Anime</li>

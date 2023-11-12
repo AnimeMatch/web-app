@@ -61,6 +61,7 @@ export default function CarroselHome(props) {
         {getList.map((item) => (
           <SwiperSlide key={item.id}>
             <CardAnime
+              id = {item.id}
               title={item.title.romaji}
               image={item.coverImage.large}
             />
