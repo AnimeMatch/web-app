@@ -7,9 +7,10 @@ a{
     margin: auto;
     width: 90%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
     flex-direction: row;
+    gap: 10rem;
 }
 
 .brandingArea {
@@ -32,14 +33,15 @@ a{
 .navList{
     list-style: none;
     color: var(--white);
+    font-size: var(--font-size-menu);
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
     font-family: var(--font-secundary);
     font-weight: 500;
     display: flex;
     gap: 1.5rem;
-    margin-left: 1rem;
+    margin-left: 1.5rem;
 }
 
 .link{
@@ -72,16 +74,17 @@ a{
 .btn-primary {
     font-family: var(--font-secundary);
     font-weight: 700;
+    font-size: 14px;
     display: inline-block;
-    width: 6em;
-    line-height: 1.5rem;
+    width: 5em;
+    height: 1.7rem;
+    line-height: 1rem;
     padding-top: .3rem;
     overflow: hidden;
-    font-size: 17px;
     z-index: 1;
-    color: #fbebba;
+    color: var(--yellow-egg);
     border: 1px solid var(--yellow);
-    border-radius: 6px;
+    border-radius: var(--btn-border-mini);
     position: relative;
     background-color: transparent;
     cursor: pointer;
@@ -118,14 +121,15 @@ a{
     font-weight: 700;
     display: inline-block;
     width: 6em;
-    line-height: 1.3rem;
-    padding-top: .4rem;
+    height: 1.7rem;
+    line-height: 1rem;
+    padding-top: .3rem;
     overflow: hidden;
-    font-size: 17px;
+    font-size: 14px;
     z-index: 1;
     color: var(--dark-blue);
     border: 1.5px solid var(--dark-yellow);
-    border-radius: 6px;
+    border-radius: 4px;
     position: relative;
     background-color: var(--dark-yellow);
     cursor: pointer;
@@ -200,12 +204,12 @@ a{
     border-radius: 13px;
     max-width: 850px;
     min-width: 850px;
-    height: 500px;
+    height: 515px;
     border: solid 0.1px rgba(123, 123, 123, 0.4);
     z-index: 3;
 }
 
-keyframes modalEntrada {
+@keyframes modalEntrada {
     from {
         opacity: 0;
     }
@@ -225,15 +229,15 @@ keyframes modalEntrada {
     font-weight: 700;
 }
 
-.l {
+.x {
     position: relative;
     margin-top: .5rem;
     width: 15px;
     height: 15px;
 }
 
-.l::before,
-.l::after {
+.x::before,
+.x::after {
     content: '';
     position: absolute;
     width: 2px;
@@ -241,11 +245,11 @@ keyframes modalEntrada {
     background-color: var(--dark-yellow);
 }
 
-.l::before {
+.x::before {
     transform: rotate(45deg);
 }
 
-.l::after {
+.x::after {
     transform: rotate(-45deg);
 }
 
@@ -288,12 +292,17 @@ keyframes modalEntrada {
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 5px;
+}
+
+.remember span{
+    font-size: 9px;
 }
 
 .fundo{
     background-image: url(../images/backgrounds/4258797.svg);
     background-repeat: repeat-x;
-    background-size: 28.5rem;
+    background-size: 29.5rem;
     border-radius: 13px;
     display: flex;
     justify-content: end;
@@ -304,6 +313,14 @@ keyframes modalEntrada {
     display: flex;
     flex-direction: column;
     width: 250px;
+}
+
+.form2{
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    margin-top: -1rem;
+    gap: .5rem;
 }
 
 .e-mail{
@@ -335,7 +352,7 @@ input {
     text-align: start;
     border: 0;
     outline: none;
-    border-radius: 5px;
+    border-radius: 3px;
     padding: .2rem;
     padding-left: .5rem;
 }
@@ -353,7 +370,7 @@ input[type="checkbox"] {
 
 input[type="checkbox"]::before {
     content: '\2716';
-    font-size: 12px;
+    font-size: 11px;
     color: transparent;
     position: absolute;
     top: 50%;
@@ -372,6 +389,20 @@ input[type="checkbox"]:checked::before {
     margin-top: 1rem;
 }
 
+.gambiarra .btn-secundary{
+    padding-top: .4rem;
+}
+
+.gambiarra2{
+    display: flex;
+    justify-content: center;
+}
+
+.gambiarra2 .btn-secundary{
+    padding-top: .4rem;
+    width: 6rem;
+}
+
 .modal-right-content button{
     font-size: 14px;
     margin-bottom: 5px;
@@ -385,6 +416,11 @@ input[type="checkbox"]:checked::before {
     border: solid 1px  rgba(255, 255, 255, 0.5);
 }
 
+.form2 .separate{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
 .socialLogos{
     margin: 10px 0px;
     display: flex;
@@ -393,8 +429,14 @@ input[type="checkbox"]:checked::before {
     gap: 16px;
 }
 
-.register img{
-    width: 24px;
+.fundo2{
+    background-image: url(../images/backgrounds/4302417.svg);
+    background-repeat: repeat-x;
+    background-size: 32rem;
+    border-radius: 13px;
+    display: flex;
+    justify-content: end;
+    width: 100%;
 }
 
 .register span{
@@ -417,7 +459,17 @@ input[type="checkbox"]:checked::before {
     color: var(--dark-yellow);
 }
 
-#google,#facebook,#twitter, #registerBtn{
+.form2 #google,
+.form2 #facebook,
+.form2 #twitter,
+.form2 #registerBtn{
+    cursor: pointer;
+    cursor: pointer;
+    width: 30px;
+    margin-bottom: 0;
+}
+
+.form #google,#facebook,#twitter, #registerBtn{
     cursor: pointer;
     cursor: pointer;
     width: 30px;

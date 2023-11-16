@@ -56,7 +56,7 @@
 }
 h1,
 span {
-  color: var(--white);
+  /* color: var(--white); */
 }
 
 .swiper,

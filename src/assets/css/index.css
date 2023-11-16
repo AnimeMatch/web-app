@@ -9,14 +9,15 @@
     --bright-blue : #4641D9;
     --contrast-dark-blue:#080C25;
     --white: #FFFFFF;
-
-    --btn-border-radius : 9px;
-
+    --btn-border-radius : 7px;
+    --btn-border-mini: 4px;
     --font-primary : 'Roboto', sans-serif;
     --font-secundary: 'Manjari', sans-serif;
     --font-third: 'Poppins', sans-serif;
+    --yellow-egg:#fbebba;
 
     --font-size-title: 18px;
+    --font-size-menu: 14px;
 }
 
 body {
@@ -25,7 +26,6 @@ body {
     min-width: 320px;
     min-height: 100vh;
     background-color: var(--dark-blue)
-
 }
 
 #root{
