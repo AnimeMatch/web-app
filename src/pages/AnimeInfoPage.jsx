@@ -12,16 +12,25 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import CardCharacter from "../components/CardCharacter";
+import icone from "../assets/images/logos/logoNavbar.png";
+import ModalAddToList from "../components/ModalAddToList";
 
 export default function AnimeInfoPage() {
   const [animeData, setAnimeData] = useState({
     characters: { nodes: [] },
     coverImage: { large: "" },
-    title: { native: "" },
+    title: [],
     description: "",
-    startDate: { year: "" },
+    startDate: { year: "", month: "", day: "" },
+    endDate: { year: "", month: "", day: "" },
+    externalLinks: [],
+    genres: [],
   });
-
+  const [modalAdd, setModalAdd] = useState(false);
+  const loginModalAdd = () => {
+    console.log("cliquei ai")
+    setModalAdd(!modalAdd)
+}
   const { id } = useParams();
   const [isFavorite, setIsFavorite] = useState(false);
 
@@ -40,18 +49,23 @@ export default function AnimeInfoPage() {
     setIsFavorite(!isFavorite);
     // Add save/remove from favorites logic here
   };
-  console.log(animeData.characters);
+  console.log(animeData);
   return (
     <>
+      <ModalAddToList
+        show={modalAdd}
+        loginModalAdd={loginModalAdd}
+        animeTitle={animeData.title.romaji}
+      />
       <div className="animeOverview">
         <div className="imageAddToList">
           <img src={animeData.coverImage.large} alt="" />
           <div className="addToList">
             <div>
-              <button className="btn-secundary add"> Adicionar </button>
+              <button className="btn-secundary add" onClick={loginModalAdd}> Adicionar </button>
             </div>
             <img
-            id="isFavorite"
+              id="isFavorite"
               src={isFavorite ? heartFull : heart}
               alt=""
               onClick={favoriteAction}
@@ -104,6 +118,74 @@ export default function AnimeInfoPage() {
               ))}
             </Swiper>
           </div>
+        </div>
+      </div>
+      <div className="secondLayerInfo">
+        <div className="sideBar">
+          <span>Onde encontrar?</span>
+          <div className="externalLinksArea">
+            {animeData.externalLinks.map((item, index) => (
+              <div className="externalLink" key={index}>
+                {item.icon ? (
+                  <img src={item.icon} className="externalIcon" alt="icon" />
+                ) : (
+                  <img src={icone} className="externalIcon" alt="icon" />
+                )}
+                <a href={item.url} target="blank">
+                  {item.site}
+                </a>
+              </div>
+            ))}
+          </div>
+          <div className="infoSideBar">
+            <div className="infoBlock">
+              <span className="infoTitle">Formato:</span>
+              <span className="infoText">{animeData.format}</span>
+            </div>
+            <div className="infoBlock">
+              <span className="infoTitle">Episódios:</span>
+              <span className="infoText">{animeData.episodes}</span>
+            </div>
+            <div className="infoBlock">
+              <span className="infoTitle">Data de Lançamento:</span>
+              <span className="infoText">
+                {animeData.startDate.day}/{animeData.startDate.month}/
+                {animeData.startDate.year}
+              </span>
+            </div>
+            <div className="infoBlock">
+              <span className="infoTitle">Data de Finalização:</span>
+              <span className="infoText">
+                {animeData.endDate.day}/{animeData.endDate.month}/
+                {animeData.endDate.year}
+              </span>
+            </div>
+            <div className="infoBlock">
+              <span className="infoTitle">Generos:</span>
+              {animeData.genres.map((item) => (
+                <span className="infoText">{item}</span>
+              ))}
+            </div>
+            <div className="infoBlock">
+              <span className="infoTitle">Titulo em romaji:</span>
+              <span className="infoText">{animeData.title.romaji}</span>
+            </div>
+            <div className="infoBlock">
+              <span className="infoTitle">Titulo em inglês:</span>
+              <span className="infoText">{animeData.title.english}</span>
+            </div>
+            <div className="infoBlock">
+              <span className="infoTitle">Titulo em japones:</span>
+              <span className="infoText">{animeData.title.native}</span>
+            </div>
+          </div>
+        </div>
+        <div className="commentSection">
+          <div className="commentTitleSection">
+            <span className="commentTitle">Comentarios</span>
+            <button className="btn-secundary">Comentar</button>
+          </div>
+            <div className="line"></div>
         </div>
       </div>
     </>

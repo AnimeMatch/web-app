@@ -96,3 +96,75 @@ span {
   background-color: var(--contrast-dark-blue);
   position: relative;
 }
+/* Outra sessão */
+.sideBar{
+  margin-left: 5%;
+  margin-top: 3%;
+  width: 230px;
+  font-family: var(--font-third);
+}
+.externalLinksArea{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 6%;
+  font-weight: 600;
+}
+.externalLink{
+  background-color: var(--contrast-dark-blue);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.externalIcon{
+  width: 20px;
+}
+
+.infoSideBar{
+  background-color: var(--contrast-dark-blue);
+  padding: 15px;
+}
+
+.infoBlock{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2%;
+}
+
+.infoTitle{
+  font-weight: 600;
+  font-size: 16px;
+
+}
+.infoText{
+  font-size: 10px;
+}
+/* outra sessao */
+.secondLayerInfo{
+  display: flex;
+}
+
+.commentSection{
+  width: 65%;
+  margin-top: 3%;
+  margin-right: 5%;
+  margin-left: 5%;
+}
+
+.commentTitleSection{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.line{
+  margin-top: 10px;
+  border: 1px solid var(--white);
+  border-radius: 9px;
+}
+.commentTitle{
+  font-family: var(--font-third);
+  font-size: 20px;
+  font-weight: 200;
+}
+/*  */
