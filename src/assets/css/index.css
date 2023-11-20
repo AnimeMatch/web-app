@@ -3,21 +3,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 :root {
-    --dark-blue: #000B1C;
+    --dark-blue: #000712;
     --dark-yellow: #FFA800;
     --yellow: #E3AB00;
     --bright-blue : #4641D9;
     --contrast-dark-blue:#080C25;
     --white: #FFFFFF;
+    --yellow-egg:#fbebba;
+
     --btn-border-radius : 7px;
     --btn-border-mini: 4px;
+    
     --font-primary : 'Roboto', sans-serif;
     --font-secundary: 'Manjari', sans-serif;
     --font-third: 'Poppins', sans-serif;
-    --yellow-egg:#fbebba;
 
     --font-size-title: 18px;
     --font-size-menu: 14px;
+    --font-size-list: 20px;
+    --font-size-option: 12px;
 }
 
 body {

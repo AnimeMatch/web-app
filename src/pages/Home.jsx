@@ -1,5 +1,8 @@
 import CarroselHome from "../components/CarroselHome";
 import Banner from "../components/Banner"
+import BannerForum from "../components/BannerForum"
+import GenderHome from "../components/GenderHome";
+import Footer from "../components/Footer";
 
 export default function Home(){
     return (
@@ -7,16 +10,29 @@ export default function Home(){
         <Banner/>
         <CarroselHome
           pagina="1" 
-          listTitle="Animes mais curtidos de todos os tempos"       
+          listTitle="Animes da temporada"       
         />
+
+        <GenderHome/>
+        
         <CarroselHome
           pagina="2"
-          listTitle="Animes lançados na semana"
+          listTitle="Animes atualizados recentemente"
         />
+
+        <BannerForum/>
+        
         <CarroselHome
           pagina="3"  
-          listTitle="Melhores animes da temporada"     
+          listTitle="Mangas atualizados recentemente"     
         />
+        
+        <CarroselHome
+          pagina="4"  
+          listTitle="Mangas mais lidos essa semana"     
+        />
+
+        <Footer/>
         </>
     )
 }
