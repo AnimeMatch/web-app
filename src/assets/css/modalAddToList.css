@@ -1,0 +1,30 @@
+.modalAddToList{
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+}
+
+.overlay-modalAdd{
+    background: rgba(49,49,49,0.4);
+}
+
+.modal-contentAdd{
+    color: var(--white); 
+    display: flex; 
+    position: absolute;
+    flex-direction: column;
+    top: 53%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 1.4;
+    background: var(--dark-blue);
+    padding: 15px;
+    border-radius:var(--btn-border-radius);
+    max-width: 300px;
+    min-width: 300px;
+    border: solid 0.1px rgba(123, 123, 123, 0.4)
+}
