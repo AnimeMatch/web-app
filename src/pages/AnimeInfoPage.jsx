@@ -14,6 +14,8 @@ import "swiper/css/navigation";
 import CardCharacter from "../components/CardCharacter";
 import icone from "../assets/images/logos/logoNavbar.png";
 import ModalAddToList from "../components/ModalAddToList";
+import RatingStars from "../components/RatingStars";
+import CarroselHome from "../components/CarroselHome";
 
 export default function AnimeInfoPage() {
   const [animeData, setAnimeData] = useState({
@@ -28,9 +30,9 @@ export default function AnimeInfoPage() {
   });
   const [modalAdd, setModalAdd] = useState(false);
   const loginModalAdd = () => {
-    console.log("cliquei ai")
-    setModalAdd(!modalAdd)
-}
+    console.log("cliquei ai");
+    setModalAdd(!modalAdd);
+  };
   const { id } = useParams();
   const [isFavorite, setIsFavorite] = useState(false);
 
@@ -62,7 +64,10 @@ export default function AnimeInfoPage() {
           <img src={animeData.coverImage.large} alt="" />
           <div className="addToList">
             <div>
-              <button className="btn-secundary add" onClick={loginModalAdd}> Adicionar </button>
+              <button className="btn-secundary add" onClick={loginModalAdd}>
+                {" "}
+                Adicionar{" "}
+              </button>
             </div>
             <img
               id="isFavorite"
@@ -74,8 +79,11 @@ export default function AnimeInfoPage() {
         </div>
         <div className="textInfo">
           <div className="topInfo">
-            <span className="titleAnime">{animeData.title.romaji}</span>
+            <div className="titleDelimiter">
+              <span className="titleAnime">{animeData.title.romaji}</span>
+            </div>
             <span className="releaseYear">{animeData.startDate.year}</span>
+            <RatingStars />
           </div>
           <span
             id="description"
@@ -102,7 +110,7 @@ export default function AnimeInfoPage() {
             <Swiper
               modules={[Navigation, Pagination, Scrollbar, A11y]}
               spaceBetween={15}
-              slidesPerView={5}
+              slidesPerView={8}
               navigation
               pagination={{ clickable: true }}
               scrollbar={{ draggable: true }}
@@ -185,9 +193,11 @@ export default function AnimeInfoPage() {
             <span className="commentTitle">Comentarios</span>
             <button className="btn-secundary">Comentar</button>
           </div>
-            <div className="line"></div>
+          <div className="line"></div>
         </div>
       </div>
+      <CarroselHome pagina="4" listTitle="Relacionados" />
+      <CarroselHome pagina="4" listTitle="Recomendações" />
     </>
   );
 }

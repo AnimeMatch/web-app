@@ -18,7 +18,7 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "anime/:id",
+        path: "anime/:id/*",
         element: <AnimeInfoPage />,
       },
     ],
