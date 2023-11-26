@@ -20,6 +20,10 @@ export default function CardAnime(props) {
     opacity: isMenuOpen ? 1 : 0,
   };
 
+  const fontStyle = {
+    display: isMenuOpen ? "flex" : "none",
+  }
+
 
   return (
     <div className="cardContent">
@@ -29,7 +33,7 @@ export default function CardAnime(props) {
             <div className="container3">
               <Link className="go-pag" to={redirect}></Link>
               <div className="pop-up" style={menuStyle}>
-                <ul className="option-one">
+                <ul className="option-one" style={fontStyle}>
                   <li className="icon progress">
                     <span className="tooltip">Em progresso</span>
                     <span>
@@ -44,7 +48,7 @@ export default function CardAnime(props) {
                     <img src="" alt="" />
                   </li>
                 </ul>
-                <ul className="option-one">
+                <ul className="option-one" style={fontStyle}>
                   <li className="icon complete">
                     <span className="tooltip">Completo</span>
                   </li>

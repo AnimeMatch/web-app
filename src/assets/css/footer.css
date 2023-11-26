@@ -42,6 +42,7 @@ h3 {
 .social {
     display: flex;
     gap: .3rem;
+    align-items: end;
 }
 
 .image-icon {
@@ -49,8 +50,8 @@ h3 {
 }
 
 .youtube .image-icon {
-    height: 10px;
-    width: 10px;
+    height: 15px;
+    width: 15px;
     background-image: url("../images/logos/youtube.svg");
     background-position: center;
     background-repeat: no-repeat;
@@ -58,8 +59,8 @@ h3 {
 }
 
 .facebook .image-icon {
-    height: 10px;
-    width: 10px;
+    height: 15px;
+    width: 15px;
     background-image: url("../images/logos/face.svg");
     background-position: center;
     background-repeat: no-repeat;
@@ -67,8 +68,8 @@ h3 {
 }
 
 .rip-twitter .image-icon {
-    height: 10px;
-    width: 10px;
+    height: 15px;
+    width: 15px;
     background-image: url("../images/logos/x.svg");
     background-position: center;
     background-repeat: no-repeat;
@@ -76,8 +77,8 @@ h3 {
 }
 
 .instagram .image-icon {
-    height: 10px;
-    width: 10px;
+    height: 15px;
+    width: 15px;
     background-image: url("../images/logos/insta.svg");
     background-position: center;
     background-repeat: no-repeat;
@@ -85,8 +86,8 @@ h3 {
 }
 
 .tiktok .image-icon {
-    height: 10px;
-    width: 10px;
+    height: 15px;
+    width: 15px;
     background-image: url("../images/logos/tiktok.svg");
     background-position: center;
     background-repeat: no-repeat;
