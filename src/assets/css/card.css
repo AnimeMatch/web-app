@@ -47,9 +47,9 @@
 }
 
 .menu {
-    background-color: #4641D9;
-    border-bottom-left-radius: var(--btn-border-mini);
-    border-bottom-right-radius: var(--btn-border-mini);
+    background-color: var(--purple-dark);
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
     height: 25%;
     width: 100%;
     display: flex;
@@ -74,10 +74,6 @@
     width: 1.7rem;
     cursor: pointer;
     padding: 0;
-}
-
-.add-list:hover {
-    background-image: url("../images/logos/boton-agregar1.svg");
 }
 
 .pop-up {
@@ -180,48 +176,48 @@
 .option-one .progress:hover,
 .option-one .progress:hover .tooltip,
 .option-one .progress:hover .tooltip::before {
-    background-color: #001433;
+    background-color: var(--purple-dark);
     color: #fff;
 }
 
 .option-one .on-hold:hover,
 .option-one .on-hold:hover .tooltip,
 .option-one .on-hold:hover .tooltip::before {
-    background-color: #001433;
+    background-color: var(--purple-dark);
     color: #fff;
 }
 
 .option-one .on-plan:hover,
 .option-one .on-plan:hover .tooltip,
 .option-one .on-plan:hover .tooltip::before {
-    background-color: #001433;
+    background-color: var(--purple-dark);
     color: #fff;
 }
 
 .option-one .complete:hover,
 .option-one .complete:hover .tooltip,
 .option-one .complete:hover .tooltip::before {
-    background-color: #001433;
+    background-color: var(--purple-dark);
     color: #fff;
 }
 
 .option-one .dropp:hover,
 .option-one .dropp:hover .tooltip,
 .option-one .dropp:hover .tooltip::before {
-    background-color: #001433;
+    background-color: var(--purple-dark);
     color: #fff;
 }
 
 .option-one .my-lists:hover,
 .option-one .my-lists:hover .tooltip,
 .option-one .my-lists:hover .tooltip::before {
-    background-color: #001433;
+    background-color: var(--purple-dark);
     color: #fff;
 }
 
 .option-one .progress {
     background-image: url("../images/logos/Icone.svg");
-    background-position: center;
+    background-position: 7.4px;
     background-repeat: no-repeat;
     background-color: var(--dark-blue);
     background-size: 1rem;

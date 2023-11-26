@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     margin-bottom: 8rem;
-    gap: 4rem;
+    gap: 3rem;
 }
 
 .option-gender{
@@ -22,10 +22,12 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    transition: .4s;
 }
 
 .image-gender:hover{
     filter: drop-shadow(0px 0px 8px var(--bright-blue));
+    transition: .6s;
 }
 
 .shounen{
