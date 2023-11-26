@@ -101,9 +101,11 @@ export default function Navbar() {
               </a>
             </li>
             <li>
-              <a className="link" href="#">
-                Manga
-              </a>
+              <Link to={"search/manga/"}>
+                <a className="link" href="#">
+                  Manga
+                </a>
+              </Link>
             </li>
             {/* <li className="alterar">
               <a className="link" href="#">
@@ -111,9 +113,11 @@ export default function Navbar() {
               </a>
             </li> */}
             <li>
-              <a className="link" href="#">
-                Fórum
-              </a>
+              <Link to={"forum/"}>
+                <a className="link" href="#">
+                  Fórum
+                </a>
+              </Link>
             </li>
           </ol>
         </div>
