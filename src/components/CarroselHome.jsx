@@ -13,7 +13,7 @@ export default function CarroselHome(props) {
 
   useEffect(() => {
     api
-      .get(`/animes/cards?page=${props.pagina}&qtdPaginas=15`)
+      .get(`/animes/cards/temporada?page=${props.pagina}&qtdPaginas=15`)
       .then((response) => {
         console.log(response);
         setList(response.data.media);

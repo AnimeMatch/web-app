@@ -95,11 +95,13 @@ export default function Navbar() {
         </Link>
         <div className="navigationItens">
           <ol className="navList">
-            <li>
-              <a className="link" href="#">
-                Anime
-              </a>
-            </li>
+            <Link to={"search/anime/"}>
+              <li>
+                <a className="link" href="#">
+                  Anime
+                </a>
+              </li>
+            </Link>
             <li>
               <Link to={"search/manga/"}>
                 <a className="link" href="#">
@@ -155,8 +157,8 @@ export default function Navbar() {
           </ol>
         </div> */}
       </nav>
-      <ModalLogin modal={modal} onClose={loginModal} onSwap={swap}/>
-      <ModalRegister modal={modal2} onClose={regsiterModal} onSwap={swap}/>
+      <ModalLogin modal={modal} onClose={loginModal} onSwap={swap} />
+      <ModalRegister modal={modal2} onClose={regsiterModal} onSwap={swap} />
     </>
   );
 }
