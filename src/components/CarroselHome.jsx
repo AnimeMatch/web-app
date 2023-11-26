@@ -11,28 +11,6 @@ import "../assets/css/carroselHome.css";
 export default function CarroselHome(props) {
   const [getList, setList] = useState([]);
 
-  // const [setCardPerView] = useState(7);
-
-  // useEffect(() => {
-  //   function handleResize() {
-  //     if (window.innerWidth < 1200) {
-  //       setCardPerView(5);
-  //     }
-  //     if (window.innerWidth < 800) {
-  //       setCardPerView(3);
-  //     }
-  //     if (window.innerWidth > 1200) {
-  //       setCardPerView(6);
-  //     }
-  //   }
-  //   handleResize();
-  //   window.addEventListener("resize", handleResize);
-
-  //   return () => {
-  //     window.removeEventListener("resize", handleResize);
-  //   };
-  // }, []);
-
   useEffect(() => {
     api
       .get(`/animes/cards?page=${props.pagina}&qtdPaginas=15`)

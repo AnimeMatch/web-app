@@ -31,8 +31,6 @@ export default function Home(){
           pagina="4"  
           listTitle="Mangas mais lidos essa semana"     
         />
-
-        <Footer/>
         </>
     )
 }

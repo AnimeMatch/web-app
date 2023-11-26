@@ -2,7 +2,7 @@ import "../assets/css/card.css";
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
 export default function CardAnime(props) {
-  let redirect = "anime/" + props.id;
+  let redirect = "../anime/" + props.id;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
 
@@ -27,7 +27,7 @@ export default function CardAnime(props) {
         <div className="image" style={cardStyle}>
           <div className="option-list" onMouseLeave={() => setIsMenuOpen(false)}>
             <div className="container3">
-              <Link className="go-pag" to={redirect}></Link>
+              <Link className="go-pag" to={redirect} preventScrollReset={true}></Link>
               <div className="pop-up" style={menuStyle}>
                 <ul className="option-one">
                   <li className="icon progress">
