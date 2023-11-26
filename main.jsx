@@ -8,10 +8,11 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import ScrollTop from "./src/components/ScrollTop.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element:(<><App /> <ScrollTop/></> ),
     children: [
       {
         path: "/",
