@@ -6,6 +6,7 @@ import Home from "./src/pages/Home.jsx";
 import AnimeInfoPage from "./src/pages/AnimeInfoPage";
 import ForumPage from "./src/pages/ForumPage.jsx";
 import SearchManga from "./src/pages/SearchManga.jsx";
+import SearchAnime from "./src/pages/SearchAnime.jsx";
 
 import {
   createBrowserRouter,
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: "search/manga/",
         element: <SearchManga />,
+      },
+      {
+        path: "search/anime/",
+        element: <SearchAnime />,
       },
     ],
   }
