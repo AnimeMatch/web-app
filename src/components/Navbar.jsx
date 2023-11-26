@@ -16,9 +16,29 @@ export default function Navbar() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  // const [isMenuOpen, setMenuOpen] = useState(false);
+
+  // const toggleMenu = () => {
+  //   setMenuOpen(!isMenuOpen);
+  //   document.body.style.overflow = isMenuOpen ? "scroll" : "hidden";
+  // };
+
   const loginModal = () => {
     setModal(!modal);
   };
+
+  // const menuStyle = {
+  //   opacity: isMenuOpen ? "1" : "0",
+  //   transform: isMenuOpen ? "translateY(10%)" : "translateY(-10%)",
+  //   transition: "transform 0.5s ease-out",
+  //   top: "8%",
+  //   left: "81%",
+  //   height: isMenuOpen ? "auto" : "0",
+  // };
+
+  // const fontStyle = {
+  //   display: isMenuOpen ? "flex" : "none",
+  // };
 
   const regsiterModal = () => {
     setModal2(!modal2);
@@ -85,6 +105,11 @@ export default function Navbar() {
                 Manga
               </a>
             </li>
+            {/* <li className="alterar">
+              <a className="link" href="#">
+                Lista
+              </a>
+            </li> */}
             <li>
               <a className="link" href="#">
                 Fórum
@@ -100,6 +125,31 @@ export default function Navbar() {
             <span>Cadastro</span>
           </button>
         </div>
+
+        {/* <div className="margin">
+          <button className="menu-nav" onClick={toggleMenu}>
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+
+        <div className="menu-option" style={menuStyle}>
+          <ol>
+            <li style={fontStyle}>
+              <div className="icon-profile"></div>
+              <span>Perfil</span>
+            </li>
+            <li style={fontStyle}>
+              <div className="icon-settings"></div>
+              <span>Gerenciar conta</span>
+            </li>
+            <li style={fontStyle}>
+              <div className="icon-exit"></div>
+              <span>Sair</span>
+            </li>
+          </ol>
+        </div> */}
       </nav>
       <ModalLogin modal={modal} onClose={loginModal} onSwap={swap}/>
       <ModalRegister modal={modal2} onClose={regsiterModal} onSwap={swap}/>
