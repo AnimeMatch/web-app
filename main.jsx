@@ -4,6 +4,7 @@ import "/src/assets/css/index.css";
 import App from "./src/App.jsx";
 import Home from "./src/pages/Home.jsx";
 import AnimeInfoPage from "./src/pages/AnimeInfoPage";
+import Profile from "./src/pages/Profile.jsx";
 import {
   createBrowserRouter,
   RouterProvider,
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
       {
         path: "anime/:id/*",
         element: <AnimeInfoPage />,
+      },
+      {
+        path: "profile",
+        element: <Profile />
       },
     ],
   }
