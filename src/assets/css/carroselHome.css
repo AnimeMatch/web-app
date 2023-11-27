@@ -1,0 +1,86 @@
+.swiper,
+.listTitle {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1rem;
+    width: 90%;
+}
+
+.swiper {
+    margin-bottom: 8rem;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+    color: transparent;
+    top: 0%;
+    height: 17rem;
+    width: 4rem;
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+    color: var(--yellow);
+    opacity: 1;
+    transition: .3s;
+}
+
+.swiper-button-next {
+    justify-content: end;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: -.61rem;
+    padding-right: 1rem;
+    background: rgb(0, 7, 18);
+    background: linear-gradient(90deg, rgba(0, 7, 18, 0) 0%, rgba(0, 7, 18, 1) 100%);
+}
+
+.swiper-button-prev {
+    justify-content: start;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: -.61rem;
+    margin-right: 0;
+    padding-left: 1rem;
+    background: rgb(0, 7, 18);
+    background: linear-gradient(90deg, rgba(0, 7, 18, 1) 0%, rgba(0, 7, 18, 0) 100%);
+}
+
+.swiper-button-next.swiper-button-disabled,
+.swiper-button-prev.swiper-button-disabled {
+    cursor: auto;
+    pointer-events: none;
+
+}
+
+.swiper-slide {
+    font-size: 12px;
+    background: var(--dark-blue);
+    color: var(--white);
+    /* Center slide text vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-slide .image {
+    height: 250px;
+    width: 165px;
+    display: flex;
+    object-fit: cover;
+    border-radius: var(--btn-border-mini);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.more {
+    font-size: var(--font-size-option);
+    margin-right: 1rem;
+    font-family: var(--font-primary);
+    font-weight: 300;
+}
+
+.more:hover {
+    color: var(--yellow);
+    cursor: pointer;
+}
