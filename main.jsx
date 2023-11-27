@@ -4,6 +4,7 @@ import "/src/assets/css/index.css";
 import App from "./src/App.jsx";
 import Home from "./src/pages/Home.jsx";
 import AnimeInfoPage from "./src/pages/AnimeInfoPage";
+import Profile from "./src/pages/Profile.jsx";
 import ForumPage from "./src/pages/ForumPage.jsx";
 import SearchManga from "./src/pages/SearchManga.jsx";
 import SearchAnime from "./src/pages/SearchAnime.jsx";
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
         element: <AnimeInfoPage />,
       },
       {
+
+        path: "profile",
+        element: <Profile />
+
         path: "forum/",
         element: <ForumPage />,
       },
@@ -37,6 +42,7 @@ const router = createBrowserRouter([
       {
         path: "search/anime/",
         element: <SearchAnime />,
+
       },
     ],
   }
