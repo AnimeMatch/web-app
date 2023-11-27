@@ -64,3 +64,32 @@
     font-family: var(--font-third);
     font-weight: 600;
 }
+
+/*area dos animes*/
+.anime-area-searched{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    margin: auto;
+    gap: 15px;
+}
+
+.card-anime-search-area{
+    color: var(--white);
+
+}
+
+.card-anime-search-area .image{
+    height: 200px;
+    width: 140px;
+}
+
+.anime-search-btns{
+    margin: auto;
+    margin-bottom: 2%;
+    width: 90%;
+    justify-content: space-between;
+    display: flex;
+}
