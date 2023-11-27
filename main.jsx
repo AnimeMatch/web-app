@@ -9,15 +9,16 @@ import ForumPage from "./src/pages/ForumPage.jsx";
 import SearchManga from "./src/pages/SearchManga.jsx";
 import SearchAnime from "./src/pages/SearchAnime.jsx";
 
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ScrollTop from "./src/components/ScrollTop.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
-    element:(<><App /> <ScrollTop/></> ),
+    element: (
+      <>
+        <App /> <ScrollTop />
+      </>
+    ),
     children: [
       {
         path: "/",
@@ -28,10 +29,10 @@ const router = createBrowserRouter([
         element: <AnimeInfoPage />,
       },
       {
-
         path: "profile",
-        element: <Profile />
-
+        element: <Profile />,
+      },
+      {
         path: "forum/",
         element: <ForumPage />,
       },
@@ -42,14 +43,13 @@ const router = createBrowserRouter([
       {
         path: "search/anime/",
         element: <SearchAnime />,
-
       },
     ],
-  }
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router}/>
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
