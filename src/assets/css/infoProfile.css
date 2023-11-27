@@ -51,6 +51,7 @@
 .name-gender {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     color: var(--white);
 }
 
@@ -81,6 +82,7 @@
     background-repeat: no-repeat;
     background-size: 20px;
     background-position: center;
+    cursor: pointer;
 }
 
 .edit-image:hover {
