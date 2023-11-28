@@ -1,9 +1,58 @@
-import React from "react";
+import React, { useState } from "react";
 import facebookLogo from "../assets/images/logos/facebook 1.svg";
 import googleLogo from "../assets/images/logos/search 1.svg";
 import twitterLogo from "../assets/images/logos/twitter 1.svg";
+import apiUser from "../apiUser";
 
 const ModalRegister = ({ modal, onClose, onSwap }) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState();
+  const [confirmPassword, setConfirmPassword] = useState();
+  const [name, setName] = useState();
+  const [terms, setTerms] = useState(false);
+
+  const cadastrar = (e) => {
+    e.preventDefault();
+    console.log(terms);
+    if(!terms){
+      throw new Error("Termos não foram aceitos !");
+    }
+
+    if(password != confirmPassword){
+      throw new Error("Senhas diferentes");
+    }
+
+
+      apiUser
+        .post(
+          "/users/",
+          {
+            email: email,
+            password: password,
+            name: name
+          },
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        )
+        .then((response) => {
+          console.log(response)
+          if (response.status === 201) {
+            sessionStorage.setItem("authToken", response.data.token);
+            sessionStorage.setItem("usuario", response.data.name);
+            onSwap()
+          } else {
+            throw new Error("Ops! Ocorreu um erro interno.");
+          }
+        })
+        .catch((error) => {
+          console.log(error.message);
+          console.log("Falha no login");
+        });
+  };
+
   return (
     <>
       {modal && (
@@ -24,6 +73,7 @@ const ModalRegister = ({ modal, onClose, onSwap }) => {
                       name=""
                       id="registerEmail"
                       placeholder="email@example.com"
+                      onChange={(e) => setEmail(e.target.value)}
                     />
                   </div>
                   <div className="e-mail">
@@ -33,6 +83,7 @@ const ModalRegister = ({ modal, onClose, onSwap }) => {
                       name=""
                       id="registerUserName"
                       placeholder="Batatinha123"
+                      onChange={(e) => setName(e.target.value)}
                     />
                   </div>
                   <div className="senha">
@@ -42,6 +93,7 @@ const ModalRegister = ({ modal, onClose, onSwap }) => {
                       name=""
                       id="registerPassword"
                       placeholder="&#10625;&#10625;&#10625;&#10625;&#10625;&#10625;&#10625;&#10625;&#10625;&#10625;"
+                      onChange={(e) => setPassword(e.target.value)}
                     />
                   </div>
                   <div className="senha">
@@ -51,11 +103,17 @@ const ModalRegister = ({ modal, onClose, onSwap }) => {
                       name=""
                       id="registerPasswordConfirm"
                       placeholder="&#10625;&#10625;&#10625;&#10625;&#10625;&#10625;&#10625;&#10625;&#10625;&#10625;"
+                      onChange={(e) => setConfirmPassword(e.target.value)}
                     />
 
                     <div className="underLabel">
                       <div className="remember">
-                        <input type="checkbox" name="" id="registerTerms" />
+                        <input 
+                        type="checkbox" 
+                        name="" 
+                        id="registerTerms"
+                        onChange={(e) => setTerms(!terms)}
+                        />
                         <span className="tinyText">
                           Sim, compreendo e concordo com os Termos de Serviços e
                           Política de Privacidade do Anime Match.
@@ -65,7 +123,7 @@ const ModalRegister = ({ modal, onClose, onSwap }) => {
                   </div>
 
                   <div className="gambiarra2">
-                    <button className="btn-secundary"> Cadastrar </button>
+                    <button className="btn-secundary" onClick={cadastrar}> Cadastrar </button>
                   </div>
 
                   <div className="separate"></div>
