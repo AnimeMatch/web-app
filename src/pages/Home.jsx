@@ -2,7 +2,7 @@ import CarroselHome from "../components/CarroselHome";
 import Banner from "../components/Banner"
 import BannerForum from "../components/BannerForum"
 import GenderHome from "../components/GenderHome";
-import Footer from "../components/Footer";
+
 
 export default function Home(){
     return (
