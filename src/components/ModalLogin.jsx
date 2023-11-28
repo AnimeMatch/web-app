@@ -29,6 +29,8 @@ const ModalLogin = ({ modal, onClose, onSwap }) => {
         if (response.status === 200 && response.data?.token) {
           sessionStorage.setItem("authToken", response.data.token);
           sessionStorage.setItem("usuario", response.data.name);
+          sessionStorage.setItem("email", response.data.email);
+          console.log(response);
           onClose()
           // toast.success('Login realizado com sucesso!');
         } else {

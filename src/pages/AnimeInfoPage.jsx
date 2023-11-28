@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import api from "../api";
-import mockApi from "../mockApi";
 import heart from "../assets/images/deafault/Frame 60.svg";
 import heartFull from "../assets/images/deafault/Frame 62.svg";
 import "../assets/css/animeInfoPage.css";
@@ -17,10 +16,9 @@ import icone from "../assets/images/logos/logoNavbar.png";
 import ModalAddToList from "../components/ModalAddToList";
 import RatingStars from "../components/RatingStars";
 import CarroselHome from "../components/CarroselHome";
-import Comment from "../components/Comment";
+import CommentArea from "../components/CommentArea";
 
 export default function AnimeInfoPage() {
-  const [catComments, setCatComments] = useState([]);
   const [animeData, setAnimeData] = useState({
     characters: { nodes: [] },
     coverImage: { large: "" },
@@ -34,7 +32,6 @@ export default function AnimeInfoPage() {
 
   const [modalAdd, setModalAdd] = useState(false);
   const loginModalAdd = () => {
-    console.log("cliquei ai");
     setModalAdd(!modalAdd);
   };
   const { id } = useParams();
@@ -50,22 +47,12 @@ export default function AnimeInfoPage() {
         console.log(error);
       });
   }, [id]);
-  useEffect(() => {
-    mockApi
-      .get()
-      .then((response) => {
-        setCatComments(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  },[]);
+
 
   const favoriteAction = () => {
     setIsFavorite(!isFavorite);
     // Add save/remove from favorites logic here
   };
-  console.log(catComments);
   return (
     <>
       <ModalAddToList
@@ -208,19 +195,7 @@ export default function AnimeInfoPage() {
             <button className="btn-secundary">Comentar</button>
           </div>
           <div className="line"></div>
-          <div className="comments">
-          {catComments.map((item, index) => (
-              <Comment
-              name={item.nome}
-              image={item.imagem}
-              replies={item.replies}
-              text={item.text}
-              date={item.date}
-              liked={item.like}
-              desliked={item.deslike}
-              />
-            ))}
-          </div>
+          <CommentArea/>
         </div>
       </div>
       <CarroselHome pagina="4" listTitle="Relacionados" />

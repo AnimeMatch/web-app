@@ -4,6 +4,7 @@ import deslike from "../assets/images/deafault/desgostar(1) 1.svg"
 import chat from "../assets/images/deafault/bate-papo 2.svg"
 
 export default function Comment(props){
+    
     return (
         <>
             <div className="comment-box">
