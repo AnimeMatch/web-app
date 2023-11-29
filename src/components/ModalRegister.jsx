@@ -29,7 +29,8 @@ const ModalRegister = ({ modal, onClose, onSwap }) => {
           {
             email: email,
             password: password,
-            name: name
+            name: name,
+            profileImage: "https://s4.anilist.co/file/anilistcdn/character/large/b62-Wixe3kLJGVby.png"
           },
           {
             headers: {
@@ -40,8 +41,6 @@ const ModalRegister = ({ modal, onClose, onSwap }) => {
         .then((response) => {
           console.log(response)
           if (response.status === 201) {
-            sessionStorage.setItem("authToken", response.data.token);
-            sessionStorage.setItem("usuario", response.data.name);
             onSwap()
           } else {
             throw new Error("Ops! Ocorreu um erro interno.");

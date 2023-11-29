@@ -30,6 +30,7 @@ const ModalLogin = ({ modal, onClose, onSwap }) => {
           sessionStorage.setItem("authToken", response.data.token);
           sessionStorage.setItem("usuario", response.data.name);
           sessionStorage.setItem("email", response.data.email);
+          sessionStorage.setItem("id",response.data.userId);
           console.log(response);
           onClose()
           // toast.success('Login realizado com sucesso!');

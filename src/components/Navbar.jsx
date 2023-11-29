@@ -4,10 +4,12 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import ModalLogin from "./ModalLogin.jsx";
 import ModalRegister from "./ModalRegister.jsx";
+import ModalUpdate from "./ModalUpdate.jsx";
 
 export default function Navbar() {
   const [modal, setModal] = useState(false);
   const [modal2, setModal2] = useState(false);
+  const [modal3, setModal3] = useState(false);
 
   const [isMenuOpen, setMenuOpen] = useState(false);
 
@@ -16,7 +18,13 @@ export default function Navbar() {
     document.body.style.overflow = isMenuOpen ? "scroll" : "hidden";
   };
 
-  const handleLogout = () => {};
+  const handleLogout = () => {
+    sessionStorage.removeItem("authToken");
+    sessionStorage.removeItem("usuario");
+    sessionStorage.removeItem("email");
+    sessionStorage.removeItem("id");
+    toggleMenu()
+  };
 
   const loginModal = () => {
     setModal(!modal);
@@ -39,6 +47,10 @@ export default function Navbar() {
     setModal2(!modal2);
   };
 
+  const updateModal =() => {
+    setModal3(!modal3);
+  }
+
   const swap = () => {
     setModal(!modal);
     setModal2(!modal2);
@@ -57,18 +69,22 @@ export default function Navbar() {
 
         <div className="menu-option" style={menuStyle}>
           <ol>
-            <li style={fontStyle}>
-              <div className="icon-profile"></div>
-              <span>Perfil</span>
-            </li>
-            <li style={fontStyle}>
+            <Link to="profile">
+              <li style={fontStyle}>
+                <div className="icon-profile"></div>
+                <span>Perfil</span>
+              </li>
+            </Link>
+            <li style={fontStyle} onClick={updateModal}>
               <div className="icon-settings"></div>
               <span>Gerenciar conta</span>
             </li>
-            <li style={fontStyle}>
-              <div className="icon-exit"></div>
-              <span onClick={handleLogout}>Sair</span>
-            </li>
+            <Link to="/" onClick={handleLogout}>
+              <li style={fontStyle}>
+                <div className="icon-exit"></div>
+                <span>Sair</span>
+              </li>
+            </Link>
           </ol>
         </div>
       </>
@@ -141,6 +157,7 @@ export default function Navbar() {
       </nav>
       <ModalLogin modal={modal} onClose={loginModal} onSwap={swap} />
       <ModalRegister modal={modal2} onClose={registerModal} onSwap={swap} />
+      <ModalUpdate modal={modal3} onClose={updateModal}/>
     </>
   );
 }
