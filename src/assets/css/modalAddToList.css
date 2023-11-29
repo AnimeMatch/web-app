@@ -80,7 +80,18 @@
     border-radius: 4px;
     padding-left: 4%;
     margin: 0.5% 1.5% 1.5% ;
+    cursor: pointer;
 }
+
+.list-select{
+    background-color: var(--dark-yellow);
+    color: black;
+    border-radius: 4px;
+    padding-left: 4%;
+    margin: 0.5% 1.5% 1.5% ;
+    cursor: pointer;
+}
+
 .modal-footer{
     display: flex;
     align-items: center;
@@ -92,3 +103,4 @@
     width: 90%;
     margin: auto;
 }
+

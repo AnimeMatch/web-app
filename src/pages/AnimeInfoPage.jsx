@@ -94,6 +94,7 @@ export default function AnimeInfoPage() {
         show={modalAdd}
         loginModalAdd={loginModalAdd}
         animeTitle={animeData.title.romaji}
+        animeId={id}
       />
       <div className="animeOverview">
         <div className="imageAddToList">
