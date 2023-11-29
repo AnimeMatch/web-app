@@ -25,7 +25,7 @@
 }
 
 .swiperProfile{
-    border: 3px soli orange;
+    /* border: 3px solid orange; */
     display: flex;
     margin: 0;
     width: 95%;
@@ -33,6 +33,13 @@
 
 .swiper-wrapper{
     /* border: 3px solid red; */
+    display: flex;
+    /* gap: 1rem; */
+}
+
+.swiper-slide{
+    border-radius: 8px;
+    margin: 1rem;
 }
 
 .carrosel-container .bg{
@@ -49,4 +56,5 @@
 
 .swiper-button-prev,.swiper-button-next{
     background: none;
+    height: 12rem;
 }

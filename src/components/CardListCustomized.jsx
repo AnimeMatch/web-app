@@ -37,6 +37,7 @@ export default function CardListCustomizad() {
                 style={{
                   backgroundImage: `url(${anime.imagem})`,
                   backgroundSize: `cover`,
+                  backgroundPosition: `center`,
                 }}
               ></div>
               <div
@@ -45,6 +46,7 @@ export default function CardListCustomizad() {
                 style={{
                   backgroundImage: `url(${anime.imagem})`,
                   backgroundSize: `cover`,
+                  backgroundPosition: `center`,
                 }}
               ></div>
               <div
@@ -53,6 +55,7 @@ export default function CardListCustomizad() {
                 style={{
                   backgroundImage: `url(${anime.imagem})`,
                   backgroundSize: `cover`,
+                  backgroundPosition: `center`,
                 }}
               ></div>
               <div
@@ -61,6 +64,7 @@ export default function CardListCustomizad() {
                 style={{
                   backgroundImage: `url(${anime.imagem})`,
                   backgroundSize: `cover`,
+                  backgroundPosition: `center`,
                 }}
               ></div>
               <div
