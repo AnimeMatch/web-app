@@ -3,8 +3,24 @@ import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import CardListCustomizad from "../components/CardListCustomized";
+import { useEffect, useState } from "react";
+import apiUser from "../apiUser";
+
 
 export default function CarroselProfile() {
+  const [lists, setLists] = useState([]);
+
+  useEffect(() => {
+    apiUser
+      .get(`/lists/listas-usuario?email=${sessionStorage.email}`)
+      .then((response) => {
+        setLists(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
 const styleModal = {
   width: "17.5rem",
@@ -15,7 +31,7 @@ const styleModal = {
       <div className="carrosel-container">
         <div className="bg">
           <div className="title-add">
-            <span> Listas Customizadas </span>
+            <span> Listas do usuario </span>
             <div className="add-list"></div>
           </div>
           <Swiper
@@ -29,11 +45,14 @@ const styleModal = {
             className="swiperProfile"
           >
             {/* <button></button> */}
-            <SwiperSlide  style={styleModal}><CardListCustomizad/></SwiperSlide>
-            <SwiperSlide  style={styleModal}><CardListCustomizad/></SwiperSlide>
-            <SwiperSlide  style={styleModal}><CardListCustomizad/></SwiperSlide>
-            <SwiperSlide  style={styleModal}><CardListCustomizad/></SwiperSlide>
-
+            {lists.map((item)=>(
+              <SwiperSlide  style={styleModal}>
+                <CardListCustomizad
+                  listName={item.name}
+                  id={item.id}
+                />
+              </SwiperSlide>
+            ))}
           </Swiper>
           <div className="">
 

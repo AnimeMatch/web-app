@@ -9,7 +9,7 @@ export default function Profile() {
     <>
       <InfoProfile></InfoProfile>
       <StatusBar/>
-      <CardListCustomizad/>
+      {/* <CardListCustomizad/> */}
       <CarroselProfile/>
     </>
   );

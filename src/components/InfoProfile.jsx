@@ -2,6 +2,8 @@ import "../assets/css/infoProfile.css";
 
 export default function InfoProfile() {
 
+  
+
   return (
     <>
       <div className="banner">
