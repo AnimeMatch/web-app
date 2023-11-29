@@ -2,9 +2,14 @@ import "../assets/css/carroselProfile.css";
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import "swiper/css/navigation";
+import CardListCustomizad from "../components/CardListCustomized";
 
 export default function CarroselProfile() {
+
+const styleModal = {
+  width: "17.5rem",
+}
+
   return (
     <>
       <div className="carrosel-container">
@@ -13,29 +18,23 @@ export default function CarroselProfile() {
             <span> Listas Customizadas </span>
             <div className="add-list"></div>
           </div>
-          {/* <Swiper
+          <Swiper
             modules={[Navigation, Pagination, Scrollbar, A11y]}
-            slidesPerView={3.4}
+            slidesPerView={3}
             speed={1000}
-            slidesPerGroup={3}
+            slidesPerGroup={2}
             navigation
             pagination={{ clickable: true }}
             scrollbar={{ draggable: true }}
             className="swiperProfile"
           >
-            <button></button>
-            <SwiperSlide className="teste">Slide 1</SwiperSlide>
-            <SwiperSlide>Slide 2</SwiperSlide>
-            <SwiperSlide>Slide 3</SwiperSlide>
-            <SwiperSlide>Slide 3</SwiperSlide>
-            <SwiperSlide>Slide 3</SwiperSlide>
-            <SwiperSlide>Slide 3</SwiperSlide>
-            <SwiperSlide>Slide 3</SwiperSlide>
-            <SwiperSlide>Slide 3</SwiperSlide>
-            <SwiperSlide>Slide 3</SwiperSlide>
-            <SwiperSlide>Slide 3</SwiperSlide>
-            <SwiperSlide>Slide 3</SwiperSlide>
-          </Swiper> */}
+            {/* <button></button> */}
+            <SwiperSlide  style={styleModal}><CardListCustomizad/></SwiperSlide>
+            <SwiperSlide  style={styleModal}><CardListCustomizad/></SwiperSlide>
+            <SwiperSlide  style={styleModal}><CardListCustomizad/></SwiperSlide>
+            <SwiperSlide  style={styleModal}><CardListCustomizad/></SwiperSlide>
+
+          </Swiper>
           <div className="">
 
           </div>
