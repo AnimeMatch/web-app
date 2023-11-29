@@ -15,7 +15,6 @@ export default function CarroselHome(props) {
     apiUser
       .get(`/anime-lista/animes-da-lista?listaId=${props.id}`)
       .then((response) => {
-        console.log("esse é o id: " + props.id)
         console.log(response.data)
         setList(response.data);
       })

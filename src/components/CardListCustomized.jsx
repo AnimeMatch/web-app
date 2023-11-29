@@ -10,7 +10,6 @@ export default function CardListCustomizad(props) {
     apiUser
       .get(`/anime-lista/animes-da-lista?listaId=${props.id}`)
       .then((response) => {
-        console.log("esse é o id: " + props.id)
         console.log(response.data);
 
         const dataAsArray = Array.isArray(response.data)
