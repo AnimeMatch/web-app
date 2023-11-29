@@ -43,10 +43,10 @@ export default function CarroselHome(props) {
         {getList.map((item) => (
           <SwiperSlide key={item.id}>
             <CardAnime
-              id = {item.idApi}
-              title={item.title}
-              image={item.imagem}
-              idList={item.id}
+              id = {item.animeId.idApi}
+              title={item.animeId.title}
+              image={item.animeId.imagem}
+              idList={item.animeListaId}
             />
           </SwiperSlide>
         ))}
