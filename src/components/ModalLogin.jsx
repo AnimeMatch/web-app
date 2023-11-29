@@ -1,24 +1,22 @@
 import React, { useState } from "react";
-import api from "../api.js";
-import { useNavigate } from "react-router-dom";
+import apiUser from "../apiUser"
 import { toast } from "react-toastify";
 import facebookLogo from "../assets/images/logos/facebook 1.svg";
 import googleLogo from "../assets/images/logos/search 1.svg";
 import twitterLogo from "../assets/images/logos/twitter 1.svg";
 
 const ModalLogin = ({ modal, onClose, onSwap }) => {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState();
-  const navigate = useNavigate();
 
   const logar = (e) => {
     e.preventDefault();
-
-    api
+    
+    apiUser
       .post(
         "/users/login",
         {
-          email: username,
+          email: email,
           password: password,
         },
         {
@@ -31,7 +29,10 @@ const ModalLogin = ({ modal, onClose, onSwap }) => {
         if (response.status === 200 && response.data?.token) {
           sessionStorage.setItem("authToken", response.data.token);
           sessionStorage.setItem("usuario", response.data.name);
-
+          sessionStorage.setItem("email", response.data.email);
+          sessionStorage.setItem("id",response.data.userId);
+          console.log(response);
+          onClose()
           // toast.success('Login realizado com sucesso!');
         } else {
           throw new Error("Ops! Ocorreu um erro interno.");
@@ -45,7 +46,6 @@ const ModalLogin = ({ modal, onClose, onSwap }) => {
   };
 
   return (
-    // ... Renderização do conteúdo do modal de login ...
     <>
       {modal && (
         <div className="modal-login">
@@ -65,7 +65,7 @@ const ModalLogin = ({ modal, onClose, onSwap }) => {
                       name=""
                       id="emailId"
                       placeholder="email@example.com"
-                      onChange={(e) => setUsername(e.target.value)}
+                      onChange={(e) => setEmail(e.target.value)}
                     />
 
                     <span className="tinyText">

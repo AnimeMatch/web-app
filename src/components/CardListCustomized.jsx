@@ -65,7 +65,6 @@ export default function CardListCustomizad() {
                   backgroundImage: `url(${anime.imagem})`,
                   backgroundSize: `cover`,
                   backgroundPosition: `center`,
-                  backgroundRepeat: `no-repeat`,
                 }}
               ></div>
               <div

@@ -57,7 +57,7 @@
     width: 200px;
 }
 
-.line{
+.bg-2 .line{
     border: 1px solid var(--white);
     width: 70%;
     margin-bottom: .7rem;
