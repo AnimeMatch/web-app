@@ -206,7 +206,7 @@ a {
 .margin {
     display: flex;
     justify-content: end;
-    width: 10%;
+    width: 165px;
 }
 
 .menu-option {
@@ -585,4 +585,13 @@ input[type="checkbox"]:checked::before {
 .btr1 {
     position: relative;
     right: -12%;
+}
+
+/*update modal*/
+
+.update-header-modal{
+    margin: 0 15% 9%;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 18px;
 }

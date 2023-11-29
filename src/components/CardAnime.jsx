@@ -7,7 +7,7 @@ export default function CardAnime(props) {
 
 
   const cardStyle = {
-    background: `url(${props.image})`,
+    backgroundImage: `url(${props.image})`,
     backgroundSize: "cover",
   };
   
