@@ -1,0 +1,21 @@
+/* Tablets, dispositivos menores que desktops, mas maiores que smartphones */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    .cardContent {
+        gap: 3px;
+    }
+
+    .cardTitle{
+        font-size: 12px;
+        width: 130px;
+    }
+
+    .title {
+        padding-left: .5rem;
+        font-size: 17px;
+    }
+    
+    .menu {
+        display: none;
+    }
+
+}

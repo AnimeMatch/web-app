@@ -6,7 +6,7 @@
 
 .bg {
     height: 30em;
-    padding-left: 3.5rem;
+    padding-left: calc((20% - 2rem) / 3);
     background-image: url("../images/backgrounds/Group 352.svg");
     background-repeat: no-repeat;
     background-position: center;

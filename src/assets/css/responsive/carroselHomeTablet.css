@@ -1,0 +1,35 @@
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+
+    .swiper,
+    .listTitle {
+        margin-bottom: 1rem;
+        width: 90%;
+    }
+
+    .swiper {
+        margin-bottom: 6rem;
+    }
+
+    .swiper-slide {
+        font-size: 12px;
+    }
+
+    .swiper-slide .image {
+        height: 210px;
+        width: 135px;
+    }
+
+    .more {
+        margin-right: 1rem;
+        font-size: .7rem;
+    }
+
+    .swiper-button-next {
+        margin-right: -.62rem;
+    }
+
+    .swiper-button-prev {
+        margin-left: -.62rem;
+
+    }
+}

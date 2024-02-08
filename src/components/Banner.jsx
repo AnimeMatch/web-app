@@ -1,4 +1,5 @@
 import "../assets/css/banner.css"
+import "../assets/css/responsive/bannerTablet.css"
 
 export default function Banner(props){
     return(
