@@ -1,0 +1,24 @@
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    .navbar {
+        gap: 10%;
+    }
+
+    .brandingArea img {
+        width: 1.3rem;
+    }
+
+    #title {
+        font-size: 1rem;
+    }
+
+    .btn-primary {
+        font-size: 12px;
+        height: 1.5rem;
+    }
+
+    .btn-secundary {
+        height: 1.5rem;
+        font-size: 12px;
+    }
+
+}

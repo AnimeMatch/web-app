@@ -7,9 +7,11 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "../assets/css/carroselHome.css";
+import "../assets/css/responsive/carroselHomeTablet.css";
 
 export default function CarroselHome(props) {
   const [getList, setList] = useState([]);
+  const [slidesPerView, setSlidesPerView] = useState(1);
 
   useEffect(() => {
     api
@@ -23,6 +25,26 @@ export default function CarroselHome(props) {
       });
   }, []);
 
+  useEffect(() => {
+    const updateSlidesPerView = () => {
+      const screenWidth = window.innerWidth;
+      if (screenWidth > 1024) {
+        setSlidesPerView(5.2); 
+      } else if (screenWidth >= 768) {
+        setSlidesPerView(4.4); 
+      } else {
+        setSlidesPerView(1); 
+      }
+    };  
+
+    window.addEventListener("resize", updateSlidesPerView);
+
+    updateSlidesPerView();
+
+
+    return () => window.removeEventListener("resize", updateSlidesPerView);
+  }, []);
+
   return (
     <>
       <div className="listTitle">
@@ -31,10 +53,10 @@ export default function CarroselHome(props) {
       </div>
       <Swiper
         modules={[Navigation, Pagination, Scrollbar, A11y]}
-        slidesPerView={5.4}
+        slidesPerView={slidesPerView}
         speed={1000}
-        slidesPerGroup={5}
-        navigation        
+        slidesPerGroup={3}
+        navigation
         pagination={{ clickable: true }}
         scrollbar={{ draggable: true }}
         className="swiperHome"
@@ -42,7 +64,7 @@ export default function CarroselHome(props) {
         {getList.map((item) => (
           <SwiperSlide key={item.id}>
             <CardAnime
-              id = {item.id}
+              id={item.id}
               title={item.title.romaji}
               image={item.coverImage.large}
             />

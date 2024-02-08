@@ -1,4 +1,5 @@
 import "../assets/css/bannerForum.css";
+import "../assets/css/responsive/bannerForumTablet.css"
 
 export default function CardForum() {
   return (

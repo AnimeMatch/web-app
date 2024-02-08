@@ -1,4 +1,5 @@
 import "../assets/css/card.css";
+import "../assets/css/responsive/cardTablet.css"
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
 export default function CardAnime(props) {

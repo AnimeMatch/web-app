@@ -37,11 +37,6 @@
     /* gap: 1rem; */
 }
 
-.swiper-slide{
-    border-radius: 8px;
-    margin: 1rem;
-}
-
 .carrosel-container .bg{
     background-image: none;
     display: flex;
@@ -54,7 +49,3 @@
     gap: 1rem;
 }
 
-.swiper-button-prev,.swiper-button-next{
-    background: none;
-    height: 12rem;
-}
