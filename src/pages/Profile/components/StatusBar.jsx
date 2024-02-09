@@ -1,4 +1,4 @@
-import "../assets/css/statusBar.css";
+import "../../../assets/css/statusBar.css";
 
 export default function StatusBar() {
   return (

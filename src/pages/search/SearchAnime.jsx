@@ -1,35 +1,32 @@
-import "../assets/css/searchAnime.css";
-import search from "../assets/images/deafault/search.svg";
+import "../../assets/css/searchAnime.css";
+import search from "../../assets/images/deafault/search.svg";
 import { useState, useEffect } from "react";
-import api from "../api";
-import CardAnime from "../components/CardAnime";
-
-
+import api from "../../api";
+import CardAnime from "../../components/Carrosel/CardAnime";
 
 export default function SearchAnime() {
-
   const [getAnimes, setAnimes] = useState([]);
   const [pagina, setPagina] = useState(1);
   const [infoPage, setInfoPage] = useState();
-  const [genero,setGenero] = useState("");
+  const [genero, setGenero] = useState("");
   const [searchValue, setSearchValue] = useState("");
 
-  const nextPag = (() =>{
-    if(infoPage){
-        setPagina(pagina + 1);
+  const nextPag = () => {
+    if (infoPage) {
+      setPagina(pagina + 1);
     }
-  })
+  };
 
-  const previuosPag = (() =>{
-      if(pagina != 1){
-        setPagina(pagina - 1);
+  const previuosPag = () => {
+    if (pagina != 1) {
+      setPagina(pagina - 1);
     }
-  })
+  };
 
-  const newGenero = ((newGenero)=> {
+  const newGenero = (newGenero) => {
     setGenero(newGenero);
     setPagina(1);
-  })
+  };
 
   const handleEnterKeyPress = (event) => {
     if (event.key === "Enter") {
@@ -37,51 +34,62 @@ export default function SearchAnime() {
     }
   };
 
-  const searchByName = ((name)=>{
+  const searchByName = (name) => {
     setPagina(1);
-        api
-        .get(`/animes/cards/search?tituloBusca=${name}&page=${pagina}&qtdPaginas=50`)
-        .then((response)=>{
-            setAnimes(response.data.media);    
-        })
-        .catch((error)=>{
-            console.log(error);
-        })
-  })
-    
+    api
+      .get(
+        `/animes/cards/search?tituloBusca=${name}&page=${pagina}&qtdPaginas=50`
+      )
+      .then((response) => {
+        setAnimes(response.data.media);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   useEffect(() => {
     api
       .get(`/animes/cards/genero?genero=${genero}&page=${pagina}&qtdPaginas=50`)
       .then((response) => {
         console.log(response);
         setAnimes(response.data.media);
-        setInfoPage(response.data.pageInfo.hasNextPage)
+        setInfoPage(response.data.pageInfo.hasNextPage);
       })
       .catch((error) => {
         console.log(error);
       });
   }, [pagina, genero]);
 
-
   return (
     <>
       <div className="search-anime-header">
         <div className="input-search-anime">
-          <div className="search-button-anime" onClick={() =>searchByName(document.getElementById("input-anime").value)}>
+          <div
+            className="search-button-anime"
+            onClick={() =>
+              searchByName(document.getElementById("input-anime").value)
+            }
+          >
             <img src={search} alt="" id="input-anime-img" />
           </div>
           <input
-           type="text"
-           name="" 
-           placeholder="Pesquisar"
-           id="input-anime"
-           value={searchValue}
-           onChange={(e) => setSearchValue(e.target.value)}
-           onKeyDown={handleEnterKeyPress} />
+            type="text"
+            name=""
+            placeholder="Pesquisar"
+            id="input-anime"
+            value={searchValue}
+            onChange={(e) => setSearchValue(e.target.value)}
+            onKeyDown={handleEnterKeyPress}
+          />
         </div>
         <div className="header-info">
           <span>Todos os animes</span>
-          <select name="" id="select-genre" onChange={(e) => newGenero(e.target.value)}>
+          <select
+            name=""
+            id="select-genre"
+            onChange={(e) => newGenero(e.target.value)}
+          >
             <option value="">Genêro</option>
             <option value="action">Action</option>
             <option value="adventure">Adventure</option>
@@ -106,23 +114,31 @@ export default function SearchAnime() {
         <div className="line-separation"></div>
       </div>
       <div className="anime-search-btns">
-        <button onClick={previuosPag} className="btn-secundary">anterior</button>
-        <button onClick={nextPag} className="btn-secundary">proxima</button>
+        <button onClick={previuosPag} className="btn-secundary">
+          anterior
+        </button>
+        <button onClick={nextPag} className="btn-secundary">
+          proxima
+        </button>
       </div>
       <div className="anime-area-searched">
-      {getAnimes.map((item) => (
-        <div className="card-anime-search-area" key={item.id}>
+        {getAnimes.map((item) => (
+          <div className="card-anime-search-area" key={item.id}>
             <CardAnime
-              id = {item.id}
+              id={item.id}
               title={item.title.romaji}
               image={item.coverImage.large}
             />
-        </div>
+          </div>
         ))}
       </div>
       <div className="anime-search-btns">
-        <button onClick={previuosPag} className="btn-secundary">anterior</button>
-        <button onClick={nextPag} className="btn-secundary">proxima</button>
+        <button onClick={previuosPag} className="btn-secundary">
+          anterior
+        </button>
+        <button onClick={nextPag} className="btn-secundary">
+          proxima
+        </button>
       </div>
     </>
   );

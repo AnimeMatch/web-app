@@ -1,17 +1,16 @@
-import "../assets/css/card.css";
-import "../assets/css/responsive/cardTablet.css"
+import "../../assets/css/card.css";
+import "../../assets/css/responsive/cardTablet.css";
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
 export default function CardAnime(props) {
   let redirect = "../anime/" + props.id;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-
   const cardStyle = {
     backgroundImage: `url(${props.image})`,
     backgroundSize: "cover",
   };
-  
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -23,16 +22,22 @@ export default function CardAnime(props) {
 
   const fontStyle = {
     display: isMenuOpen ? "flex" : "none",
-  }
-
+  };
 
   return (
     <div className="cardContent">
       <div className="cardImage">
         <div className="image" style={cardStyle}>
-          <div className="option-list" onMouseLeave={() => setIsMenuOpen(false)}>
+          <div
+            className="option-list"
+            onMouseLeave={() => setIsMenuOpen(false)}
+          >
             <div className="container3">
-              <Link className="go-pag" to={redirect} preventScrollReset={true}></Link>
+              <Link
+                className="go-pag"
+                to={redirect}
+                preventScrollReset={true}
+              ></Link>
               <div className="pop-up" style={menuStyle}>
                 <ul className="option-one" style={fontStyle}>
                   <li className="icon progress">

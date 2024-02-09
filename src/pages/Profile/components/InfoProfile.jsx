@@ -1,6 +1,6 @@
-import "../assets/css/infoProfile.css";
+import "../../../assets/css/infoProfile.css";
 import { useState, useEffect } from "react";
-import apiUser from "../apiUser";
+import apiUser from "../../../apiUser";
 
 export default function InfoProfile() {
   const [user, setUser] = useState();
@@ -10,9 +10,9 @@ export default function InfoProfile() {
     apiUser
       .get(`/users/user?email=${sessionStorage.email}`)
       .then((response) => {
-        console.log(response.data)
-        setUser(response.data)
-        setImage(`url("${response.data.profileImage}")`)
+        console.log(response.data);
+        setUser(response.data);
+        setImage(`url("${response.data.profileImage}")`);
       })
       .catch((error) => {
         console.log(error);
@@ -24,7 +24,10 @@ export default function InfoProfile() {
       <div className="banner">
         <div className="user-info">
           <div className="bg">
-            <div className="image-profile" style={{backgroundImage:image, backgroundSize: "cover"}}></div>
+            <div
+              className="image-profile"
+              style={{ backgroundImage: image, backgroundSize: "cover" }}
+            ></div>
             <div className="info-user">
               <div className="padding">
                 <div className="name-gender">
@@ -47,7 +50,8 @@ export default function InfoProfile() {
                 <span>BIO</span>
                 <div className="text">
                   <span>
-                    Olá, sou Fulano, e adoro animes e mangas, como é bom ter esse site para usar
+                    Olá, sou Fulano, e adoro animes e mangas, como é bom ter
+                    esse site para usar
                   </span>
                 </div>
               </div>

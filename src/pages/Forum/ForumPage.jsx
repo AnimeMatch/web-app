@@ -1,6 +1,6 @@
-import Banner from "../components/Banner";
+import Banner from "../Home/components/Banner";
 
-export default function SearchManga() {
+export default function ForumPag() {
   return (
     <>
       <Banner

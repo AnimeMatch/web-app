@@ -1,5 +1,5 @@
-import "../assets/css/cardCustom.css";
-import apiUser from "../apiUser";
+import "../../../assets/css/cardCustom.css";
+import apiUser from "../../../apiUser";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -16,7 +16,6 @@ export default function CardListCustomizad(props) {
           ? response.data
           : [response.data];
 
-
         setList2(dataAsArray);
       })
       .catch((error) => {
@@ -24,31 +23,29 @@ export default function CardListCustomizad(props) {
       });
   }, []);
 
-  let redirect = "../list/"+ props.id
+  let redirect = "../list/" + props.id;
 
   return (
     <>
-    <Link to={redirect} className="card-container">    
-      <div className="card-container">
-        <div className="title-type">
-          <div className="name-list">
-            <h3>{props.listName}</h3>
-            <span>Tipo</span>
+      <Link to={redirect} className="card-container">
+        <div className="card-container">
+          <div className="title-type">
+            <div className="name-list">
+              <h3>{props.listName}</h3>
+              <span>Tipo</span>
+            </div>
+            <div className="add-custom"></div>
           </div>
-          <div className="add-custom"></div>
-        </div>
-        
-        <div className="card-list">
-          
-        </div>
-        <div className="line"></div>
-        <div className="profile-list">
-          <div className="user">
-            <div className="image"></div>
-            <span>{sessionStorage.usuario}</span>
-          </div>
-          <div className="interaction">
-            {/* <div className="btn-int">
+
+          <div className="card-list"></div>
+          <div className="line"></div>
+          <div className="profile-list">
+            <div className="user">
+              <div className="image"></div>
+              <span>{sessionStorage.usuario}</span>
+            </div>
+            <div className="interaction">
+              {/* <div className="btn-int">
               <button className="like"></button>
               <span>0</span>
             </div>
@@ -56,15 +53,16 @@ export default function CardListCustomizad(props) {
               <button className="favorite"></button>
               <span>0</span>
             </div> */}
+            </div>
           </div>
         </div>
-      </div>
-        </Link>
+      </Link>
     </>
   );
 }
 
-{/* <div
+{
+  /* <div
 key={0}
 className={index === 0 ? "nth-small" : ""}
 style={{
@@ -107,4 +105,5 @@ style={{
   backgroundImage: `url(${anime.imagem})`,
   backgroundSize: `cover`,
 }}
-></div> */}
+></div> */
+}

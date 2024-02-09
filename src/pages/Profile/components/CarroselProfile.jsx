@@ -1,11 +1,10 @@
-import "../assets/css/carroselProfile.css";
+import "../../../assets/css/carroselProfile.css";
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import CardListCustomizad from "../components/CardListCustomized";
+import CardListCustomizad from "./CardListCustomized";
 import { useEffect, useState } from "react";
-import apiUser from "../apiUser";
-
+import apiUser from "../../../apiUser";
 
 export default function CarroselProfile() {
   const [lists, setLists] = useState([]);
@@ -22,9 +21,9 @@ export default function CarroselProfile() {
       });
   }, []);
 
-const styleModal = {
-  width: "17.5rem",
-}
+  const styleModal = {
+    width: "17.5rem",
+  };
 
   return (
     <>
@@ -45,18 +44,13 @@ const styleModal = {
             className="swiperProfile"
           >
             {/* <button></button> */}
-            {lists.map((item)=>(
-              <SwiperSlide  style={styleModal}>
-                <CardListCustomizad
-                  listName={item.name}
-                  id={item.id}
-                />
+            {lists.map((item) => (
+              <SwiperSlide style={styleModal}>
+                <CardListCustomizad listName={item.name} id={item.id} />
               </SwiperSlide>
             ))}
           </Swiper>
-          <div className="">
-
-          </div>
+          <div className=""></div>
         </div>
       </div>
     </>

@@ -1,5 +1,5 @@
-import "../assets/css/genderHome.css"
-import "../assets/css/responsive/genderHomeTablet.css"
+import "../../../assets/css/genderHome.css"
+import "../../../assets/css/responsive/genderHomeTablet.css"
 
 export default function GenderHome() {
   return (
