@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import facebookLogo from "../assets/images/logos/facebook 1.svg";
-import googleLogo from "../assets/images/logos/search 1.svg";
-import twitterLogo from "../assets/images/logos/twitter 1.svg";
-import apiUser from "../apiUser";
+import facebookLogo from "../../assets/images/logos/facebook 1.svg";
+import googleLogo from "../../assets/images/logos/search 1.svg";
+import twitterLogo from "../../assets/images/logos/twitter 1.svg";
+import apiUser from "../../apiUser";
 
 const ModalRegister = ({ modal, onClose, onSwap }) => {
   const [email, setEmail] = useState("");
@@ -14,42 +14,42 @@ const ModalRegister = ({ modal, onClose, onSwap }) => {
   const cadastrar = (e) => {
     e.preventDefault();
     console.log(terms);
-    if(!terms){
+    if (!terms) {
       throw new Error("Termos não foram aceitos !");
     }
 
-    if(password != confirmPassword){
+    if (password != confirmPassword) {
       throw new Error("Senhas diferentes");
     }
 
-
-      apiUser
-        .post(
-          "/users/",
-          {
-            email: email,
-            password: password,
-            name: name,
-            profileImage: "https://s4.anilist.co/file/anilistcdn/character/large/b62-Wixe3kLJGVby.png"
+    apiUser
+      .post(
+        "/users/",
+        {
+          email: email,
+          password: password,
+          name: name,
+          profileImage:
+            "https://s4.anilist.co/file/anilistcdn/character/large/b62-Wixe3kLJGVby.png",
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
           },
-          {
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        )
-        .then((response) => {
-          console.log(response)
-          if (response.status === 201) {
-            onSwap()
-          } else {
-            throw new Error("Ops! Ocorreu um erro interno.");
-          }
-        })
-        .catch((error) => {
-          console.log(error.message);
-          console.log("Falha no login");
-        });
+        }
+      )
+      .then((response) => {
+        console.log(response);
+        if (response.status === 201) {
+          onSwap();
+        } else {
+          throw new Error("Ops! Ocorreu um erro interno.");
+        }
+      })
+      .catch((error) => {
+        console.log(error.message);
+        console.log("Falha no login");
+      });
   };
 
   return (
@@ -107,11 +107,11 @@ const ModalRegister = ({ modal, onClose, onSwap }) => {
 
                     <div className="underLabel">
                       <div className="remember">
-                        <input 
-                        type="checkbox" 
-                        name="" 
-                        id="registerTerms"
-                        onChange={(e) => setTerms(!terms)}
+                        <input
+                          type="checkbox"
+                          name=""
+                          id="registerTerms"
+                          onChange={(e) => setTerms(!terms)}
                         />
                         <span className="tinyText">
                           Sim, compreendo e concordo com os Termos de Serviços e
@@ -122,7 +122,10 @@ const ModalRegister = ({ modal, onClose, onSwap }) => {
                   </div>
 
                   <div className="gambiarra2">
-                    <button className="btn-secundary" onClick={cadastrar}> Cadastrar </button>
+                    <button className="btn-secundary" onClick={cadastrar}>
+                      {" "}
+                      Cadastrar{" "}
+                    </button>
                   </div>
 
                   <div className="separate"></div>

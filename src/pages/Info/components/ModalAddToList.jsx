@@ -1,6 +1,6 @@
-import "../assets/css/modalAddToList.css";
-import x from "../assets/images/deafault/X.svg";
-import apiUser from "../apiUser";
+import "../../../assets/css/modalAddToList.css";
+import x from "../../../assets/images/deafault/X.svg";
+import apiUser from "../../../apiUser";
 import { useEffect, useState } from "react";
 
 export default function ModalAddToList(props) {
@@ -32,36 +32,33 @@ export default function ModalAddToList(props) {
     item.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const addToList = () =>{
+  const addToList = () => {
     apiUser
       .post(`/anime-lista/?idApi=${props.animeId}&idLista=${selected}`)
       .then((response) => {
-        console.log(response)
-        props.loginModalAdd()
-        if(response.status == 201){
-          alert("Adicionado a lista ")
-          setSelected(null)
+        console.log(response);
+        props.loginModalAdd();
+        if (response.status == 201) {
+          alert("Adicionado a lista ");
+          setSelected(null);
         }
       })
       .catch((error) => {
         console.log(error);
       });
-  }
+  };
 
   return (
     <>
       {props.show && (
         <div className="modalAddToList">
-          <div
-            className="overlay-modal"
-            onClick={props.loginModalAdd}
-          ></div>
+          <div className="overlay-modal" onClick={props.loginModalAdd}></div>
           <div className="modal-contentAdd">
             <div className="header-area">
               <span className="modal-title-overlay">
                 Adicinar:{" "}
-                <span className="modal-title-inside">{props.animeTitle}</span>{" "}
-                a sua lista
+                <span className="modal-title-inside">{props.animeTitle}</span> a
+                sua lista
               </span>
               <img
                 className="close-button"
@@ -82,9 +79,7 @@ export default function ModalAddToList(props) {
                 {filteredLists.map((item, index) => (
                   <div
                     key={item.id}
-                    className={
-                      item.id === selected ? "list-select" : "list"
-                    }
+                    className={item.id === selected ? "list-select" : "list"}
                     id={item.id}
                     onClick={() => selectedList(item.id)}
                   >
@@ -97,7 +92,9 @@ export default function ModalAddToList(props) {
               <button className="btn-primary" onClick={props.loginModalAdd}>
                 Cancelar
               </button>
-              <button className="btn-secundary" onClick={addToList}>Adicionar</button>
+              <button className="btn-secundary" onClick={addToList}>
+                Adicionar
+              </button>
             </div>
           </div>
         </div>

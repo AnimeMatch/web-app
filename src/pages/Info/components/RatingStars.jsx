@@ -1,4 +1,4 @@
-import "../assets/css/RatingStars.css";
+import "../../../assets/css/info/RatingStars.css";
 
 export default function RatingStars() {
   return (

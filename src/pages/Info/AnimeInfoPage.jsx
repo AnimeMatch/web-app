@@ -1,24 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import api from "../api";
-import heart from "../assets/images/deafault/Frame 60.svg";
-import heartFull from "../assets/images/deafault/Frame 62.svg";
-import "../assets/css/animeInfoPage.css";
-import viewIcon from "../assets/images/deafault/Olho.svg";
-import likeIcon from "../assets/images/deafault/gostar(1) 1.svg";
-import deslikeIcon from "../assets/images/deafault/desgostar(1) 1.svg";
+import api from "../../api";
+import heart from "../../assets/images/deafault/Frame 60.svg";
+import heartFull from "../../assets/images/deafault/Frame 62.svg";
+import "../../assets/css/animeInfoPage.css";
+import viewIcon from "../../assets/images/deafault/Olho.svg";
+import likeIcon from "../../assets/images/deafault/gostar(1) 1.svg";
+import deslikeIcon from "../../assets/images/deafault/desgostar(1) 1.svg";
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
-import CardCharacter from "../components/CardCharacter";
-import icone from "../assets/images/logos/logoNavbar.png";
-import ModalAddToList from "../components/ModalAddToList";
-import RatingStars from "../components/RatingStars";
-import CarroselHome from "../components/CarroselHome";
-import CommentArea from "../components/CommentArea";
-import ModalLogin from "../components/ModalLogin";
-import apiUser from "../apiUser";
+import CardCharacter from "./components/CardCharacter";
+import icone from "../../assets/images/logos/logoNavbar.png";
+import ModalAddToList from "./components/ModalAddToList";
+import RatingStars from "./components/RatingStars";
+import CarroselDefault from "../../components/Carrosel/CarroselDefault";
+import CommentArea from "./components/CommentArea";
+import ModalLogin from "../../components/Modais/ModalLogin";
+import apiUser from "../../apiUser";
 
 export default function AnimeInfoPage() {
   const [animeData, setAnimeData] = useState({
@@ -52,44 +52,40 @@ export default function AnimeInfoPage() {
       });
   }, [id]);
 
-
   const favoriteAction = () => {
     if (!sessionStorage.authToken) {
-        setModal(!lmodal);
+      setModal(!lmodal);
     } else {
-      let idLista = 0
+      let idLista = 0;
 
       apiUser
-      .get(`/lists/favorito?email=${sessionStorage.email}`)
-      .then((response) => {
-        idLista = response.data.id;
-        apiUser
-          .post(`/anime-lista/?idApi=${id}&idLista=${idLista}`)
-          .then((response) => {
-            console.log("Adicionado aos favoritos");
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-      setIsFavorite(true)
+        .get(`/lists/favorito?email=${sessionStorage.email}`)
+        .then((response) => {
+          idLista = response.data.id;
+          apiUser
+            .post(`/anime-lista/?idApi=${id}&idLista=${idLista}`)
+            .then((response) => {
+              console.log("Adicionado aos favoritos");
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      setIsFavorite(true);
     }
     // Add save/remove from favorites logic here
   };
 
-  const closeLoginModal= () => {
-    setModal(!lmodal)
-  }
+  const closeLoginModal = () => {
+    setModal(!lmodal);
+  };
 
   return (
     <>
-      <ModalLogin
-        modal={lmodal}
-        onClose={closeLoginModal}
-      />
+      <ModalLogin modal={lmodal} onClose={closeLoginModal} />
       <ModalAddToList
         show={modalAdd}
         loginModalAdd={loginModalAdd}
@@ -231,11 +227,15 @@ export default function AnimeInfoPage() {
             <button className="btn-secundary">Comentar</button>
           </div>
           <div className="line"></div>
-          <CommentArea/>
+          <CommentArea />
         </div>
       </div>
-      <CarroselHome pagina="2" listTitle="Relacionados" uri="genero?genero=Action&"/>
-      <CarroselHome pagina="2" listTitle="Recomendações" uri="em-trend?"/>
+      <CarroselDefault
+        pagina="2"
+        listTitle="Relacionados"
+        uri="genero?genero=Action&"
+      />
+      <CarroselDefault pagina="2" listTitle="Recomendações" uri="em-trend?" />
     </>
   );
 }

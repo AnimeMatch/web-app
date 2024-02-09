@@ -1,11 +1,11 @@
 import "../assets/css/navbar.css";
-import "../assets/css/responsive/navbarTablet.css"
+import "../assets/css/responsive/navbarTablet.css";
 import logo from "../assets/images/logos/logoNavbar.png";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import ModalLogin from "./ModalLogin.jsx";
-import ModalRegister from "./ModalRegister.jsx";
-import ModalUpdate from "./ModalUpdate.jsx";
+import ModalLogin from "./Modais/ModalLogin.jsx";
+import ModalRegister from "./Modais/ModalRegister.jsx";
+import ModalUpdate from "./Modais/ModalUpdate.jsx";
 
 export default function Navbar() {
   const [modal, setModal] = useState(false);
@@ -24,7 +24,7 @@ export default function Navbar() {
     sessionStorage.removeItem("usuario");
     sessionStorage.removeItem("email");
     sessionStorage.removeItem("id");
-    toggleMenu()
+    toggleMenu();
   };
 
   const loginModal = () => {
@@ -48,9 +48,9 @@ export default function Navbar() {
     setModal2(!modal2);
   };
 
-  const updateModal =() => {
+  const updateModal = () => {
     setModal3(!modal3);
-  }
+  };
 
   const swap = () => {
     setModal(!modal);
@@ -158,7 +158,7 @@ export default function Navbar() {
       </nav>
       <ModalLogin modal={modal} onClose={loginModal} onSwap={swap} />
       <ModalRegister modal={modal2} onClose={registerModal} onSwap={swap} />
-      <ModalUpdate modal={modal3} onClose={updateModal}/>
+      <ModalUpdate modal={modal3} onClose={updateModal} />
     </>
   );
 }

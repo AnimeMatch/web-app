@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import apiUser from "../apiUser"
+import apiUser from "../../apiUser";
 import { toast } from "react-toastify";
-import facebookLogo from "../assets/images/logos/facebook 1.svg";
-import googleLogo from "../assets/images/logos/search 1.svg";
-import twitterLogo from "../assets/images/logos/twitter 1.svg";
+import facebookLogo from "../../assets/images/logos/facebook 1.svg";
+import googleLogo from "../../assets/images/logos/search 1.svg";
+import twitterLogo from "../../assets/images/logos/twitter 1.svg";
 
 const ModalLogin = ({ modal, onClose, onSwap }) => {
   const [email, setEmail] = useState("");
@@ -11,7 +11,7 @@ const ModalLogin = ({ modal, onClose, onSwap }) => {
 
   const logar = (e) => {
     e.preventDefault();
-    
+
     apiUser
       .post(
         "/users/login",
@@ -30,9 +30,9 @@ const ModalLogin = ({ modal, onClose, onSwap }) => {
           sessionStorage.setItem("authToken", response.data.token);
           sessionStorage.setItem("usuario", response.data.name);
           sessionStorage.setItem("email", response.data.email);
-          sessionStorage.setItem("id",response.data.userId);
+          sessionStorage.setItem("id", response.data.userId);
           console.log(response);
-          onClose()
+          onClose();
           // toast.success('Login realizado com sucesso!');
         } else {
           throw new Error("Ops! Ocorreu um erro interno.");

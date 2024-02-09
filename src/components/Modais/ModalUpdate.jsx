@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import apiUser from "../apiUser";
+import apiUser from "../../apiUser";
 
 const ModalUpdate = ({ modal, onClose, onSwap }) => {
   const [password, setPassword] = useState();
@@ -7,27 +7,27 @@ const ModalUpdate = ({ modal, onClose, onSwap }) => {
 
   const atualizar = (e) => {
     e.preventDefault();
-      apiUser
-        .put(
-          "/users/",
-          {
-            password: password,
-            name: name,
-            id: sessionStorage.id
+    apiUser
+      .put(
+        "/users/",
+        {
+          password: password,
+          name: name,
+          id: sessionStorage.id,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
           },
-          {
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        )
-        .then((response) => {
-          onClose()
-        })
-        .catch((error) => {
-          console.log(error.message);
-          console.log("Falha no login");
-        });
+        }
+      )
+      .then((response) => {
+        onClose();
+      })
+      .catch((error) => {
+        console.log(error.message);
+        console.log("Falha no login");
+      });
   };
 
   return (
@@ -43,7 +43,7 @@ const ModalUpdate = ({ modal, onClose, onSwap }) => {
                 </span>
                 <h1>Atualizar</h1>
                 <div className="update-header-modal">
-                    <span className="">Nenhum dos itens é obrigatorio.</span>
+                  <span className="">Nenhum dos itens é obrigatorio.</span>
                 </div>
                 <form action="" method="post" className="form2">
                   <div className="e-mail">
@@ -68,7 +68,10 @@ const ModalUpdate = ({ modal, onClose, onSwap }) => {
                   </div>
 
                   <div className="gambiarra2">
-                    <button className="btn-secundary" onClick={atualizar}> Atualizar </button>
+                    <button className="btn-secundary" onClick={atualizar}>
+                      {" "}
+                      Atualizar{" "}
+                    </button>
                   </div>
                 </form>
               </div>

@@ -1,7 +1,7 @@
 import Comment from "./Comment";
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import apiUser from "../apiUser";
+import apiUser from "../../../apiUser";
 
 export default function CommentArea() {
   const [comments, setComments] = useState([]);

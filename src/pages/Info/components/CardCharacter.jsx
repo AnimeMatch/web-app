@@ -1,4 +1,4 @@
-import "../assets/css/card.css";
+import "../../../assets/css/card.css";
 
 export default function CardCharacter(props) {
   return (
