@@ -40,10 +40,10 @@ export default function CardAnime(props) {
               ></Link>
               <div className="pop-up" style={menuStyle}>
                 <ul className="option-one" style={fontStyle}>
-                  <li className="icon progress">
-                    <span className="tooltip">Em progresso</span>
-                    <span>
-                      <li className="fab fa-progress"></li>
+                  <li>
+                    <span className="icon progress" title="Em progresso">
+                      <span className="tooltip">Em progresso</span>
+                      <span className="fab fa-progress"></span>
                     </span>
                   </li>
                   <li className="icon on-hold">

@@ -11,7 +11,6 @@ export default function Navbar() {
   const [modal, setModal] = useState(false);
   const [modal2, setModal2] = useState(false);
   const [modal3, setModal3] = useState(false);
-
   const [isMenuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -70,22 +69,22 @@ export default function Navbar() {
 
         <div className="menu-option" style={menuStyle}>
           <ol>
-            <Link to="profile">
-              <li style={fontStyle}>
+            <li style={fontStyle}>
+              <Link to="profile">
                 <div className="icon-profile"></div>
                 <span>Perfil</span>
-              </li>
-            </Link>
+              </Link>
+            </li>
             <li style={fontStyle} onClick={updateModal}>
               <div className="icon-settings"></div>
               <span>Gerenciar conta</span>
             </li>
-            <Link to="/" onClick={handleLogout}>
-              <li style={fontStyle}>
+            <li style={fontStyle}>
+              <Link to="/" onClick={handleLogout}>
                 <div className="icon-exit"></div>
                 <span>Sair</span>
-              </li>
-            </Link>
+              </Link>
+            </li>
           </ol>
         </div>
       </>
@@ -108,7 +107,7 @@ export default function Navbar() {
   return (
     <>
       <nav className="navbar">
-        <Link>
+        <Link to="/">
           <div className="brandingArea">
             <img src={logo} alt="" />
             <span id="title">Anime Match</span>
@@ -116,42 +115,32 @@ export default function Navbar() {
         </Link>
         <div className="navigationItens">
           <ol className="navList">
-            <Link to={"search/anime/"}>
-              <li>
-                <a className="link" href="#">
-                  Anime
-                </a>
-              </li>
-            </Link>
             <li>
-              <Link to={"search/manga/"}>
-                <a className="link" href="#">
-                  Manga
-                </a>
+              <Link to={"search/anime/"} className="link">
+                Anime
               </Link>
             </li>
-            {sessionStorage.authToken ? (
+            <li>
+              <Link to={"search/manga/"} className="link">
+                Manga
+              </Link>
+            </li>
+            {sessionStorage.getItem("authToken") && (
               <li className="alterar">
-                <Link to={"lists/"}>
-                  <a className="link" href="#">
-                    Lista
-                  </a>
+                <Link to={"lists/"} className="link">
+                  Lista
                 </Link>
               </li>
-            ) : (
-              ""
             )}
             <li>
-              <Link to={"forum/"}>
-                <a className="link" href="#">
-                  Fórum
-                </a>
+              <Link to={"forum/"} className="link">
+                Fórum
               </Link>
             </li>
           </ol>
         </div>
         <div className="userArea">
-          {sessionStorage.authToken
+          {sessionStorage.getItem("authToken")
             ? renderAuthenticatedContent()
             : renderUnauthenticatedContent()}
         </div>
