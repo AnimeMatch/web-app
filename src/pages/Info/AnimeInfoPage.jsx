@@ -19,6 +19,7 @@ import CarroselDefault from "../../components/Carrosel/CarroselDefault";
 import CommentArea from "./components/CommentArea";
 import ModalLogin from "../../components/Modais/ModalLogin";
 import apiUser from "../../apiUser";
+import ModalRegister from "../../components/Modais/ModalRegister";
 
 export default function AnimeInfoPage() {
   const [animeData, setAnimeData] = useState({
@@ -32,12 +33,13 @@ export default function AnimeInfoPage() {
     genres: [],
   });
 
-  const [lmodal, setModal] = useState(false);
+  const [modal, setModal] = useState(false);
+  const [modal2, setModal2] = useState(false);
 
   const [modalAdd, setModalAdd] = useState(false);
   const loginModalAdd = () => {
     if (!sessionStorage.authToken) {
-      setModal(!lmodal);
+      setModal(!modal);
     } else {
       setModalAdd(!modalAdd);
     }
@@ -78,13 +80,15 @@ export default function AnimeInfoPage() {
         const response2 = await apiUser.get(
           `/anime-lista/animes-da-lista?listaId=${idLista}`
         );
-        console.log(response2.data);
-        response2.data.forEach((data) => {
-          if (data.idApi == id) {
-            thisAnime = data.idApi;
-            idAssociativo = data.id;
-          }
-        });
+        console.log(response2);
+        if (response2.data) {
+          response2.data.forEach((data) => {
+            if (data.idApi == id) {
+              thisAnime = data.idApi;
+              idAssociativo = data.id;
+            }
+          });
+        }
         return {
           listId: idLista,
           animeId: thisAnime,
@@ -97,7 +101,7 @@ export default function AnimeInfoPage() {
 
   const favoriteAction = () => {
     if (!sessionStorage.authToken) {
-      setModal(!lmodal);
+      setModal(!modal);
     } else {
       async function fetchData() {
         try {
@@ -117,6 +121,7 @@ export default function AnimeInfoPage() {
               .delete(`/anime-lista/?animeListaId=${verified.id}`)
               .then((response) => {
                 console.log("Removido dos favoritos");
+                console.log(response);
               })
               .catch((error) => {
                 console.log(error);
@@ -131,13 +136,21 @@ export default function AnimeInfoPage() {
     }
   };
 
-  const closeLoginModal = () => {
-    setModal(!lmodal);
+  const loginModal = () => {
+    setModal(!modal);
+  };
+  const registerModal = () => {
+    setModal2(!modal2);
+  };
+  const swap = () => {
+    setModal(!modal);
+    setModal2(!modal2);
   };
 
   return (
     <>
-      <ModalLogin modal={lmodal} onClose={closeLoginModal} />
+      <ModalLogin modal={modal} onClose={loginModal} onSwap={swap} />
+      <ModalRegister modal={modal2} onClose={registerModal} onSwap={swap} />
       <ModalAddToList
         show={modalAdd}
         loginModalAdd={loginModalAdd}
