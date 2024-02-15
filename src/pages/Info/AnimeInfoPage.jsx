@@ -78,14 +78,14 @@ export default function AnimeInfoPage() {
         const idLista = response1.data.id;
 
         const response2 = await apiUser.get(
-          `/anime-lista/animes-da-lista?listaId=${idLista}`
+          `/anime-lista/animes-da-lista-id-associativo?listaId=${idLista}`
         );
-        console.log(response2);
+        console.log(response2.data);
         if (response2.data) {
           response2.data.forEach((data) => {
-            if (data.idApi == id) {
-              thisAnime = data.idApi;
-              idAssociativo = data.id;
+            if (data.animeId.idApi == id) {
+              thisAnime = data.animeId.idApi;
+              idAssociativo = data.animeListaId;
             }
           });
         }
