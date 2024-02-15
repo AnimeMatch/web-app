@@ -9,15 +9,17 @@ export default function ModalAddToList(props) {
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
-    apiUser
-      .get(`/lists/listas-usuario?email=${sessionStorage.email}`)
-      .then((response) => {
-        setLists(response.data);
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    if(sessionStorage.email){
+      apiUser
+        .get(`/lists/listas-usuario?email=${sessionStorage.email}`)
+        .then((response) => {
+          setLists(response.data);
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   }, []);
 
   const selectedList = (id) => {
