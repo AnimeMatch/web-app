@@ -40,7 +40,6 @@ export default function ModalAddToList(props) {
         console.log(response);
         props.loginModalAdd();
         if (response.status == 201) {
-          alert("Adicionado a lista ");
           setSelected(null);
         }
       })

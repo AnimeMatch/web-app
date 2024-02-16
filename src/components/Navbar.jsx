@@ -125,13 +125,6 @@ export default function Navbar() {
                 Manga
               </Link>
             </li>
-            {sessionStorage.getItem("authToken") && (
-              <li className="alterar">
-                <Link to={"lists/"} className="link">
-                  Lista
-                </Link>
-              </li>
-            )}
             <li>
               <Link to={"forum/"} className="link">
                 Fórum
