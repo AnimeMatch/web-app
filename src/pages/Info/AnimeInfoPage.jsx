@@ -14,7 +14,6 @@ import "swiper/css/navigation";
 import CardCharacter from "./components/CardCharacter";
 import icone from "../../assets/images/logos/logoNavbar.png";
 import ModalAddToList from "./components/ModalAddToList";
-import RatingStars from "./components/RatingStars";
 import CarroselDefault from "../../components/Carrosel/CarroselDefault";
 import CommentArea from "./components/CommentArea";
 import ModalLogin from "../../components/Modais/ModalLogin";
@@ -31,6 +30,10 @@ export default function AnimeInfoPage() {
     endDate: { year: "", month: "", day: "" },
     externalLinks: [],
     genres: [],
+    view:"",
+    like:"",
+    deslike:""
+
   });
 
   const [modal, setModal] = useState(false);
@@ -51,6 +54,7 @@ export default function AnimeInfoPage() {
     async function validateData() {
       try {
         const animeInfo = await api.get(`/animes/anime?animeId=${id}`);
+        console.log(animeInfo.data)
         setAnimeData(animeInfo.data);
         let verified = await verifyIfAlreadyInTheFavorite();
         if (verified) {
@@ -181,7 +185,6 @@ export default function AnimeInfoPage() {
               <span className="titleAnime">{animeData.title.romaji}</span>
             </div>
             <span className="releaseYear">{animeData.startDate.year}</span>
-            <RatingStars />
           </div>
           <span
             id="description"
