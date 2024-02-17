@@ -14,11 +14,11 @@ import "swiper/css/navigation";
 import CardCharacter from "./components/CardCharacter";
 import icone from "../../assets/images/logos/logoNavbar.png";
 import ModalAddToList from "./components/ModalAddToList";
-import RatingStars from "./components/RatingStars";
 import CarroselDefault from "../../components/Carrosel/CarroselDefault";
 import CommentArea from "./components/CommentArea";
 import ModalLogin from "../../components/Modais/ModalLogin";
 import apiUser from "../../apiUser";
+import ModalRegister from "../../components/Modais/ModalRegister";
 
 export default function AnimeInfoPage() {
   const [animeData, setAnimeData] = useState({
@@ -30,62 +30,131 @@ export default function AnimeInfoPage() {
     endDate: { year: "", month: "", day: "" },
     externalLinks: [],
     genres: [],
+    view:"",
+    like:"",
+    deslike:""
+
   });
 
-  const [lmodal, setModal] = useState(false);
+  const [modal, setModal] = useState(false);
+  const [modal2, setModal2] = useState(false);
 
   const [modalAdd, setModalAdd] = useState(false);
   const loginModalAdd = () => {
-    setModalAdd(!modalAdd);
+    if (!sessionStorage.authToken) {
+      setModal(!modal);
+    } else {
+      setModalAdd(!modalAdd);
+    }
   };
   const { id } = useParams();
   const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
-    api
-      .get(`/animes/anime?animeId=${id}`)
-      .then((response) => {
-        setAnimeData(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    async function validateData() {
+      try {
+        const animeInfo = await api.get(`/animes/anime?animeId=${id}`);
+        console.log(animeInfo.data)
+        setAnimeData(animeInfo.data);
+        let verified = await verifyIfAlreadyInTheFavorite();
+        if (verified) {
+          if (!verified.animeId) {
+            setIsFavorite(false);
+          } else {
+            setIsFavorite(true);
+          }
+        }
+      } catch (error) {
+        console.error("Ocorreu um erro:", error);
+      }
+    }
+    validateData();
   }, [id]);
+
+  const verifyIfAlreadyInTheFavorite = () => {
+    if (sessionStorage.authToken) {
+      let thisAnime;
+      let idAssociativo;
+      async function verify() {
+        const response1 = await apiUser.get(
+          `/lists/favorito?email=${sessionStorage.email}`
+        );
+        const idLista = response1.data.id;
+
+        const response2 = await apiUser.get(
+          `/anime-lista/animes-da-lista-id-associativo?listaId=${idLista}`
+        );
+        console.log(response2.data);
+        if (response2.data) {
+          response2.data.forEach((data) => {
+            if (data.animeId.idApi == id) {
+              thisAnime = data.animeId.idApi;
+              idAssociativo = data.animeListaId;
+            }
+          });
+        }
+        return {
+          listId: idLista,
+          animeId: thisAnime,
+          id: idAssociativo,
+        };
+      }
+      return verify();
+    }
+  };
 
   const favoriteAction = () => {
     if (!sessionStorage.authToken) {
-      setModal(!lmodal);
+      setModal(!modal);
     } else {
-      let idLista = 0;
-
-      apiUser
-        .get(`/lists/favorito?email=${sessionStorage.email}`)
-        .then((response) => {
-          idLista = response.data.id;
-          apiUser
-            .post(`/anime-lista/?idApi=${id}&idLista=${idLista}`)
-            .then((response) => {
-              console.log("Adicionado aos favoritos");
-            })
-            .catch((error) => {
-              console.log(error);
-            });
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-      setIsFavorite(true);
+      async function fetchData() {
+        try {
+          let verified = await verifyIfAlreadyInTheFavorite();
+          if (!verified.animeId) {
+            apiUser
+              .post(`/anime-lista/?idApi=${id}&idLista=${verified.listId}`)
+              .then((response) => {
+                console.log("Adicionado aos favoritos");
+              })
+              .catch((error) => {
+                console.log(error);
+              });
+            setIsFavorite(true);
+          } else {
+            apiUser
+              .delete(`/anime-lista/?animeListaId=${verified.id}`)
+              .then((response) => {
+                console.log("Removido dos favoritos");
+                console.log(response);
+              })
+              .catch((error) => {
+                console.log(error);
+              });
+            setIsFavorite(false);
+          }
+        } catch (error) {
+          console.error("Ocorreu um erro:", error);
+        }
+      }
+      fetchData();
     }
-    // Add save/remove from favorites logic here
   };
 
-  const closeLoginModal = () => {
-    setModal(!lmodal);
+  const loginModal = () => {
+    setModal(!modal);
+  };
+  const registerModal = () => {
+    setModal2(!modal2);
+  };
+  const swap = () => {
+    setModal(!modal);
+    setModal2(!modal2);
   };
 
   return (
     <>
-      <ModalLogin modal={lmodal} onClose={closeLoginModal} />
+      <ModalLogin modal={modal} onClose={loginModal} onSwap={swap} />
+      <ModalRegister modal={modal2} onClose={registerModal} onSwap={swap} />
       <ModalAddToList
         show={modalAdd}
         loginModalAdd={loginModalAdd}
@@ -116,7 +185,6 @@ export default function AnimeInfoPage() {
               <span className="titleAnime">{animeData.title.romaji}</span>
             </div>
             <span className="releaseYear">{animeData.startDate.year}</span>
-            <RatingStars />
           </div>
           <span
             id="description"
@@ -202,9 +270,11 @@ export default function AnimeInfoPage() {
               </span>
             </div>
             <div className="infoBlock">
-              <span className="infoTitle">Generos:</span>
-              {animeData.genres.map((item) => (
-                <span className="infoText">{item}</span>
+              <span className="infoTitle">Gêneros:</span>
+              {animeData.genres.map((item, index) => (
+                <span key={index} className="infoText">
+                  {item}
+                </span>
               ))}
             </div>
             <div className="infoBlock">
@@ -235,7 +305,7 @@ export default function AnimeInfoPage() {
         listTitle="Relacionados"
         uri="genero?genero=Action&"
       />
-      <CarroselDefault pagina="2" listTitle="Recomendações" uri="em-trend?" />
+      <CarroselDefault pagina="2" listTitle="Recomendações" uri="temporada?" />
     </>
   );
 }
