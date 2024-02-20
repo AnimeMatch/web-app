@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import api from "../../api";
 import heart from "../../assets/images/deafault/Frame 60.svg";
@@ -38,8 +38,27 @@ export default function MangaInfoPage() {
 
   const [modal, setModal] = useState(false);
   const [modal2, setModal2] = useState(false);
-
+  
   const [modalAdd, setModalAdd] = useState(false);
+  const [uriGenero, setUriGenero] = useState(``);
+  
+//   useEffect(() => {
+//       if (mangaData.genres.length > 0) {
+//           setUriGenero(`genero?genero=${mangaData.genres[1]}&`);
+//         }
+//   }, [mangaData]);
+
+    const handleGenreChange = useCallback(() => {
+        if (mangaData.genres.length > 0) {
+        setUriGenero(`genero?genero=${mangaData.genres[0]}&`);
+        console.log(uriGenero);
+        }
+    }, [mangaData, uriGenero]); // Incluímos uriGenero nas dependências, pois é utilizado dentro do useEffect
+
+    useEffect(() => {
+        handleGenreChange(); // Chama o callback encapsulado
+    }, [handleGenreChange]);
+
   const loginModalAdd = () => {
     if (!sessionStorage.authToken) {
       setModal(!modal);
@@ -300,12 +319,14 @@ export default function MangaInfoPage() {
           <CommentArea />
         </div>
       </div>
-      <CarroselDefault
-        pagina="2"
+      {mangaData.genres.length > 0 && uriGenero && uriGenero.length > 0 && (
+        <CarroselDefault
+        pagina="1"
         listTitle="Relacionados"
-        uri="genero?genero=Action&"
+        uri={uriGenero}
         tipoIntegracao="mangas"
-      />
+        />
+    )}
       <CarroselDefault pagina="2" listTitle="Recomendações" uri="em-trend?" tipoIntegracao="mangas"/>
     </>
   );

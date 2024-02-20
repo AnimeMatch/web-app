@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import api from "../../api";
 import heart from "../../assets/images/deafault/Frame 60.svg";
@@ -40,6 +40,19 @@ export default function AnimeInfoPage() {
   const [modal2, setModal2] = useState(false);
 
   const [modalAdd, setModalAdd] = useState(false);
+  const [uriGenero, setUriGenero] = useState(``);
+  
+  const handleGenreChange = useCallback(() => {
+    if (animeData.genres.length > 0) {
+    setUriGenero(`genero?genero=${animeData.genres[0]}&`);
+    console.log(uriGenero);
+    }
+  }, [animeData, uriGenero]);
+
+  useEffect(() => {
+      handleGenreChange();
+  }, [handleGenreChange]);
+
   const loginModalAdd = () => {
     if (!sessionStorage.authToken) {
       setModal(!modal);
@@ -300,12 +313,13 @@ export default function AnimeInfoPage() {
           <CommentArea />
         </div>
       </div>
+      {animeData.genres.length > 0 && uriGenero && uriGenero.length > 0 && (
       <CarroselDefault
-        pagina="2"
-        listTitle="Relacionados"
-        uri="genero?genero=Action&"
-        tipoIntegracao="animes"
-      />
+      pagina="2"
+      listTitle="Relacionados"
+      uri={uriGenero}
+      tipoIntegracao="animes"
+    />)}
       <CarroselDefault pagina="2" listTitle="Recomendações" uri="temporada?" tipoIntegracao="animes"/>
     </>
   );
