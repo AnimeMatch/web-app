@@ -3,7 +3,7 @@ import "../../assets/css/responsive/cardTablet.css";
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
 export default function CardAnime(props) {
-  let redirect = "../anime/" + props.id;
+  let redirect = `../${props.tipoIntegracao}/` + props.id;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const cardStyle = {

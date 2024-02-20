@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import api from "../../api";
 import heart from "../../assets/images/deafault/Frame 60.svg";
 import heartFull from "../../assets/images/deafault/Frame 62.svg";
-import "../../assets/css/animeInfoPage.css";
+import "../../assets/css/mangaInfoPage.css";
 import viewIcon from "../../assets/images/deafault/Olho.svg";
 import likeIcon from "../../assets/images/deafault/gostar(1) 1.svg";
 import deslikeIcon from "../../assets/images/deafault/desgostar(1) 1.svg";
@@ -20,8 +20,8 @@ import ModalLogin from "../../components/Modais/ModalLogin";
 import apiUser from "../../apiUser";
 import ModalRegister from "../../components/Modais/ModalRegister";
 
-export default function AnimeInfoPage() {
-  const [animeData, setAnimeData] = useState({
+export default function MangaInfoPage() {
+  const [mangaData, setMangaData] = useState({
     characters: { nodes: [] },
     coverImage: { large: "" },
     title: [],
@@ -51,14 +51,14 @@ export default function AnimeInfoPage() {
   const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
-    async function validateData() {
+    async function validateDataManga() {
       try {
-        const animeInfo = await api.get(`/animes/anime?animeId=${id}`);
-        console.log(animeInfo.data)
-        setAnimeData(animeInfo.data);
+        const mangaInfo = await api.get(`/mangas/manga?mangaId=${id}`);
+        console.log(mangaInfo.data)
+        setMangaData(mangaInfo.data);
         let verified = await verifyIfAlreadyInTheFavorite();
         if (verified) {
-          if (!verified.animeId) {
+          if (!verified.mangaId) {
             setIsFavorite(false);
           } else {
             setIsFavorite(true);
@@ -68,12 +68,12 @@ export default function AnimeInfoPage() {
         console.error("Ocorreu um erro:", error);
       }
     }
-    validateData();
+    validateDataManga();
   }, [id]);
 
   const verifyIfAlreadyInTheFavorite = () => {
     if (sessionStorage.authToken) {
-      let thisAnime;
+      let thisManga;
       let idAssociativo;
       async function verify() {
         const response1 = await apiUser.get(
@@ -87,15 +87,15 @@ export default function AnimeInfoPage() {
         console.log(response2.data);
         if (response2.data) {
           response2.data.forEach((data) => {
-            if (data.animeId.idApi == id) {
-              thisAnime = data.animeId.idApi;
-              idAssociativo = data.animeListaId;
+            if (data.mangaId.idApi == id) {
+              thisManga = data.mangaId.idApi;
+              idAssociativo = data.mangaListaId;
             }
           });
         }
         return {
           listId: idLista,
-          animeId: thisAnime,
+          mangaId: thisManga,
           id: idAssociativo,
         };
       }
@@ -110,7 +110,7 @@ export default function AnimeInfoPage() {
       async function fetchData() {
         try {
           let verified = await verifyIfAlreadyInTheFavorite();
-          if (!verified.animeId) {
+          if (!verified.mangaId) {
             apiUser
               .post(`/midia-lista/?idApi=${id}&idLista=${verified.listId}`)
               .then((response) => {
@@ -158,12 +158,12 @@ export default function AnimeInfoPage() {
       <ModalAddToList
         show={modalAdd}
         loginModalAdd={loginModalAdd}
-        animeTitle={animeData.title.romaji}
-        animeId={id}
+        mangaTitle={mangaData.title.romaji}
+        mangaId={id}
       />
-      <div className="animeOverview">
+      <div className="mangaOverview">
         <div className="imageAddToList">
-          <img src={animeData.coverImage.large} alt="" />
+          <img src={mangaData.coverImage.large} alt="" />
           <div className="addToList">
             <div>
               <button className="btn-secundary add" onClick={loginModalAdd}>
@@ -182,13 +182,13 @@ export default function AnimeInfoPage() {
         <div className="textInfo">
           <div className="topInfo">
             <div className="titleDelimiter">
-              <span className="titleAnime">{animeData.title.romaji}</span>
+              <span className="titleAnime">{mangaData.title.romaji}</span>
             </div>
-            <span className="releaseYear">{animeData.startDate.year}</span>
+            <span className="releaseYear">{mangaData.startDate.year}</span>
           </div>
           <span
             id="description"
-            dangerouslySetInnerHTML={{ __html: animeData.description }}
+            dangerouslySetInnerHTML={{ __html: mangaData.description }}
           />
           <div className="usersOverview">
             <div className="viewers view">
@@ -217,7 +217,7 @@ export default function AnimeInfoPage() {
               scrollbar={{ draggable: true }}
               className="swiperHome"
             >
-              {animeData.characters.nodes.map((item, index) => (
+              {mangaData.characters.nodes.map((item, index) => (
                 <SwiperSlide key={index}>
                   <CardCharacter
                     image={item.image.large}
@@ -233,7 +233,7 @@ export default function AnimeInfoPage() {
         <div className="sideBar">
           <span>Onde encontrar?</span>
           <div className="externalLinksArea">
-            {animeData.externalLinks.map((item, index) => (
+            {mangaData.externalLinks.map((item, index) => (
               <div className="externalLink" key={index}>
                 {item.icon ? (
                   <img src={item.icon} className="externalIcon" alt="icon" />
@@ -249,29 +249,29 @@ export default function AnimeInfoPage() {
           <div className="infoSideBar">
             <div className="infoBlock">
               <span className="infoTitle">Formato:</span>
-              <span className="infoText">{animeData.format}</span>
+              <span className="infoText">{mangaData.format}</span>
             </div>
             <div className="infoBlock">
               <span className="infoTitle">Episódios:</span>
-              <span className="infoText">{animeData.episodes}</span>
+              <span className="infoText">{mangaData.episodes}</span>
             </div>
             <div className="infoBlock">
               <span className="infoTitle">Data de Lançamento:</span>
               <span className="infoText">
-                {animeData.startDate.day}/{animeData.startDate.month}/
-                {animeData.startDate.year}
+                {mangaData.startDate.day}/{mangaData.startDate.month}/
+                {mangaData.startDate.year}
               </span>
             </div>
             <div className="infoBlock">
               <span className="infoTitle">Data de Finalização:</span>
               <span className="infoText">
-                {animeData.endDate.day}/{animeData.endDate.month}/
-                {animeData.endDate.year}
+                {mangaData.endDate.day}/{mangaData.endDate.month}/
+                {mangaData.endDate.year}
               </span>
             </div>
             <div className="infoBlock">
               <span className="infoTitle">Gêneros:</span>
-              {animeData.genres.map((item, index) => (
+              {mangaData.genres.map((item, index) => (
                 <span key={index} className="infoText">
                   {item}
                 </span>
@@ -279,15 +279,15 @@ export default function AnimeInfoPage() {
             </div>
             <div className="infoBlock">
               <span className="infoTitle">Titulo em romaji:</span>
-              <span className="infoText">{animeData.title.romaji}</span>
+              <span className="infoText">{mangaData.title.romaji}</span>
             </div>
             <div className="infoBlock">
               <span className="infoTitle">Titulo em inglês:</span>
-              <span className="infoText">{animeData.title.english}</span>
+              <span className="infoText">{mangaData.title.english}</span>
             </div>
             <div className="infoBlock">
               <span className="infoTitle">Titulo em japones:</span>
-              <span className="infoText">{animeData.title.native}</span>
+              <span className="infoText">{mangaData.title.native}</span>
             </div>
           </div>
         </div>
@@ -304,9 +304,9 @@ export default function AnimeInfoPage() {
         pagina="2"
         listTitle="Relacionados"
         uri="genero?genero=Action&"
-        tipoIntegracao="animes"
+        tipoIntegracao="mangas"
       />
-      <CarroselDefault pagina="2" listTitle="Recomendações" uri="temporada?" tipoIntegracao="animes"/>
+      <CarroselDefault pagina="2" listTitle="Recomendações" uri="em-trend?" tipoIntegracao="mangas"/>
     </>
   );
 }
