@@ -314,13 +314,21 @@ export default function AnimeInfoPage() {
         </div>
       </div>
       {animeData.genres.length > 0 && uriGenero && uriGenero.length > 0 && (
+        <CarroselDefault
+          pagina="2"
+          listTitle="Relacionados"
+          uri={uriGenero}
+          tipoIntegracao="animes"
+          loginModal={loginModal}
+        />
+      )}
       <CarroselDefault
-      pagina="2"
-      listTitle="Relacionados"
-      uri={uriGenero}
-      tipoIntegracao="animes"
-    />)}
-      <CarroselDefault pagina="2" listTitle="Recomendações" uri="temporada?" tipoIntegracao="animes"/>
+        pagina="2"
+        listTitle="Recomendações"
+        uri="temporada?"
+        tipoIntegracao="animes"
+        loginModal={loginModal}
+      />
     </>
   );
 }

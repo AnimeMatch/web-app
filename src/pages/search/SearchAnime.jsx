@@ -3,6 +3,8 @@ import search from "../../assets/images/deafault/search.svg";
 import { useState, useEffect } from "react";
 import api from "../../api";
 import CardAnime from "../../components/Carrosel/CardAnime";
+import ModalLogin from "../../components/Modais/ModalLogin";
+import ModalRegister from "../../components/Modais/ModalRegister";
 
 export default function SearchAnime() {
   const [getAnimes, setAnimes] = useState([]);
@@ -61,8 +63,24 @@ export default function SearchAnime() {
       });
   }, [pagina, genero]);
 
+  const [modal, setModal] = useState(false);
+  const [modal2, setModal2] = useState(false);
+
+  const loginModal = () => {
+    setModal(!modal);
+  };
+  const registerModal = () => {
+    setModal2(!modal2);
+  };
+  const swap = () => {
+    setModal(!modal);
+    setModal2(!modal2);
+  };
+
   return (
     <>
+    <ModalLogin modal={modal} onClose={loginModal} onSwap={swap} />
+    <ModalRegister modal={modal2} onClose={registerModal} onSwap={swap} />
       <div className="search-anime-header">
         <div className="input-search-anime">
           <div
@@ -129,6 +147,7 @@ export default function SearchAnime() {
               title={item.title.romaji}
               image={item.coverImage.large}
               tipoIntegracao="animes"
+              loginModal={loginModal}
             />
           </div>
         ))}

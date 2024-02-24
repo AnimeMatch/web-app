@@ -12,6 +12,9 @@ export default function CardAnime(props) {
   };
 
   const toggleMenu = () => {
+    if (!sessionStorage.authToken) {
+      props.loginModal();
+    }
     setIsMenuOpen(!isMenuOpen);
   };
 

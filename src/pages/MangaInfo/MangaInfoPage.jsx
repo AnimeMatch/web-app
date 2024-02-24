@@ -325,9 +325,16 @@ export default function MangaInfoPage() {
         listTitle="Relacionados"
         uri={uriGenero}
         tipoIntegracao="mangas"
+        loginModal={loginModal}
         />
     )}
-      <CarroselDefault pagina="2" listTitle="Recomendações" uri="em-trend?" tipoIntegracao="mangas"/>
+      <CarroselDefault
+      pagina="2" 
+      listTitle="Recomendações" 
+      uri="em-trend?" 
+      tipoIntegracao="mangas"
+      loginModal={loginModal}
+      />
     </>
   );
 }
