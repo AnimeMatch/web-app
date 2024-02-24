@@ -69,6 +69,7 @@ export default function CarroselDefault(props) {
               image={item.coverImage.large}
               tipoIntegracao={props.tipoIntegracao}
               loginModal={props.loginModal}
+              type={props.tipoIntegracao}
             />
           </SwiperSlide>
         ))}

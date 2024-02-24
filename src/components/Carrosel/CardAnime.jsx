@@ -2,9 +2,13 @@ import "../../assets/css/card.css";
 import "../../assets/css/responsive/cardTablet.css";
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
+import Swal from "sweetalert2";
+import apiUser from "../../apiUser";
+
 export default function CardAnime(props) {
   let redirect = `../${props.tipoIntegracao}/` + props.id;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [lists, setLists] = useState([]);
 
   const cardStyle = {
     backgroundImage: `url(${props.image})`,
@@ -15,7 +19,49 @@ export default function CardAnime(props) {
     if (!sessionStorage.authToken) {
       props.loginModal();
     }
+    apiUser
+      .get(`/lists/listas-usuario?email=${sessionStorage.email}`)
+      .then((response) => {
+        console.log(response.data);
+        setLists(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const addToSelectedList = (id) => {
+    let idList;
+    lists.forEach((e) => {
+      if (props.tipoIntegracao == "mangas" && !id.includes("-manga")) {
+        id = id + "-manga";
+      }
+      console.log(id);
+      if (e.name == id) {
+        idList = e.id;
+      }
+    });
+    console.log(idList);
+    apiUser
+      .post(`/midia-lista/?idApi=${props.id}&idLista=${idList}`)
+      .then((response) => {
+        console.log(response);
+        if (response.status == 201) {
+          Swal.fire({
+            title: "Adicionado na lista: " + id,
+            icon: "success",
+            showConfirmButton: false,
+            timer: 1700,
+            width: "24em",
+            color: "#fff",
+            background: "#000712",
+          });
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const menuStyle = {
@@ -44,24 +90,44 @@ export default function CardAnime(props) {
               <div className="pop-up" style={menuStyle}>
                 <ul className="option-one" style={fontStyle}>
                   <li>
-                    <span className="icon progress" title="Em progresso">
+                    <span
+                      className="icon progress"
+                      title="Em progresso"
+                      id="Em progresso"
+                      onClick={(event) => addToSelectedList(event.target.id)}
+                    >
                       <span className="tooltip">Em progresso</span>
                       <span className="fab fa-progress"></span>
                     </span>
                   </li>
-                  <li className="icon on-hold">
-                    <span className="tooltip">Em espera</span>
+                  <li 
+                    className="icon on-hold"
+                    id="Em espera"
+                    onClick={(event) => addToSelectedList(event.target.id)}
+                  >
+                    <span className="tooltip"> Em espera </span>
                   </li>
-                  <li className="icon on-plan">
+                  <li 
+                    className="icon on-plan"
+                    id="No plano"
+                    onClick={(event) => addToSelectedList(event.target.id)}  
+                  >
                     <span className="tooltip">No plano</span>
                     <img src="" alt="" />
                   </li>
                 </ul>
                 <ul className="option-one" style={fontStyle}>
-                  <li className="icon complete">
+                  <li 
+                    className="icon complete" 
+                    id="No plano"
+                    onClick={(event) => addToSelectedList(event.target.id)} >
                     <span className="tooltip">Completo</span>
                   </li>
-                  <li className="icon dropp">
+                  <li 
+                    className="icon dropp"
+                    id="Dropado"
+                    onClick={(event) => addToSelectedList(event.target.id)} 
+                  >
                     <span className="tooltip">Dropado</span>
                   </li>
                   <li className="icon my-lists">
