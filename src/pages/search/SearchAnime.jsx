@@ -128,6 +128,7 @@ export default function SearchAnime() {
               id={item.id}
               title={item.title.romaji}
               image={item.coverImage.large}
+              tipoIntegracao="animes"
             />
           </div>
         ))}

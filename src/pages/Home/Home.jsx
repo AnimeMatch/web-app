@@ -16,28 +16,32 @@ export default function Home() {
         pagina="1"
         listTitle="Animes da temporada"
         uri="temporada?"
+        tipoIntegracao="animes"
       />
 
       <GenderHome />
 
       <CarroselDefault
-        pagina="2"
+        pagina="1"
         listTitle="Animes atualizados recentemente"
-        uri="temporada?"
+        uri="em-trend?"
+        tipoIntegracao="animes"
       />
 
       <BannerForum />
 
       <CarroselDefault
-        pagina="3"
+        pagina="1"
         listTitle="Mangas atualizados recentemente"
-        uri="temporada?"
+        uri="em-trend?"
+        tipoIntegracao="mangas"
       />
 
       <CarroselDefault
-        pagina="4"
+        pagina="2"
         listTitle="Mangas mais lidos essa semana"
-        uri="temporada?"
+        uri="em-trend?"
+        tipoIntegracao="mangas"
       />
     </>
   );

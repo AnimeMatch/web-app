@@ -15,9 +15,9 @@ export default function CarroselDefault(props) {
 
   useEffect(() => {
     api
-      .get(`/animes/cards/${props.uri}page=${props.pagina}&qtdPaginas=15`)
-      .then((response) => {
-        setList(response.data.media);
+    .get(`/${props.tipoIntegracao}/cards/${props.uri}page=${props.pagina}&qtdPaginas=15`)
+    .then((response) => {
+      setList(response.data.media);
       })
       .catch((error) => {
         console.log(error);
@@ -65,6 +65,7 @@ export default function CarroselDefault(props) {
               id={item.id}
               title={item.title.romaji}
               image={item.coverImage.large}
+              tipoIntegracao={props.tipoIntegracao}
             />
           </SwiperSlide>
         ))}
