@@ -35,7 +35,7 @@ export default function ModalAddToList(props) {
 
   const addToList = () => {
     apiUser
-      .post(`/anime-lista/?idApi=${props.animeId}&idLista=${selected}`)
+      .post(`/midia-lista/?idApi=${props.mangaId}&idLista=${selected}`)
       .then((response) => {
         console.log(response);
         props.loginModalAdd();
