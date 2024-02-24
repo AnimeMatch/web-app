@@ -8,7 +8,7 @@ export default function CardListCustomizad(props) {
 
   useEffect(() => {
     apiUser
-      .get(`/anime-lista/animes-da-lista?listaId=${props.id}`)
+      .get(`/midia-lista/midias-da-lista?listaId=${props.id}`)
       .then((response) => {
         console.log(response.data);
 
