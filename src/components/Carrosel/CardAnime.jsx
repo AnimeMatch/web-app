@@ -15,10 +15,6 @@ export default function CardAnime(props) {
     backgroundSize: "cover",
   };
 
-  const addToListModal = () => {
-    props.addToListModal();
-  };
-
   const toggleMenu = () => {
     if (!sessionStorage.authToken) {
       props.loginModal();
@@ -86,7 +82,7 @@ export default function CardAnime(props) {
   };
 
   const handleClick = () => {
-    props.handleMidia(props.id, props.title);
+    props.handleMidia(props.id, props.title, props.type);
   };
 
   return (

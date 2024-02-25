@@ -335,6 +335,7 @@ export default function AnimeInfoPage() {
           tipoIntegracao="animes"
           loginModal={loginModal}
           handleMidia={handleMidia}
+          type={1}
         />
       )}
       <CarroselDefault
@@ -345,6 +346,7 @@ export default function AnimeInfoPage() {
         loginModal={loginModal}
         addtoListModal={loginModalAdd}
         handleMidia={handleMidia}
+        type={1}
       />
     </>
   );

@@ -340,6 +340,7 @@ export default function MangaInfoPage() {
           tipoIntegracao="mangas"
           loginModal={loginModal}
           handleMidia={handleMidia}
+          type={2}
         />
       )}
       <CarroselDefault
@@ -349,6 +350,7 @@ export default function MangaInfoPage() {
         tipoIntegracao="mangas"
         loginModal={loginModal}
         handleMidia={handleMidia}
+        type={2}
       />
     </>
   );
