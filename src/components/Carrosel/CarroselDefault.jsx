@@ -19,6 +19,7 @@ export default function CarroselDefault(props) {
         `/${props.tipoIntegracao}/cards/${props.uri}page=${props.pagina}&qtdPaginas=15`
       )
       .then((response) => {
+        console.log(response.data.media)
         setList(response.data.media);
       })
       .catch((error) => {
@@ -69,7 +70,8 @@ export default function CarroselDefault(props) {
               image={item.coverImage.large}
               tipoIntegracao={props.tipoIntegracao}
               loginModal={props.loginModal}
-              type={props.tipoIntegracao}
+              handleMidia={props.handleMidia}
+              type={props.type}
             />
           </SwiperSlide>
         ))}

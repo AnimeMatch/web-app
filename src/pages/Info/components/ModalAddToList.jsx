@@ -13,7 +13,14 @@ export default function ModalAddToList(props) {
       apiUser
         .get(`/lists/listas-usuario?email=${sessionStorage.email}`)
         .then((response) => {
-          setLists(response.data);
+          let lists = response.data;
+          let filterLists = [];
+          lists.forEach((e) => {
+            if (e.type == props.type) {
+              filterLists.push(e);
+            }
+          });
+          setLists(filterLists);
         })
         .catch((error) => {
           console.log(error);
@@ -35,7 +42,7 @@ export default function ModalAddToList(props) {
 
   const addToList = () => {
     apiUser
-      .post(`/anime-lista/?idApi=${props.animeId}&idLista=${selected}`)
+      .post(`/midia-lista/?idApi=${props.id}&idLista=${selected}`)
       .then((response) => {
         console.log(response);
         props.loginModalAdd();
@@ -57,7 +64,7 @@ export default function ModalAddToList(props) {
             <div className="header-area">
               <span className="modal-title-overlay">
                 Adicinar:{" "}
-                <span className="modal-title-inside">{props.animeTitle}</span> a
+                <span className="modal-title-inside">{props.title}</span> a
                 sua lista
               </span>
               <img

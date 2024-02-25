@@ -15,6 +15,10 @@ export default function CardAnime(props) {
     backgroundSize: "cover",
   };
 
+  const addToListModal = () => {
+    props.addToListModal();
+  };
+
   const toggleMenu = () => {
     if (!sessionStorage.authToken) {
       props.loginModal();
@@ -46,7 +50,6 @@ export default function CardAnime(props) {
     apiUser
       .post(`/midia-lista/?idApi=${props.id}&idLista=${idList}`)
       .then((response) => {
-        console.log(response);
         if (response.status == 201) {
           Swal.fire({
             title: "Adicionado na lista: " + id,
@@ -71,6 +74,10 @@ export default function CardAnime(props) {
 
   const fontStyle = {
     display: isMenuOpen ? "flex" : "none",
+  };
+
+  const handleClick = () => {
+    props.handleMidia(props.id, props.title);
   };
 
   return (
@@ -100,37 +107,38 @@ export default function CardAnime(props) {
                       <span className="fab fa-progress"></span>
                     </span>
                   </li>
-                  <li 
+                  <li
                     className="icon on-hold"
                     id="Em espera"
                     onClick={(event) => addToSelectedList(event.target.id)}
                   >
                     <span className="tooltip"> Em espera </span>
                   </li>
-                  <li 
+                  <li
                     className="icon on-plan"
                     id="No plano"
-                    onClick={(event) => addToSelectedList(event.target.id)}  
+                    onClick={(event) => addToSelectedList(event.target.id)}
                   >
                     <span className="tooltip">No plano</span>
                     <img src="" alt="" />
                   </li>
                 </ul>
                 <ul className="option-one" style={fontStyle}>
-                  <li 
-                    className="icon complete" 
+                  <li
+                    className="icon complete"
                     id="No plano"
-                    onClick={(event) => addToSelectedList(event.target.id)} >
+                    onClick={(event) => addToSelectedList(event.target.id)}
+                  >
                     <span className="tooltip">Completo</span>
                   </li>
-                  <li 
+                  <li
                     className="icon dropp"
                     id="Dropado"
-                    onClick={(event) => addToSelectedList(event.target.id)} 
+                    onClick={(event) => addToSelectedList(event.target.id)}
                   >
                     <span className="tooltip">Dropado</span>
                   </li>
-                  <li className="icon my-lists">
+                  <li className="icon my-lists" onClick={handleClick}>
                     <span className="tooltip">Minhas listas</span>
                   </li>
                 </ul>

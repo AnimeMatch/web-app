@@ -30,10 +30,9 @@ export default function AnimeInfoPage() {
     endDate: { year: "", month: "", day: "" },
     externalLinks: [],
     genres: [],
-    view:"",
-    like:"",
-    deslike:""
-
+    view: "",
+    like: "",
+    deslike: "",
   });
 
   const [modal, setModal] = useState(false);
@@ -41,16 +40,16 @@ export default function AnimeInfoPage() {
 
   const [modalAdd, setModalAdd] = useState(false);
   const [uriGenero, setUriGenero] = useState(``);
-  
+
   const handleGenreChange = useCallback(() => {
     if (animeData.genres.length > 0) {
-    setUriGenero(`genero?genero=${animeData.genres[0]}&`);
-    console.log(uriGenero);
+      setUriGenero(`genero?genero=${animeData.genres[0]}&`);
+      console.log(uriGenero);
     }
   }, [animeData, uriGenero]);
 
   useEffect(() => {
-      handleGenreChange();
+    handleGenreChange();
   }, [handleGenreChange]);
 
   const loginModalAdd = () => {
@@ -67,7 +66,7 @@ export default function AnimeInfoPage() {
     async function validateData() {
       try {
         const animeInfo = await api.get(`/animes/anime?animeId=${id}`);
-        console.log(animeInfo.data)
+        console.log(animeInfo.data);
         setAnimeData(animeInfo.data);
         let verified = await verifyIfAlreadyInTheFavorite();
         if (verified) {
@@ -90,7 +89,7 @@ export default function AnimeInfoPage() {
       let idAssociativo;
       async function verify() {
         const response1 = await apiUser.get(
-          `/lists/favorito?email=${sessionStorage.email}`
+          `/lists/favorito?email=${sessionStorage.email}&type=1`
         );
         const idLista = response1.data.id;
 
@@ -100,9 +99,9 @@ export default function AnimeInfoPage() {
         console.log(response2.data);
         if (response2.data) {
           response2.data.forEach((data) => {
-            if (data.animeId.idApi == id) {
-              thisAnime = data.animeId.idApi;
-              idAssociativo = data.animeListaId;
+            if (data.midiaId.idApi == id) {
+              thisAnime = data.midiaId.idApi;
+              idAssociativo = data.midiaListaId;
             }
           });
         }
@@ -164,6 +163,14 @@ export default function AnimeInfoPage() {
     setModal2(!modal2);
   };
 
+  const [midiaId, setMidiaId] = useState();
+  const [midiaTitle, setMidiaTitle] = useState();
+  const handleMidia = (midiaId, midiaTitle) => {
+    setMidiaId(midiaId);
+    setMidiaTitle(midiaTitle);
+    loginModalAdd();
+  };
+
   return (
     <>
       <ModalLogin modal={modal} onClose={loginModal} onSwap={swap} />
@@ -171,15 +178,22 @@ export default function AnimeInfoPage() {
       <ModalAddToList
         show={modalAdd}
         loginModalAdd={loginModalAdd}
-        animeTitle={animeData.title.romaji}
-        animeId={id}
+        title={midiaTitle}
+        id={midiaId}
+        type={1}
       />
       <div className="animeOverview">
         <div className="imageAddToList">
           <img src={animeData.coverImage.large} alt="" />
           <div className="addToList">
             <div>
-              <button className="btn-secundary add" onClick={loginModalAdd}>
+              <button
+                className="btn-secundary add"
+                id={id}
+                onClick={(event) =>
+                  handleMidia(event.target.id, animeData.title.romaji)
+                }
+              >
                 {" "}
                 Adicionar{" "}
               </button>
@@ -320,6 +334,7 @@ export default function AnimeInfoPage() {
           uri={uriGenero}
           tipoIntegracao="animes"
           loginModal={loginModal}
+          handleMidia={handleMidia}
         />
       )}
       <CarroselDefault
@@ -328,6 +343,8 @@ export default function AnimeInfoPage() {
         uri="temporada?"
         tipoIntegracao="animes"
         loginModal={loginModal}
+        addtoListModal={loginModalAdd}
+        handleMidia={handleMidia}
       />
     </>
   );

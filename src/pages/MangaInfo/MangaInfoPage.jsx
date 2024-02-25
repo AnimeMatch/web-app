@@ -30,34 +30,33 @@ export default function MangaInfoPage() {
     endDate: { year: "", month: "", day: "" },
     externalLinks: [],
     genres: [],
-    view:"",
-    like:"",
-    deslike:""
-
+    view: "",
+    like: "",
+    deslike: "",
   });
 
   const [modal, setModal] = useState(false);
   const [modal2, setModal2] = useState(false);
-  
+
   const [modalAdd, setModalAdd] = useState(false);
   const [uriGenero, setUriGenero] = useState(``);
-  
-//   useEffect(() => {
-//       if (mangaData.genres.length > 0) {
-//           setUriGenero(`genero?genero=${mangaData.genres[1]}&`);
-//         }
-//   }, [mangaData]);
 
-    const handleGenreChange = useCallback(() => {
-        if (mangaData.genres.length > 0) {
-        setUriGenero(`genero?genero=${mangaData.genres[0]}&`);
-        console.log(uriGenero);
-        }
-    }, [mangaData, uriGenero]); // Incluímos uriGenero nas dependências, pois é utilizado dentro do useEffect
+  //   useEffect(() => {
+  //       if (mangaData.genres.length > 0) {
+  //           setUriGenero(`genero?genero=${mangaData.genres[1]}&`);
+  //         }
+  //   }, [mangaData]);
 
-    useEffect(() => {
-        handleGenreChange(); // Chama o callback encapsulado
-    }, [handleGenreChange]);
+  const handleGenreChange = useCallback(() => {
+    if (mangaData.genres.length > 0) {
+      setUriGenero(`genero?genero=${mangaData.genres[0]}&`);
+      console.log(uriGenero);
+    }
+  }, [mangaData, uriGenero]); // Incluímos uriGenero nas dependências, pois é utilizado dentro do useEffect
+
+  useEffect(() => {
+    handleGenreChange(); // Chama o callback encapsulado
+  }, [handleGenreChange]);
 
   const loginModalAdd = () => {
     if (!sessionStorage.authToken) {
@@ -73,7 +72,7 @@ export default function MangaInfoPage() {
     async function validateDataManga() {
       try {
         const mangaInfo = await api.get(`/mangas/manga?mangaId=${id}`);
-        console.log(mangaInfo.data)
+        console.log(mangaInfo.data.type);
         setMangaData(mangaInfo.data);
         let verified = await verifyIfAlreadyInTheFavorite();
         if (verified) {
@@ -96,7 +95,7 @@ export default function MangaInfoPage() {
       let idAssociativo;
       async function verify() {
         const response1 = await apiUser.get(
-          `/lists/favorito?email=${sessionStorage.email}`
+          `/lists/favorito?email=${sessionStorage.email}&type=1`
         );
         const idLista = response1.data.id;
 
@@ -106,9 +105,9 @@ export default function MangaInfoPage() {
         console.log(response2.data);
         if (response2.data) {
           response2.data.forEach((data) => {
-            if (data.mangaId.idApi == id) {
-              thisManga = data.mangaId.idApi;
-              idAssociativo = data.mangaListaId;
+            if (data.midiaId.idApi == id) {
+              thisManga = data.midiaId.idApi;
+              idAssociativo = data.midiaListaId;
             }
           });
         }
@@ -170,6 +169,14 @@ export default function MangaInfoPage() {
     setModal2(!modal2);
   };
 
+  const [midiaId, setMidiaId] = useState();
+  const [midiaTitle, setMidiaTitle] = useState();
+  const handleMidia = (midiaId, midiaTitle) => {
+    setMidiaId(midiaId);
+    setMidiaTitle(midiaTitle);
+    loginModalAdd();
+  };
+
   return (
     <>
       <ModalLogin modal={modal} onClose={loginModal} onSwap={swap} />
@@ -177,15 +184,21 @@ export default function MangaInfoPage() {
       <ModalAddToList
         show={modalAdd}
         loginModalAdd={loginModalAdd}
-        mangaTitle={mangaData.title.romaji}
-        mangaId={id}
+        title={midiaTitle}
+        id={midiaId}
+        type={2}
       />
       <div className="mangaOverview">
         <div className="imageAddToList">
           <img src={mangaData.coverImage.large} alt="" />
           <div className="addToList">
             <div>
-              <button className="btn-secundary add" onClick={loginModalAdd}>
+              <button
+                className="btn-secundary add"
+                onClick={(event) =>
+                  handleMidia(event.target.id, animeData.title.romaji)
+                }
+              >
                 {" "}
                 Adicionar{" "}
               </button>
@@ -321,19 +334,21 @@ export default function MangaInfoPage() {
       </div>
       {mangaData.genres.length > 0 && uriGenero && uriGenero.length > 0 && (
         <CarroselDefault
-        pagina="1"
-        listTitle="Relacionados"
-        uri={uriGenero}
+          pagina="1"
+          listTitle="Relacionados"
+          uri={uriGenero}
+          tipoIntegracao="mangas"
+          loginModal={loginModal}
+          handleMidia={handleMidia}
+        />
+      )}
+      <CarroselDefault
+        pagina="2"
+        listTitle="Recomendações"
+        uri="em-trend?"
         tipoIntegracao="mangas"
         loginModal={loginModal}
-        />
-    )}
-      <CarroselDefault
-      pagina="2" 
-      listTitle="Recomendações" 
-      uri="em-trend?" 
-      tipoIntegracao="mangas"
-      loginModal={loginModal}
+        handleMidia={handleMidia}
       />
     </>
   );
