@@ -1,5 +1,6 @@
-import "../../../assets/css/genderHome.css"
-import "../../../assets/css/responsive/genderHomeTablet.css"
+import { Link } from "react-router-dom";
+import "../../../assets/css/genderHome.css";
+import "../../../assets/css/responsive/genderHomeTablet.css";
 
 export default function GenderHome() {
   return (
@@ -7,23 +8,43 @@ export default function GenderHome() {
       <div className="container-4">
         <div className="option-gender">
           <div className="image-gender shounen"></div>
-          <span>Shounen</span>
+            <span>
+              <Link to={{ pathname: "/search/anime/", search: "?genero=adventure" }} className="link">
+                Adventure
+              </Link>
+            </span>
         </div>
         <div className="option-gender">
           <div className="image-gender shoujo"></div>
-          <span>Shoujo</span>
+          <span>
+            <Link to={{ pathname: "/search/anime/", search: "?genero=romance" }} className="link">
+              Romance
+            </Link>
+          </span>
         </div>
         <div className="option-gender">
           <div className="image-gender seinen"></div>
-          <span>Seinen</span>
+          <span>
+            <Link to={{ pathname: "/search/anime/", search: "?genero=drama" }} className="link">
+              Drama
+            </Link>
+          </span>
         </div>
         <div className="option-gender">
           <div className="image-gender isekai"></div>
-          <span>Isekai</span>
+          <span>
+            <Link to={{ pathname: "/search/anime/", search: "?genero=comedy" }} className="link">
+              Comedy
+            </Link>
+          </span>
         </div>
         <div className="option-gender">
           <div className="image-gender slice-of-life"></div>
-          <span>Slice of life</span>
+          <span>
+            <Link to={{ pathname: "/search/anime/", search: "?genero=slice of life" }} className="link">
+              Slice of life
+            </Link>
+          </span>
         </div>
       </div>
     </>
