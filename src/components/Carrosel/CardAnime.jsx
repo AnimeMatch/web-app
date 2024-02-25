@@ -38,13 +38,22 @@ export default function CardAnime(props) {
   const addToSelectedList = (id) => {
     let idList;
     lists.forEach((e) => {
-      if (props.tipoIntegracao == "mangas" && !id.includes("-manga")) {
-        id = id + "-manga";
+      if (props.tipoIntegracao == "mangas") {
+        if(e.type == 2){
+          if (e.name == id) {
+            idList = e.id;
+          }
+        }
+      }
+      if (props.tipoIntegracao == "animes"){
+        if(e.type == 1){
+          if (e.name == id) {
+            idList = e.id;
+          }
+        }
       }
       console.log(id);
-      if (e.name == id) {
-        idList = e.id;
-      }
+      
     });
     console.log(idList);
     apiUser
