@@ -3,8 +3,19 @@ import { useState, useEffect } from "react";
 import apiUser from "../../../apiUser";
 
 export default function InfoProfile() {
-  const [user, setUser] = useState();
+  const [user, setUser] = useState({
+    name: "",
+    email: "",
+    password: "",
+    profileImage: "",
+    coverImage: "",
+    criacao: "",
+    status: true,
+    genero: "",
+    bio: ""
+  });
   const [image, setImage] = useState();
+  const [editavel, setEditavel] = useState(false);
 
   useEffect(() => {
     apiUser
@@ -12,6 +23,7 @@ export default function InfoProfile() {
       .then((response) => {
         console.log(response.data);
         setUser(response.data);
+        setGender(response.data.genero)
         setImage(`url("${response.data.profileImage}")`);
       })
       .catch((error) => {
@@ -26,23 +38,26 @@ export default function InfoProfile() {
           <div className="bg">
             <div
               className="image-profile"
-              style={{ backgroundImage: image, backgroundSize: "cover" }}
+              style={{ backgroundImage: user.profileImage, backgroundSize: "cover" }}
             ></div>
             <div className="info-user">
               <div className="padding">
                 <div className="name-gender">
                   <div className="name">
                     <span>{sessionStorage.usuario}</span>
-                    <button>
+                    <button
+                      onClick={() =>
+                        setEditavel(true)
+                      }
+                    >
                       <div className="edit-image"></div>
                     </button>
                   </div>
-
-                  <span>Feminino</span>
+                  <span>{user.genero}</span>
                 </div>
 
                 <div className="date-started">
-                  <span>Entrou em Setembro de 2023</span>
+                  <span>Entrou em {user.criacao}</span>
                 </div>
               </div>
 
@@ -50,8 +65,7 @@ export default function InfoProfile() {
                 <span>BIO</span>
                 <div className="text">
                   <span>
-                    Olá, sou Fulano, e adoro animes e mangas, como é bom ter
-                    esse site para usar
+                    {user.bio}
                   </span>
                 </div>
               </div>
