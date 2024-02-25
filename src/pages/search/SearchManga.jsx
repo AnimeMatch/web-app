@@ -5,6 +5,7 @@ import api from "../../api";
 import CardAnime from "../../components/Carrosel/CardAnime";
 import ModalLogin from "../../components/Modais/ModalLogin";
 import ModalRegister from "../../components/Modais/ModalRegister";
+import ModalAddToList from "../Info/components/ModalAddToList";
 
 export default function SearchManga() {
   const [getMangas, setMangas] = useState([]);
@@ -77,10 +78,30 @@ export default function SearchManga() {
     setModal2(!modal2);
   };
 
+  const [modalAdd, setModalAdd] = useState(false);
+  const [midiaId, setMidiaId] = useState();
+  const [midiaTitle, setMidiaTitle] = useState();
+  const handleMidia = (midiaId, midiaTitle) => {
+    setMidiaId(midiaId);
+    setMidiaTitle(midiaTitle);
+    loginModalAdd();
+  };
+
+  const loginModalAdd = () => {
+    setModalAdd(!modalAdd);
+  };
+
   return (
     <>
       <ModalLogin modal={modal} onClose={loginModal} onSwap={swap} />
       <ModalRegister modal={modal2} onClose={registerModal} onSwap={swap} />
+      <ModalAddToList
+        show={modalAdd}
+        loginModalAdd={loginModalAdd}
+        title={midiaTitle}
+        id={midiaId}
+        type={2}
+      />
       <div className="search-anime-header">
         <div className="input-search-anime">
           <div
@@ -148,6 +169,7 @@ export default function SearchManga() {
               image={item.coverImage.large}
               tipoIntegracao="mangas"
               loginModal={loginModal}
+              handleMidia={handleMidia}
             />
           </div>
         ))}
