@@ -85,7 +85,7 @@ export default function AnimeInfoPage() {
 
   const verifyIfAlreadyInTheFavorite = () => {
     if (sessionStorage.authToken) {
-      let thisAnime;
+      let thisMidia;
       let idAssociativo;
       async function verify() {
         const response1 = await apiUser.get(
@@ -107,7 +107,7 @@ export default function AnimeInfoPage() {
         }
         return {
           listId: idLista,
-          animeId: thisAnime,
+          midiaId: thisMidia,
           id: idAssociativo,
         };
       }
@@ -122,7 +122,7 @@ export default function AnimeInfoPage() {
       async function fetchData() {
         try {
           let verified = await verifyIfAlreadyInTheFavorite();
-          if (!verified.animeId) {
+          if (!verified.midiaId) {
             apiUser
               .post(`/midia-lista/?idApi=${id}&idLista=${verified.listId}`)
               .then((response) => {

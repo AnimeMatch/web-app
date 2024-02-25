@@ -76,7 +76,7 @@ export default function MangaInfoPage() {
         setMangaData(mangaInfo.data);
         let verified = await verifyIfAlreadyInTheFavorite();
         if (verified) {
-          if (!verified.mangaId) {
+          if (!verified.midiaId) {
             setIsFavorite(false);
           } else {
             setIsFavorite(true);
@@ -91,7 +91,7 @@ export default function MangaInfoPage() {
 
   const verifyIfAlreadyInTheFavorite = () => {
     if (sessionStorage.authToken) {
-      let thisManga;
+      let thisMidia;
       let idAssociativo;
       async function verify() {
         const response1 = await apiUser.get(
@@ -113,7 +113,7 @@ export default function MangaInfoPage() {
         }
         return {
           listId: idLista,
-          mangaId: thisManga,
+          midiaId: thisMidia,
           id: idAssociativo,
         };
       }
@@ -128,7 +128,7 @@ export default function MangaInfoPage() {
       async function fetchData() {
         try {
           let verified = await verifyIfAlreadyInTheFavorite();
-          if (!verified.mangaId) {
+          if (!verified.midiaId) {
             apiUser
               .post(`/midia-lista/?idApi=${id}&idLista=${verified.listId}`)
               .then((response) => {
