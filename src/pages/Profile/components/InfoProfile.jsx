@@ -1,27 +1,26 @@
 import "../../../assets/css/infoProfile.css";
 import { useState, useEffect } from "react";
 import apiUser from "../../../apiUser";
+import EditInfoProfile from "./editInfoProfile"
 
 export default function InfoProfile() {
   const [user, setUser] = useState({
     name: "",
     email: "",
-    password: "",
     profileImage: "",
     coverImage: "",
     criacao: "",
-    status: true,
     genero: "",
     bio: ""
   });
-  const [image, setImage] = useState();
+  const [image, setImage] = useState("");
   const [editavel, setEditavel] = useState(false);
 
   useEffect(() => {
     apiUser
       .get(`/users/user?email=${sessionStorage.email}`)
       .then((response) => {
-        console.log(response.data);
+        // console.log(`USUARIO\n${response.data.profileImage}`);
         setUser(response.data);
         setGender(response.data.genero)
         setImage(`url("${response.data.profileImage}")`);
@@ -29,16 +28,24 @@ export default function InfoProfile() {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [user.profileImage]);
+
+  function teste() {
+    console.log(image )
+  }
 
   return (
     <>
+    {!editavel &&
       <div className="banner">
         <div className="user-info">
           <div className="bg">
             <div
               className="image-profile"
-              style={{ backgroundImage: user.profileImage, backgroundSize: "cover" }}
+              type="image"
+              style={{ backgroundImage: 
+                (`url("${user.profileImage}")`), 
+                backgroundSize: "cover" }}
             ></div>
             <div className="info-user">
               <div className="padding">
@@ -73,6 +80,11 @@ export default function InfoProfile() {
           </div>
         </div>
       </div>
+    }
+    {
+      editavel &&
+      <EditInfoProfile />
+    }
     </>
   );
 }

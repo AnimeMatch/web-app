@@ -1,0 +1,143 @@
+.banner {
+    background: linear-gradient(to bottom, #00071200 10px, #000712 60%), url('../images/backgrounds/Vector.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    height: 30%;
+    width: 100%;
+}
+
+.user-info {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    height: auto;
+    width: 100%;
+}
+
+.banner .bg {
+    background-image: none;
+    background-color: var(--bright-blue);
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    height: 9rem;
+    width: 90%;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.549);
+}
+
+.image-profile {
+    border: 4px solid #000712;
+    /* background-color: var(--white); */
+    position: relative;
+    height: 12rem;
+    width: 9rem;
+    bottom: 38%;
+    border-radius: 8px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.271);
+}
+
+.info-user {
+    width: 85%;
+    padding-left: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 5%;
+}
+
+.name-gender {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--white);
+}
+
+.name-gender span {
+    font-family: var(--font-primary);
+}
+
+.name {
+    display: flex;
+    width: auto;
+}
+
+.name span {
+    font-family: var(--font-third);
+    font-size: 26px;
+    font-weight: 500;
+}
+
+.name button {
+    border: none;
+    background-color: transparent;
+}
+
+.edit-image {
+    width: 2rem;
+    height: 2rem;
+    background-image: url("../images/logos/edit-profile.svg");
+    background-repeat: no-repeat;
+    background-size: 20px;
+    background-position: center;
+    cursor: pointer;
+}
+
+.edit-image:hover {
+    background-image: url("../images/logos/edit-profile-blue.svg");
+}
+
+.date-started {
+    font-family: var(--font-primary);
+    color: var(--white);
+}
+
+.padding {
+    padding-left: .5rem;
+    padding-right: 1rem;
+}
+
+.description {
+    border: 1.5px solid;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    /* padding-left: 1rem;
+    padding-right: 1rem; */
+    border-radius: 5px;
+    background-color: #3733A1;
+}
+
+.description span {
+    font-family: var(--font-third);
+    font-weight: 600;
+    color: var(--white);
+    width: 5%;
+}
+
+.text span {
+    word-wrap: break-word;
+    font-family: var(--font-primary);
+    font-weight: 400;
+    color: var(--white);
+    font-size: 14px;
+}
+
+.text {
+    width: 95%;
+    height: 50%;
+}
+
+.input-name-edit {
+    background-color: rgba(255, 255, 255, 0.641);
+    border: 1px solid #ccc;
+    padding: 10px;
+    color: black;
+    font-size: large;
+}
+
+.input-bio-edit {
+    height: 100%;
+    width: 100%;
+}
