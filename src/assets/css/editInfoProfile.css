@@ -28,7 +28,7 @@
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.549);
 }
 
-.image-profile {
+.image-profile-edit {
     border: 4px solid #000712;
     /* background-color: var(--white); */
     position: relative;
@@ -37,6 +37,21 @@
     bottom: 38%;
     border-radius: 8px;
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.271);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.image-profile-edit::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.315);
+    z-index: 1;
 }
 
 .info-user {
@@ -58,9 +73,14 @@
     font-family: var(--font-primary);
 }
 
+/* .name-gender input {
+    width: 60%;
+} */
+
 .name {
     display: flex;
-    width: auto;
+    align-items: center;
+    /* justify-content: space-between; */
 }
 
 .name span {
@@ -69,10 +89,10 @@
     font-weight: 500;
 }
 
-.name button {
+/* .name button {
     border: none;
     background-color: transparent;
-}
+} */
 
 .edit-image {
     width: 2rem;
@@ -93,10 +113,10 @@
     color: var(--white);
 }
 
-.padding {
+/* .padding {
     padding-left: .5rem;
     padding-right: 1rem;
-}
+} */
 
 .description {
     border: 1.5px solid;
@@ -114,30 +134,83 @@
     font-weight: 600;
     color: var(--white);
     width: 5%;
+    font-size: 15px;
 }
 
-.text span {
+/* .text span {
     word-wrap: break-word;
     font-family: var(--font-primary);
     font-weight: 400;
     color: var(--white);
     font-size: 14px;
+} */
+
+
+.input-name-edit {
+    /* font-size: large; */
+    font-family: var(--font-third);
+    font-size: 26px;
+    font-weight: 500;
 }
 
-.text {
-    width: 95%;
+::placeholder {
+    color: #ffffff;
+}
+
+.input-edit-geral {
+    color: rgb(255, 255, 255);
+    border: 1px solid #000000;
+    background-color: rgba(255, 255, 255, 0);
+    border-radius: 7px;
+    padding: 0 0 0 2%;
+}
+
+.text-bio {
+    width: 98%;
     height: 50%;
 }
 
-.input-name-edit {
-    background-color: rgba(255, 255, 255, 0.641);
-    border: 1px solid #ccc;
-    padding: 10px;
-    color: black;
-    font-size: large;
-}
-
-.input-bio-edit {
+.text-area-bio-edit {
+    /* height: calc(2em + 2px); */
     height: 100%;
     width: 100%;
+    
+    overflow: auto;
+    text-align: start;
+    outline: none;
+    border-radius: 3px;
+    padding: 0.2rem;
+    padding-left: 0.5rem;
+    scrollbar-width: none;
 }
+
+.edit-button {
+    font-family: var(--font-primary);
+    width: 4rem;
+    height: 1rem;
+    margin-left: 2%;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+}
+
+.save-button {
+    font-family: var(--font-primary);
+    background-color: #FFA800;
+}
+
+.cancel-button {
+    background-color: #D5D5D5;
+}
+
+.bg .plus-image {
+    width: 3.5rem;
+    height: 3.5rem;
+    z-index: 2;
+    cursor: pointer;
+}
+

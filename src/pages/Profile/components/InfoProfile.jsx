@@ -52,11 +52,10 @@ export default function InfoProfile() {
                 <div className="name-gender">
                   <div className="name">
                     <span>{sessionStorage.usuario}</span>
-                    <button
+                    <button  className="name-edit"
                       onClick={() =>
                         setEditavel(true)
-                      }
-                    >
+                      }>
                       <div className="edit-image"></div>
                     </button>
                   </div>
