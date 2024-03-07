@@ -22,7 +22,7 @@ export default function InfoProfile() {
       .then((response) => {
         // console.log(`USUARIO\n${response.data.profileImage}`);
         setUser(response.data);
-        setGender(response.data.genero)
+        // setGender(response.data.genero)
         setImage(`url("${response.data.profileImage}")`);
       })
       .catch((error) => {
