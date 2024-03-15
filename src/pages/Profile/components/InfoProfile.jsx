@@ -10,7 +10,6 @@ export default function InfoProfile() {
     apiUser
       .get(`/users/user?email=${sessionStorage.email}`)
       .then((response) => {
-        console.log(response.data);
         setUser(response.data);
         setImage(`url("${response.data.profileImage}")`);
       })

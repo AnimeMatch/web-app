@@ -1,5 +1,6 @@
 import CardListCustomizad from "./components/CardListCustomized";
-import CarroselProfile from "./components/CarroselProfile";
+import CarroselProfileManga from "./components/CarroselProfileManga";
+import CarroselProfileAnime from "./components/CarroselProfileAnime";
 import InfoProfile from "./components/InfoProfile";
 import StatusBar from "./components/StatusBar";
 
@@ -9,7 +10,8 @@ export default function Profile() {
       <InfoProfile></InfoProfile>
       <StatusBar />
       {/* <CardListCustomizad/> */}
-      <CarroselProfile />
+      <CarroselProfileAnime />
+      <CarroselProfileManga />
     </>
   );
 }
