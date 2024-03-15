@@ -30,7 +30,7 @@ export default function CarroselProfileAnime() {
   const styleModal = {
     width: "17.5rem",
   };
-  console.log(lists);
+
   return (
     <>
       <div className="carrosel-container">

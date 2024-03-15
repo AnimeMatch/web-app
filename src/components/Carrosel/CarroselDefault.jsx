@@ -8,23 +8,34 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "../../assets/css/carroselHome.css";
 import "../../assets/css/responsive/carroselHomeTablet.css";
+import apiUser from "../../apiUser";
 
 export default function CarroselDefault(props) {
   const [getList, setList] = useState([]);
   const [slidesPerView, setSlidesPerView] = useState(1);
-
+  
   useEffect(() => {
-    api
-      .get(
-        `/${props.tipoIntegracao}/cards/${props.uri}page=${props.pagina}&qtdPaginas=15`
-      )
-      .then((response) => {
-        console.log(response.data.media)
-        setList(response.data.media);
-      })
-      .catch((error) => {
+    const fetchData = async () => {
+      try {
+        if (props.profile) {
+          if (props.uri) {
+            const response = await apiUser.get(
+              `/midia-lista/midias-da-lista?listaId=${props.uri}`
+            );
+            setList(response.data);
+          }
+        } else {
+          const response = await api.get(
+            `/${props.tipoIntegracao}/cards/${props.uri}page=${props.pagina}&qtdPaginas=15`
+          );
+          setList(response.data.media);
+        }
+      } catch (error) {
         console.log(error);
-      });
+      }
+    };
+
+    fetchData();
   }, []);
 
   useEffect(() => {
@@ -63,16 +74,28 @@ export default function CarroselDefault(props) {
         className="swiperHome"
       >
         {getList.map((item) => (
-          <SwiperSlide key={item.id}>
-            <CardAnime
-              id={item.id}
-              title={item.title.romaji}
-              image={item.coverImage.large}
-              tipoIntegracao={props.tipoIntegracao}
-              loginModal={props.loginModal}
-              handleMidia={props.handleMidia}
-              type={props.type}
-            />
+          <SwiperSlide key={item.idApi}>
+            {props.profile ? (
+              <CardAnime
+                id={item.idApi}
+                title={item.nome}
+                image={item.imagem}
+                tipoIntegracao={props.tipoIntegracao}
+                loginModal={props.loginModal}
+                handleMidia={props.handleMidia}
+                type={props.type}
+              />
+            ) : (
+              <CardAnime
+                id={item.id}
+                title={item.title.romaji}
+                image={item.coverImage.large}
+                tipoIntegracao={props.tipoIntegracao}
+                loginModal={props.loginModal}
+                handleMidia={props.handleMidia}
+                type={props.type}
+              />
+            )}
           </SwiperSlide>
         ))}
       </Swiper>
