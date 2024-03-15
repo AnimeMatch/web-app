@@ -8,7 +8,6 @@ import GenderHome from "./components/GenderHome";
 import ModalAddToList from "../Info/components/ModalAddToList";
 
 export default function Home() {
-
   const [modal, setModal] = useState(false);
   const [modal2, setModal2] = useState(false);
 
@@ -30,7 +29,7 @@ export default function Home() {
   const handleMidia = (midiaId, midiaTitle, midiaType) => {
     setMidiaId(midiaId);
     setMidiaTitle(midiaTitle);
-    setMidiaType(midiaType)
+    setMidiaType(midiaType);
     loginModalAdd();
   };
 
@@ -49,12 +48,23 @@ export default function Home() {
         id={midiaId}
         type={midiaType}
       />
-      <Banner
-        h1="O melhor lugar para organizar os seus animes e mangas"
-        span="Explore e ilumine o seu caminho de diversão com uma variedade imensa de animes e mangas"
-        btn="Cadastre-se"
-        show={true}
-      />
+      {sessionStorage.getItem("authToken") ? (
+        <Banner
+          h1={"Bem vindo " + sessionStorage.getItem("usuario") + " !!"}
+          span="Agora você já pode montar suas listas customizadas e deixar registrado sua forma de ver o mundo."
+          btn="Bora lá"
+          show={true}
+        />
+      ) : (
+        <Banner
+          h1="O melhor lugar para organizar os seus animes e mangas"
+          span="Explore e ilumine o seu caminho de diversão com uma variedade imensa de animes e mangas"
+          btn="Cadastre-se"
+          show={true}
+          registerModal={registerModal}
+        />
+      )}
+
       <CarroselDefault
         pagina="1"
         listTitle="Animes da temporada"
