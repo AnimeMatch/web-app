@@ -20,7 +20,6 @@ export default function InfoProfile() {
     apiUser
       .get(`/users/user?email=${sessionStorage.email}`)
       .then((response) => {
-        // console.log(`USUARIO\n${response.data.profileImage}`);
         setUser(response.data);
         // setGender(response.data.genero)
         setImage(`url("${response.data.profileImage}")`);

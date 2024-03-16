@@ -6,15 +6,21 @@ import CardListCustomizad from "./CardListCustomized";
 import { useEffect, useState } from "react";
 import apiUser from "../../../apiUser";
 
-export default function CarroselProfile() {
+export default function CarroselProfileAnime() {
   const [lists, setLists] = useState([]);
 
   useEffect(() => {
     apiUser
       .get(`/lists/listas-usuario?email=${sessionStorage.email}`)
       .then((response) => {
-        setLists(response.data);
-        console.log(response.data);
+        let animesLists = [];
+        let lists = response.data;
+        lists.forEach((list) => {
+          if (list.type == 1) {
+            animesLists.push(list);
+          }
+        });
+        setLists(animesLists);
       })
       .catch((error) => {
         console.log(error);
@@ -30,7 +36,7 @@ export default function CarroselProfile() {
       <div className="carrosel-container">
         <div className="bg">
           <div className="title-add">
-            <span> Listas do usuario </span>
+            <span> Listas de anime do usuario </span>
             <div className="add-list"></div>
           </div>
           <Swiper
@@ -43,10 +49,13 @@ export default function CarroselProfile() {
             scrollbar={{ draggable: true }}
             className="swiperProfile"
           >
-            {/* <button></button> */}
             {lists.map((item) => (
-              <SwiperSlide style={styleModal}>
-                <CardListCustomizad listName={item.name} id={item.id} />
+              <SwiperSlide key={item.id} style={styleModal}>
+                <CardListCustomizad
+                  listName={item.name}
+                  id={item.id}
+                  type={item.type}
+                />
               </SwiperSlide>
             ))}
           </Swiper>
