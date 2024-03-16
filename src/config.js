@@ -1,11 +1,11 @@
 const dev = {
-    VITE_URL_ANILIST: "localhost:8080",
-    VITE_URL_DATABASE: "localhost:8081"
+    VITE_URL_ANILIST: "http://localhost:8080",
+    VITE_URL_DATABASE: "http://localhost:8081"
   };
   
   const prod = {
-    VITE_URL_ANILIST: "10.0.0.160:8080",
-    VITE_URL_DATABASE: "10.0.0.160:8081"
+    VITE_URL_ANILIST: "http://10.0.0.160:8080",
+    VITE_URL_DATABASE: "http://10.0.0.160:8081"
   };
   
   const config = {
