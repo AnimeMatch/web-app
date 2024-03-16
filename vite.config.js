@@ -6,12 +6,8 @@ export default defineConfig({
   server: {
     cors: false,
     proxy: {
-      '/random_joke': {
-        target: 'https://official-joke-api.appspot.com/',
-        changeOrigin: true,
-        secure: false,
-      },
-    },
-  },
+      "*": "http://localhost:5173",
+    }  
+  } ,
   plugins: [react()],
 })
