@@ -47,11 +47,12 @@ export default function CardAnime(props) {
             idList = e.id;
           }
         }
-      }
+      }   
       console.log(id);
       
     });
     console.log(idList);
+    console.log("TESTE 2");
     apiUser
       .post(`/midia-lista/?idApi=${props.id}&idLista=${idList}`)
       .then((response) => {

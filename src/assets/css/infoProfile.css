@@ -70,9 +70,9 @@
   font-weight: 500;
 }
 
-.name button {
-  border: none;
-  background-color: transparent;
+.name-edit {
+    border: none;
+    background-color: transparent;
 }
 
 .edit-image {
