@@ -236,7 +236,10 @@ a {
   flex-direction: column;
   margin: 0.6rem;
 }
-
+.inside-toggle-menu {
+  display: flex;
+  align-items: center;
+}
 .icon-profile {
   background-image: url("../images//logos/do-utilizador.svg");
   height: 18px;
@@ -261,7 +264,32 @@ a {
   background-repeat: no-repeat;
   background-size: contain;
 }
+.perfil-image {
+  background-color: #aaa;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+  position: relative;
+}
+.perfil-image img {
+  position: absolute;
+  bottom: 0;
+  top: 5%;
+  width: 100%;
+}
 
+.user-menu {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 10%;
+  width: 100%;
+  cursor: pointer;
+}
+.user-menu-name {
+  color: var(--white);
+}
 /* -------------------------MODAIS------------------------------ */
 
 .modal-login,
