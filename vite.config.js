@@ -5,16 +5,15 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   server: {
     proxy: {
-      '*': {
+      '/api': {
         target: 'http://localhost:5173',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\//, ''),
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE',
-          'Access-Control-Allow-Headers': 'Content-Type',
-        },
+        rewrite: (path) => path.replace(/^\/api/, ''),
       },
     },
+  },
+  plugins: [react()],
+  server: {
+    cors: true,
   },
 });
