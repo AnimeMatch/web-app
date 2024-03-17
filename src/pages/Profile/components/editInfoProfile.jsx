@@ -122,7 +122,7 @@ export default function editInfoProfile() {
   return (
     <>
     {editavel &&
-      <div className="banner">
+      <div className="banner-profile">
         <div className="user-info">
           <div className="bg">
             <div
