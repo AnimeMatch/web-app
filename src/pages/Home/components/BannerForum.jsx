@@ -1,3 +1,4 @@
+import React from 'react';
 import "../../../assets/css/bannerForum.css";
 import "../../../assets/css/responsive/bannerForumTablet.css";
 

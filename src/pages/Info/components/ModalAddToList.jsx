@@ -1,3 +1,4 @@
+import React from 'react';
 import "../../../assets/css/modalAddToList.css";
 import x from "../../../assets/images/deafault/X.svg";
 import apiUser from "../../../apiUser";

@@ -1,3 +1,4 @@
+import React from 'react';
 import { Link } from "react-router-dom";
 import "../../../assets/css/banner.css";
 import "../../../assets/css/responsive/bannerTablet.css";

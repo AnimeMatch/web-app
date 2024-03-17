@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState } from "react";
 import CarroselDefault from "../../components/Carrosel/CarroselDefault";
 import ModalLogin from "../../components/Modais/ModalLogin";

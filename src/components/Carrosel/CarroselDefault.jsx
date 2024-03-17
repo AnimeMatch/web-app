@@ -19,12 +19,10 @@ export default function CarroselDefault(props) {
       try {
         if (props.profile) {
           if (props.uri) {
-            console.log("\n\nDentro do Fetch\n\n")
             const response = await apiUser.get(
               `/midia-lista/midias-da-lista?listaId=${props.uri}`
             );
             setList(response.data);
-            console.log(`\n\nResposta: ${response.data}\n\n`)
           }
         } else {
           const response = await api.get(
@@ -42,7 +40,6 @@ export default function CarroselDefault(props) {
 
   useEffect(() => {
     const updateSlidesPerView = () => {
-      console.log(`\n\nCheguei no window\n\n`)
       const screenWidth = window.innerWidth;
       if (screenWidth > 1024) {
         setSlidesPerView(5.2);
