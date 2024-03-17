@@ -41,7 +41,6 @@ export default function CarroselDefault(props) {
   useEffect(() => {
     const updateSlidesPerView = () => {
       const screenWidth = window.innerWidth;
-      console.log(`\n\nPassei do window\n\n`)
       if (screenWidth > 1024) {
         setSlidesPerView(5.2);
       } else if (screenWidth >= 768) {
