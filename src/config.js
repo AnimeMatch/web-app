@@ -1,13 +1,13 @@
 import { getOS } from './getOS';
 
 const dev = {
-    VITE_URL_ANILIST: "http://localhost:8080",
-    VITE_URL_DATABASE: "http://localhost:8081"
+    VITE_URL_ANILIST: "http://localhost:8081",
+    VITE_URL_DATABASE: "http://localhost:8080"
   };
   
   const prod = {
-    VITE_URL_ANILIST: `http://${import.meta.env.VITE_SERVER_IP}:8080`,
-    VITE_URL_DATABASE: `http://${import.meta.env.VITE_SERVER_IP}:8081`
+    VITE_URL_ANILIST: `http://${import.meta.env.VITE_SERVER_IP}:8081`,
+    VITE_URL_DATABASE: `http://${import.meta.env.VITE_SERVER_IP}:8080`
   };
   
   var config = {

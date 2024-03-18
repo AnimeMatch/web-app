@@ -50,7 +50,7 @@ export default function InfoProfile() {
               <div className="padding">
                 <div className="name-gender">
                   <div className="name">
-                    <span>{sessionStorage.usuario}</span>
+                    <span>{user.name}</span>
                     <button  className="name-edit"
                       onClick={() =>
                         setEditavel(true)
