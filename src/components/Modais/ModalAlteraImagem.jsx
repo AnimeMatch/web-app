@@ -80,7 +80,7 @@ export default function ModalAlteraImagem(props){
                         <div className="perfil-images">
                             {profileImages &&
                                 profileImages.map((item) => (
-                                    <div className="card-anime-search-area" key={item.id}>
+                                    <div className="card-anime-search-area imagens-profile-search" key={item.id}>
                                         <img src={item.image.large}
                                                 alt=""
                                                 className={item.id === selectedImage ? "image-item-selected" : "image-item-not-selected"}
