@@ -6,4 +6,15 @@ const apiUser = axios.create({
   baseURL: "/apo"
 });
 
+apiUser.interceptors.request.use(
+  (config) => {
+
+    config.headers['Access-Control-Allow-Origin'] = '*';
+
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+});
+
 export default apiUser;
