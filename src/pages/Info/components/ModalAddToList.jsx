@@ -3,11 +3,13 @@ import "../../../assets/css/modalAddToList.css";
 import x from "../../../assets/images/deafault/X.svg";
 import apiUser from "../../../apiUser";
 import { useEffect, useState } from "react";
+import Swal from "sweetalert2";
 
 export default function ModalAddToList(props) {
   const [lists, setLists] = useState([]);
   const [selected, setSelected] = useState();
   const [searchTerm, setSearchTerm] = useState("");
+  const [listName, setListName] = useState("");
 
   useEffect(() => {
     if (sessionStorage.email) {
@@ -29,8 +31,9 @@ export default function ModalAddToList(props) {
     }
   }, []);
 
-  const selectedList = (id) => {
+  const selectedList = (id, name) => {
     setSelected(id);
+    setListName(name);
   };
 
   const handleSearchTermChange = (event) => {
@@ -48,7 +51,17 @@ export default function ModalAddToList(props) {
         console.log(response);
         props.loginModalAdd();
         if (response.status == 201) {
+          Swal.fire({
+            title: "Adicionado na lista: " + listName,
+            icon: "success",
+            showConfirmButton: false,
+            timer: 1700,
+            width: "24em",
+            color: "#fff",
+            background: "#000712",
+          });
           setSelected(null);
+          setListName("");
         }
       })
       .catch((error) => {
@@ -89,7 +102,7 @@ export default function ModalAddToList(props) {
                     key={item.id}
                     className={item.id === selected ? "list-select" : "list"}
                     id={item.id}
-                    onClick={() => selectedList(item.id)}
+                    onClick={() => selectedList(item.id, item.name)}
                   >
                     {item.name}
                   </div>

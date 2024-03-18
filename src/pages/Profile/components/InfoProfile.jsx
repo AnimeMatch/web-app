@@ -36,7 +36,7 @@ export default function InfoProfile() {
   return (
     <>
     {!editavel &&
-      <div className="banner">
+      <div className="banner-profile">
         <div className="user-info">
           <div className="bg">
             <div
@@ -50,7 +50,7 @@ export default function InfoProfile() {
               <div className="padding">
                 <div className="name-gender">
                   <div className="name">
-                    <span>{sessionStorage.usuario}</span>
+                    <span>{user.name}</span>
                     <button  className="name-edit"
                       onClick={() =>
                         setEditavel(true)

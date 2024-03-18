@@ -6,12 +6,13 @@ import { useState } from "react";
 export default function ModalAlteracaoPendente(props){
     return (
       <>
+      {props.isOpen &&
       <div className="atention-modal-overlay">
         <div className="atention-painel-principal">
               <div className="atention-image-area">
                   <div className="atention-image"
                   style={{background: (`url("${atentionImage}")`), 
-                  backgroundSize: "couver"}}>
+                  backgroundSize: "cover"}}>
                   </div>
               </div>
               <div className="text-content">
@@ -31,7 +32,7 @@ export default function ModalAlteracaoPendente(props){
                   </button>
               </div>
           </div>
-      </div>
+      </div>}
       </>
     );
 }
