@@ -3,7 +3,7 @@ import config from "./config";
 
 const apiUser = axios.create({
   // baseURL: `${config.VITE_URL_ANILIST}/`
-  baseURL: "/api2"
+  baseURL: "/api"
 });
 
 export default apiUser;
