@@ -72,7 +72,6 @@ export default function MangaInfoPage() {
     async function validateDataManga() {
       try {
         const mangaInfo = await api.get(`/mangas/manga?mangaId=${id}`);
-        console.log(mangaInfo.data.type);
         setMangaData(mangaInfo.data);
         let verified = await verifyIfAlreadyInTheFavorite();
         if (verified) {
@@ -195,8 +194,9 @@ export default function MangaInfoPage() {
             <div>
               <button
                 className="btn-secundary add"
+                id={id}
                 onClick={(event) =>
-                  handleMidia(event.target.id, animeData.title.romaji)
+                  handleMidia(event.target.id, mangaData.title.romaji)
                 }
               >
                 {" "}

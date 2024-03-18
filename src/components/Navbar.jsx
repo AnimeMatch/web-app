@@ -1,22 +1,33 @@
 import "../assets/css/navbar.css";
 import "../assets/css/responsive/navbarTablet.css";
-import React from 'react';
+import React, { useEffect } from "react";
 import logo from "../assets/images/logos/logoNavbar.png";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import ModalLogin from "./Modais/ModalLogin.jsx";
 import ModalRegister from "./Modais/ModalRegister.jsx";
 import ModalUpdate from "./Modais/ModalUpdate.jsx";
+import apiUser from "../apiUser.js";
 
 export default function Navbar() {
   const [modal, setModal] = useState(false);
   const [modal2, setModal2] = useState(false);
   const [modal3, setModal3] = useState(false);
   const [isMenuOpen, setMenuOpen] = useState(false);
+  const [user, setUser] = useState({
+    name: "",
+    email: "",
+    profileImage: "",
+    coverImage: "",
+    criacao: "",
+    genero: "",
+    bio: "",
+  });
+  const [image, setImage] = useState("");
 
   const toggleMenu = () => {
     setMenuOpen(!isMenuOpen);
-    document.body.style.overflow = isMenuOpen ? "scroll" : "hidden";
+    // document.body.style.overflow =  "scroll" ;
   };
 
   const handleLogout = () => {
@@ -57,21 +68,35 @@ export default function Navbar() {
     setModal2(!modal2);
   };
 
+  useEffect(() => {
+    if (sessionStorage.getItem("authToken")) {
+      apiUser
+        .get(`/users/user?email=${sessionStorage.email}`)
+        .then((response) => {
+          setUser(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }, []);
+
   const renderAuthenticatedContent = () => {
     return (
       <>
         <div className="margin">
-          <button className="menu-nav" onClick={toggleMenu}>
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
+          <div className="user-menu" onClick={toggleMenu}>
+            <span className="user-menu-name">{user.name}</span>
+            <div className="perfil-image">
+              <img src={user.profileImage} alt="" id="" />
+            </div>
+          </div>
         </div>
 
         <div className="menu-option" style={menuStyle}>
           <ol>
             <li style={fontStyle}>
-              <Link to="profile">
+              <Link to="profile" className="inside-toggle-menu">
                 <div className="icon-profile"></div>
                 <span>Perfil</span>
               </Link>
@@ -81,7 +106,11 @@ export default function Navbar() {
               <span>Gerenciar conta</span>
             </li>
             <li style={fontStyle}>
-              <Link to="/" onClick={handleLogout}>
+              <Link
+                to="/"
+                onClick={handleLogout}
+                className="inside-toggle-menu"
+              >
                 <div className="icon-exit"></div>
                 <span>Sair</span>
               </Link>

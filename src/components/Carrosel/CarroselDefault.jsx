@@ -9,11 +9,12 @@ import "swiper/css/navigation";
 import "../../assets/css/carroselHome.css";
 import "../../assets/css/responsive/carroselHomeTablet.css";
 import apiUser from "../../apiUser";
+import { Link } from "react-router-dom";
 
 export default function CarroselDefault(props) {
   const [getList, setList] = useState([]);
   const [slidesPerView, setSlidesPerView] = useState(1);
-  
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -36,7 +37,7 @@ export default function CarroselDefault(props) {
     };
 
     fetchData();
-  }, []);
+  }, [props.uri]);
 
   useEffect(() => {
     const updateSlidesPerView = () => {
@@ -59,46 +60,66 @@ export default function CarroselDefault(props) {
 
   return (
     <>
-      <div className="listTitle">
-        <span className="title">{props.listTitle}</span>
-        <span className="more">Mais</span>
-      </div>
-      <Swiper
-        modules={[Navigation, Pagination, Scrollbar, A11y]}
-        slidesPerView={slidesPerView}
-        speed={1000}
-        slidesPerGroup={3}
-        navigation
-        pagination={{ clickable: true }}
-        scrollbar={{ draggable: true }}
-        className="swiperHome"
-      >
-        {getList.map((item) => (
-          <SwiperSlide key={item.idApi}>
-            {props.profile ? (
-              <CardAnime
-                id={item.idApi}
-                title={item.nome}
-                image={item.imagem}
-                tipoIntegracao={props.tipoIntegracao}
-                loginModal={props.loginModal}
-                handleMidia={props.handleMidia}
-                type={props.type}
-              />
-            ) : (
-              <CardAnime
-                id={item.id}
-                title={item.title.romaji}
-                image={item.coverImage.large}
-                tipoIntegracao={props.tipoIntegracao}
-                loginModal={props.loginModal}
-                handleMidia={props.handleMidia}
-                type={props.type}
-              />
-            )}
-          </SwiperSlide>
-        ))}
-      </Swiper>
+      {getList ? (
+        <>
+          <div className="listTitle">
+            <span className="title">{props.listTitle}</span>
+            <span className="more">Mais</span>
+          </div>
+          <Swiper
+            modules={[Navigation, Pagination, Scrollbar, A11y]}
+            slidesPerView={slidesPerView}
+            speed={1000}
+            slidesPerGroup={3}
+            navigation
+            pagination={{ clickable: true }}
+            scrollbar={{ draggable: true }}
+            className="swiperHome"
+          >
+            {getList.map((item) => (
+              <SwiperSlide key={item.idApi}>
+                {props.profile ? (
+                  <CardAnime
+                    id={item.idApi}
+                    title={item.nome}
+                    image={item.imagem}
+                    tipoIntegracao={props.tipoIntegracao}
+                    loginModal={props.loginModal}
+                    handleMidia={props.handleMidia}
+                    type={props.type}
+                  />
+                ) : (
+                  <CardAnime
+                    id={item.id}
+                    title={item.title.romaji}
+                    image={item.coverImage.large}
+                    tipoIntegracao={props.tipoIntegracao}
+                    loginModal={props.loginModal}
+                    handleMidia={props.handleMidia}
+                    type={props.type}
+                  />
+                )}
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </>
+      ) : (
+        <>
+          <div className="listTitle">
+            <span className="title">{props.listTitle}</span>
+            <span className="more">Mais</span>
+          </div>
+          <Link
+            to={props.type == 2 ? "../search/manga/" : "../search/anime/"}
+            className="add-to-list-height"
+          >
+            <div className="add-to-list-card">
+              <div className="add-list"></div>
+              <span>Adicionar {props.type == 2 ? "Manga" : "Anime"}</span>
+            </div>
+          </Link>
+        </>
+      )}
     </>
   );
 }

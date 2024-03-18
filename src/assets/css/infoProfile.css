@@ -1,4 +1,4 @@
-.banner {
+.banner-profile {
   background: linear-gradient(to bottom, #00071200 10px, #000712 60%),
     url("../images/backgrounds/Vector.svg");
   background-repeat: no-repeat;
@@ -16,7 +16,7 @@
   width: 100%;
 }
 
-.banner .bg {
+.banner-profile .bg {
   background-image: none;
   background-color: var(--bright-blue);
   display: flex;
@@ -71,8 +71,8 @@
 }
 
 .name-edit {
-    border: none;
-    background-color: transparent;
+  border: none;
+  background-color: transparent;
 }
 
 .edit-image {
