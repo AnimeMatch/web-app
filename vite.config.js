@@ -6,14 +6,17 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:5173',
+        target: `http://${import.meta.env.VITE_SERVER_IP}:8080/`,
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
       },
+      '/api2': {
+        target: `http://${import.meta.env.VITE_SERVER_IP}:8081/`,
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api2/, ''),
+      },
     },
-  },
-  plugins: [react()],
-  server: {
     cors: true,
   },
+  plugins: [react()],
 });
