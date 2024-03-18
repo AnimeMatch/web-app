@@ -4,6 +4,7 @@ import apiUser from "../../../apiUser";
 import InfoProfile from "./InfoProfile"
 import mais from "../../../assets/images/deafault/mais.svg"
 import ModalAlteracaoPendente from "../../../components/Modais/ModalAlteracaoPendente";
+import ModalAlteraImagem from "../../../components/Modais/ModalAlteraImagem";
 
 export default function editInfoProfile() {
   const [user, setUser] = useState({
@@ -18,31 +19,28 @@ export default function editInfoProfile() {
   const [editavel, setEditavel] = useState(true);
   const [atentionStyle, setAtentionStyle] = useState('')
 
-  const [nameUpdate, setNameUpdate] = useState()
-  const [profileImageUpdate, setProfileImageUpdate] = useState()
-  const [generoUpdate, setGeneroUpdate] = useState()
-  const [bioUpdate, setBioUpdate] = useState()
+  const [nameUpdate, setNameUpdate] = useState(null)
+  const [profileImageUpdate, setProfileImageUpdate] = useState(null)
+  const [generoUpdate, setGeneroUpdate] = useState(null)
+  const [bioUpdate, setBioUpdate] = useState(null)
 
   const [modalAlteracaoOpen, setModalAlteracaoOpen] = useState(false);
-
-  const openModalAlteracao = () => {
-    setModalAlteracaoOpen(true);
-  };
-
-  const closeModalAlteracao = () => {
-    console.log("O fechamento de modal funcionou")
-    setModalAlteracaoOpen(false);
-    setEditavel(!editavel)
-  };
-
-  const fecharEdicao = () => {
-    setModalAlteracaoOpen(!modalAlteracaoOpen)
-    setEditavel(!editavel)
-  }
+  const [modalImagemOpen, setModalImagemOpen] = useState(false);
 
   function buscaUser(){
-    useEffect(() => {
-      apiUser
+    apiUser
+      .get(`/users/user?email=${sessionStorage.email}`)
+      .then((response) => {
+        // console.log(`USUARIO\n${response.data.profileImage}`);
+        setUser(response.data);
+        // setImage(`url("${response.data.profileImage}")`);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+  useEffect(() => {
+    apiUser
         .get(`/users/user?email=${sessionStorage.email}`)
         .then((response) => {
           // console.log(`USUARIO\n${response.data.profileImage}`);
@@ -52,47 +50,33 @@ export default function editInfoProfile() {
         .catch((error) => {
           console.log(error);
         });
-    }, [user.profileImage]);
-  }
-
-  buscaUser()
+  },[])
 
   function salvarEdicao (){
-    const [userUpdate, setUserUpdate] = useState({
+    if (nameUpdate || profileImageUpdate || generoUpdate || bioUpdate){
+      apiUser
+      .put(`/users/`, 
+      {
         id: user.id,
-        name: nameUpdate,
-        // password: null,
-        profileImage: profileImageUpdate,
-        // coverImage: null,
-        genero: generoUpdate,
-        bio: bioUpdate
-    })
-
-    const token = sessionStorage.authToken;
-    const config = {
-      headers: {
-        'Authorization': `Bearer ${token}`
-      }
-    };
-    
-    useEffect(() => {
-        apiUser
-          .put(`/users/`, userUpdate, config)
-          .then((response) => {
-            if (response.status === 200) {
-                // card de requisição bem sucedida
-              }
-              console.log(response)
-            })
-            .catch((error) => {
-              if (error.response) {
-                // card de requisição mal sucedida
-              }
-            console.log(error);
-          });
-      }, []);
-
-      buscaUser()
+          name: nameUpdate,
+          // password: null,
+          profileImage: profileImageUpdate,
+          // coverImage: null,
+          genero: generoUpdate,
+          bio: bioUpdate
+      })
+      .then((response) => {
+          console.log("\nUSER EDITADO COM SUCESSO\n")
+          console.log(response)
+            // card de requisição bem sucedida
+        })
+        .catch((error) => {
+            console.log(`\nFALHA AO EDITAR USUÁRIO. ERRO:\n`)
+            console.log(error.response)
+            // card de requisição mal sucedida
+      });
+      // buscaUser()
+    }
     setEditavel(false)
   }
 
@@ -108,15 +92,42 @@ export default function editInfoProfile() {
     setBioUpdate(event.target.value);
   };
 
-  const handleInputChange = (event) => {
-    setInputValue(event.target.value);
-    handleBioChange();
-  };
-
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
       event.preventDefault();
     }
+  };
+
+  const cancelaEdicao = () => {
+    if (nameUpdate || profileImageUpdate || generoUpdate || bioUpdate){
+      openModalAlteracao()
+    } else {
+      fecharEdicao()
+    }
+  }
+
+  const openModalAlteracao = () => {
+    setModalAlteracaoOpen(true);
+  };
+
+  const closeModalAlteracao = () => {
+    setModalAlteracaoOpen(!modalAlteracaoOpen);
+  };
+
+  const profileImageToSave = (valor) => {
+    setProfileImageUpdate(valor)
+    console.log(valor)
+    closeModalImagem()
+    document.body.style.overflow = 'auto';
+  }
+  
+  const fecharEdicao = () => {
+    setModalAlteracaoOpen(false)
+    setEditavel(!editavel)
+  }
+  
+  const closeModalImagem = () => {
+    setModalImagemOpen(!modalImagemOpen);
   };
 
   return (
@@ -135,33 +146,31 @@ export default function editInfoProfile() {
               <div className="plus-image" 
               type="image" 
               style={{backgroundImage: (`url("${mais}")`), 
-              backgroundSize: "cover" }}></div>
+              backgroundSize: "cover" }}
+              onClick={() => setModalImagemOpen(!modalImagemOpen)}
+              ></div>
             </div>
             <div className="info-user">
               <div className="padding">
                 <div className="name-gender">
                   <div className="name">
-                    <input placeholder={sessionStorage.usuario} 
+                    <input placeholder={user.name} 
                     className="input-name-edit input-edit-geral"
                     maxLength={22}
-                    // value={name}
                     onChange={handleNomeChange}
                     />
                     <button className="save-button edit-button"
                       onClick={() =>
-                        setEditavel(false)}>salvar
-                      {/* <div className="edit-image"></div> */}
+                        salvarEdicao()}>salvar
                     </button>
                     <button 
                     className="cancel-button edit-button"
-                    onClick={() => openModalAlteracao()}>
+                    onClick={() => cancelaEdicao()}>
                       cancelar</button>
                   </div>
-                  {/* <span>{user.genero}</span> */}
                   <input type="text" 
                   placeholder={user.genero} 
                   className="input-edit-geral"
-                  // value={genero}
                   onChange={handleGeneroChange}
                   />
                 </div>
@@ -177,7 +186,7 @@ export default function editInfoProfile() {
                   <textarea placeholder={user.bio} 
                   className="text-area-bio-edit input-edit-geral" 
                   rows="2"
-                  onChange={handleInputChange}
+                  onChange={handleBioChange}
                   onKeyDown={handleKeyDown}
                   maxLength={200}
                   // value={bio}
@@ -193,14 +202,17 @@ export default function editInfoProfile() {
       !editavel &&
       <InfoProfile />
     }
-    {
-      modalAlteracaoOpen &&
-      <ModalAlteracaoPendente
-        isOpen={modalAlteracaoOpen}
-        closeAlteracaoModal={closeModalAlteracao}
-        fecharEdicao={fecharEdicao}
-      />
-    }
+    <ModalAlteracaoPendente
+      isOpen={modalAlteracaoOpen}
+      closeModalAlteracao={closeModalAlteracao}
+      fecharEdicao={fecharEdicao}
+    />
+
+    <ModalAlteraImagem
+      isOpen={modalImagemOpen}
+      closeModalImagem={closeModalImagem}
+      profileImageToSave={profileImageToSave}
+    />
     </>
   );
 }
