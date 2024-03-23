@@ -95,7 +95,7 @@ export default function Navbar() {
 
         <div className="menu-option" style={menuStyle}>
           <ol>
-            <li style={fontStyle}>
+            <li style={fontStyle} onClick={toggleMenu}>
               <Link to="profile" className="inside-toggle-menu">
                 <div className="icon-profile"></div>
                 <span>Perfil</span>
