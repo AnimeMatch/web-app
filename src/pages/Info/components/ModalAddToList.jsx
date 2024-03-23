@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import "../../../assets/css/modalAddToList.css";
 import x from "../../../assets/images/deafault/X.svg";
 import apiUser from "../../../apiUser";
@@ -29,7 +29,7 @@ export default function ModalAddToList(props) {
           console.log(error);
         });
     }
-  }, []);
+  }, [props.type]);
 
   const selectedList = (id, name) => {
     setSelected(id);
@@ -78,8 +78,8 @@ export default function ModalAddToList(props) {
             <div className="header-area">
               <span className="modal-title-overlay">
                 Adicinar:{" "}
-                <span className="modal-title-inside">{props.title}</span> a
-                sua lista
+                <span className="modal-title-inside">{props.title}</span> a sua
+                lista
               </span>
               <img
                 className="close-button"
@@ -97,16 +97,17 @@ export default function ModalAddToList(props) {
             />
             <div className="listOfLists">
               <div className="list-of-lists">
-                {filteredLists.map((item, index) => (
-                  <div
-                    key={item.id}
-                    className={item.id === selected ? "list-select" : "list"}
-                    id={item.id}
-                    onClick={() => selectedList(item.id, item.name)}
-                  >
-                    {item.name}
-                  </div>
-                ))}
+                {filteredLists &&
+                  filteredLists.map((item, index) => (
+                    <div
+                      key={item.id}
+                      className={item.id === selected ? "list-select" : "list"}
+                      id={item.id}
+                      onClick={() => selectedList(item.id, item.name)}
+                    >
+                      {item.name}
+                    </div>
+                  ))}
               </div>
             </div>
             <div className="modal-footer">
