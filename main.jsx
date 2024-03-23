@@ -9,6 +9,7 @@ import Profile from "./src/pages/Profile/Profile.jsx";
 import ForumPage from "./src/pages/Forum/ForumPage.jsx";
 import SearchManga from "./src/pages/search/SearchManga.jsx";
 import SearchAnime from "./src/pages/search/SearchAnime.jsx";
+import Lists from "./src/pages/Lists/Lists.jsx"
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ScrollTop from "./src/components/ScrollTop.jsx";
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
       {
         path: "search/anime/",
         element: <SearchAnime />,
+      },
+      {
+        path: "list/:id/*",
+        element: <Lists />,
       },
     ],
   },
