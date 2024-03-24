@@ -64,7 +64,15 @@ export default function CarroselDefault(props) {
         <>
           <div className="listTitle">
             <span className="title">{props.listTitle}</span>
-            <span className="more">Mais</span>
+            {props.profile ? (
+              <Link>{/* <span className="more">Mais</span> */}</Link>
+            ) : (
+              <Link
+                to={props.type == 2 ? "../search/manga/" : "../search/anime/"}
+              >
+                <span className="more">Mais</span>
+              </Link>
+            )}
           </div>
           <Swiper
             modules={[Navigation, Pagination, Scrollbar, A11y]}
@@ -107,7 +115,11 @@ export default function CarroselDefault(props) {
         <>
           <div className="listTitle">
             <span className="title">{props.listTitle}</span>
-            <span className="more">Mais</span>
+            <Link
+              to={props.type == 2 ? "../search/manga/" : "../search/anime/"}
+            >
+              <span className="more">Mais</span>
+            </Link>
           </div>
           <Link
             to={props.type == 2 ? "../search/manga/" : "../search/anime/"}
