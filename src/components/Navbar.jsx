@@ -23,7 +23,11 @@ export default function Navbar() {
     genero: "",
     bio: "",
   });
-  const [image, setImage] = useState("");
+  const [reload, setReload] = useState(true);
+
+  const handleLoad = () => {
+    setReload(!reload);
+  }
 
   const toggleMenu = () => {
     setMenuOpen(!isMenuOpen);
@@ -79,7 +83,7 @@ export default function Navbar() {
           console.log(error);
         });
     }
-  }, []);
+  }, [reload]);
 
   const renderAuthenticatedContent = () => {
     return (
@@ -168,7 +172,7 @@ export default function Navbar() {
             : renderUnauthenticatedContent()}
         </div>
       </nav>
-      <ModalLogin modal={modal} onClose={loginModal} onSwap={swap} />
+      <ModalLogin modal={modal} onClose={loginModal} onSwap={swap} handleLoad={handleLoad}/>
       <ModalRegister modal={modal2} onClose={registerModal} onSwap={swap} />
       <ModalUpdate modal={modal3} onClose={updateModal} />
     </>
