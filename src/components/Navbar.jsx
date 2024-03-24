@@ -39,6 +39,7 @@ export default function Navbar() {
     sessionStorage.removeItem("usuario");
     sessionStorage.removeItem("email");
     sessionStorage.removeItem("id");
+    handleLoad();
     toggleMenu();
   };
 

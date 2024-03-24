@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from "react";
 import { useState } from "react";
 import CarroselDefault from "../../components/Carrosel/CarroselDefault";
 import ModalLogin from "../../components/Modais/ModalLogin";
@@ -7,10 +7,25 @@ import Banner from "./components/Banner";
 import BannerForum from "./components/BannerForum";
 import GenderHome from "./components/GenderHome";
 import ModalAddToList from "../Info/components/ModalAddToList";
+import apiUser from "../../apiUser";
 
 export default function Home() {
   const [modal, setModal] = useState(false);
   const [modal2, setModal2] = useState(false);
+  const [reload, setReload] = useState(true);
+  const [user, setUser] = useState({
+    name: "",
+    email: "",
+    profileImage: "",
+    coverImage: "",
+    criacao: "",
+    genero: "",
+    bio: "",
+  });
+
+  const handleLoad = () => {
+    setReload(!reload);
+  };
 
   const loginModal = () => {
     setModal(!modal);
@@ -32,11 +47,26 @@ export default function Home() {
     setMidiaTitle(midiaTitle);
     setMidiaType(midiaType);
     loginModalAdd();
+    handleLoad();
   };
 
   const loginModalAdd = () => {
     setModalAdd(!modalAdd);
   };
+
+  useEffect(() => {
+    if (sessionStorage.getItem("authToken")) {
+      apiUser
+        .get(`/users/user?email=${sessionStorage.email}`)
+        .then((response) => {
+          setUser(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+    handleLoad();
+  }, [reload]);
 
   return (
     <>
@@ -51,7 +81,7 @@ export default function Home() {
       />
       {sessionStorage.getItem("authToken") ? (
         <Banner
-          h1={"Bem vindo " + sessionStorage.getItem("usuario") + " !!"}
+          h1={"Bem vindo " + user.name + " !!"}
           span="Agora você já pode montar suas listas customizadas e deixar registrado sua forma de ver o mundo."
           btn="Bora lá"
           show={true}
