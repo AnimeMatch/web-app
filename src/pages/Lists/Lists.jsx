@@ -63,9 +63,12 @@ export default function Lists() {
     setSearchTerm(event.target.value);
   };
 
-  const filteredMidias = midias.filter((item) =>
-    item.midiaId.nome.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredMidias =
+    midias.length > 0
+      ? midias.filter((item) =>
+          item.midiaId.nome.toLowerCase().includes(searchTerm.toLowerCase())
+        )
+      : [];
 
   return (
     <>
@@ -122,6 +125,7 @@ export default function Lists() {
       </div>
       <div className="list-anime-area-searched">
         {midias &&
+          filteredMidias &&
           filteredMidias.map((item) => (
             <div className="card-anime-search-area" key={item.id}>
               <CardMidiaList
