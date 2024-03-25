@@ -9,6 +9,7 @@ import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import apiUser from "../../apiUser";
 import CardMidiaList from "../../components/Carrosel/CardMidiaList";
+import Swal from "sweetalert2";
 
 export default function Lists() {
   const { id } = useParams();
@@ -19,6 +20,14 @@ export default function Lists() {
   const [blur, setBlur] = useState("none");
   const [refresh, setRefresh] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
+  const validateNames = [
+    "Favoritos",
+    "Completo",
+    "Em progresso",
+    "Em espera",
+    "No plano",
+    "Dropado",
+  ];
 
   useEffect(() => {
     const fetchData = async () => {
@@ -70,6 +79,27 @@ export default function Lists() {
         )
       : [];
 
+  const deleteList = () => {
+    Swal.fire({
+      title: "Excluir lista?",
+      text: "Essa lista será removida permanentemente!",
+      showCancelButton: true,
+      cancelButtonColor: "#D5D5D5",
+      confirmButtonColor: "#FFA800",
+      confirmButtonText: "Excluir",
+      cancelButtonText: "Cancelar",
+      width: "24em",
+      color: "#fff",
+      background: "#4641D9",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        apiUser.delete(`/lists/?listaId=${id}`).then((response) => {
+          window.location.href = "/profile";
+        });
+      }
+    });
+  };
+
   return (
     <>
       <div className="espaçamento-obrigatorio"></div>
@@ -88,7 +118,14 @@ export default function Lists() {
             className="editIconList"
             onClick={handleEdit}
           />
-          <img src={deletIcon} alt="" className="deleteIconList" />
+          {!validateNames.includes(listName) && (
+            <img
+              src={deletIcon}
+              alt=""
+              className="deleteIconList"
+              onClick={deleteList}
+            />
+          )}
         </div>
         <div className="list-info-area-bot">
           <span className="list-info-area-type-list">{listType}</span>
