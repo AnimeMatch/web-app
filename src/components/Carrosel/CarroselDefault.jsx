@@ -85,7 +85,7 @@ export default function CarroselDefault(props) {
             className="swiperHome"
           >
             {getList.map((item) => (
-              <SwiperSlide key={item.idApi}>
+              <SwiperSlide key={item.id}>
                 {props.profile ? (
                   <CardAnime
                     id={item.idApi}

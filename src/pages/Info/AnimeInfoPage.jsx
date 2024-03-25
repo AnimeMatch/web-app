@@ -44,7 +44,6 @@ export default function AnimeInfoPage() {
   const handleGenreChange = useCallback(() => {
     if (animeData.genres.length > 0) {
       setUriGenero(`genero?genero=${animeData.genres[0]}&`);
-      console.log(uriGenero);
     }
   }, [animeData, uriGenero]);
 
@@ -66,7 +65,6 @@ export default function AnimeInfoPage() {
     async function validateData() {
       try {
         const animeInfo = await api.get(`/animes/anime?animeId=${id}`);
-        console.log(animeInfo.data);
         setAnimeData(animeInfo.data);
         let verified = await verifyIfAlreadyInTheFavorite();
         if (verified) {
@@ -96,7 +94,6 @@ export default function AnimeInfoPage() {
         const response2 = await apiUser.get(
           `/midia-lista/midias-da-lista-id-associativo?listaId=${idLista}`
         );
-        console.log(response2.data);
         if (response2.data) {
           response2.data.forEach((data) => {
             if (data.midiaId.idApi == id) {
@@ -319,12 +316,7 @@ export default function AnimeInfoPage() {
           </div>
         </div>
         <div className="commentSection">
-          <div className="commentTitleSection">
-            <span className="commentTitle">Comentarios</span>
-            <button className="btn-secundary">Comentar</button>
-          </div>
-          <div className="line"></div>
-          <CommentArea />
+          {id && <CommentArea midiaId={id} title={animeData.title.romaji}/>}
         </div>
       </div>
       {animeData.genres.length > 0 && uriGenero && uriGenero.length > 0 && (
