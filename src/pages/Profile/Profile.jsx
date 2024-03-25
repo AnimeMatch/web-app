@@ -36,7 +36,7 @@ export default function Profile() {
   return (
     <>
       <InfoProfile></InfoProfile>
-      <StatusBar />
+      <StatusBar type={1}/>
       <CarroselDefault
         pagina="1"
         listTitle="Animes Favoritos"
@@ -45,7 +45,7 @@ export default function Profile() {
         type={1}
         profile={true}
       />
-      <StatusBar />
+      <StatusBar type={2}/>
       <CarroselDefault
         pagina="1"
         listTitle="Mangas Favoritos"
