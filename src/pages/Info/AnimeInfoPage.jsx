@@ -68,7 +68,7 @@ export default function AnimeInfoPage() {
         setAnimeData(animeInfo.data);
         let verified = await verifyIfAlreadyInTheFavorite();
         if (verified) {
-          if (!verified.animeId) {
+          if (!verified.midiaId) {
             setIsFavorite(false);
           } else {
             setIsFavorite(true);
@@ -97,7 +97,7 @@ export default function AnimeInfoPage() {
         if (response2.data) {
           response2.data.forEach((data) => {
             if (data.midiaId.idApi == id) {
-              thisAnime = data.midiaId.idApi;
+              thisMidia = data.midiaId.idApi;
               idAssociativo = data.midiaListaId;
             }
           });
@@ -128,6 +128,7 @@ export default function AnimeInfoPage() {
               .catch((error) => {
                 console.log(error);
               });
+            console.log(verified.midiaId);
             setIsFavorite(true);
           } else {
             apiUser
@@ -316,7 +317,7 @@ export default function AnimeInfoPage() {
           </div>
         </div>
         <div className="commentSection">
-          {id && <CommentArea midiaId={id} title={animeData.title.romaji}/>}
+          {id && <CommentArea midiaId={id} title={animeData.title.romaji} />}
         </div>
       </div>
       {animeData.genres.length > 0 && uriGenero && uriGenero.length > 0 && (

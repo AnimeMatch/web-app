@@ -105,7 +105,7 @@ export default function MangaInfoPage() {
         if (response2.data) {
           response2.data.forEach((data) => {
             if (data.midiaId.idApi == id) {
-              thisManga = data.midiaId.idApi;
+              thisMidia = data.midiaId.idApi;
               idAssociativo = data.midiaListaId;
             }
           });
