@@ -317,7 +317,10 @@ export default function AnimeInfoPage() {
           </div>
         </div>
         <div className="commentSection">
-          {id && <CommentArea midiaId={id} title={animeData.title.romaji} />}
+          {id && <CommentArea
+           midiaId={id}
+           title={animeData.title.romaji} 
+           loginModal={loginModal}/>}
         </div>
       </div>
       {animeData.genres.length > 0 && uriGenero && uriGenero.length > 0 && (
