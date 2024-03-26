@@ -324,12 +324,7 @@ export default function MangaInfoPage() {
           </div>
         </div>
         <div className="commentSection">
-          <div className="commentTitleSection">
-            <span className="commentTitle">Comentarios</span>
-            <button className="btn-secundary">Comentar</button>
-          </div>
-          <div className="line"></div>
-          <CommentArea />
+        {id && <CommentArea midiaId={id} title={mangaData.title.romaji}/>}
         </div>
       </div>
       {mangaData.genres.length > 0 && uriGenero && uriGenero.length > 0 && (

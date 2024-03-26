@@ -112,6 +112,8 @@ export default function CommentArea(props) {
             date={item.data}
             liked={item.qtdLikes}
             desliked={item.qtdDeslikes}
+            id={item.id}
+            reload={handleReload}
           />
         ))}
       </div>
