@@ -12,7 +12,7 @@ import apiUser from "../../apiUser";
 export default function Home() {
   const [modal, setModal] = useState(false);
   const [modal2, setModal2] = useState(false);
-  const [reload, setReload] = useState(true);
+  const [reload, setReload] = useState(false);
   const [user, setUser] = useState({
     name: "",
     email: "",
@@ -64,8 +64,8 @@ export default function Home() {
         .catch((error) => {
           console.log(error);
         });
-    }
-    handleLoad();
+      }
+      // handleLoad();
   }, [reload]);
 
   return (
@@ -91,7 +91,7 @@ export default function Home() {
           h1="O melhor lugar para organizar os seus animes e mangas"
           span="Explore e ilumine o seu caminho de diversão com uma variedade imensa de animes e mangas"
           btn="Cadastre-se"
-          show={true}
+          show={false}
           registerModal={registerModal}
         />
       )}
