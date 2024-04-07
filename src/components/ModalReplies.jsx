@@ -1,6 +1,7 @@
 import like from "../assets/images/deafault/gostar(1) 1.svg";
 import deslike from "../assets/images/deafault/desgostar(1) 1.svg";
 import chat from "../assets/images/deafault/bate-papo 2.svg";
+import x from "../assets/images/deafault/X.svg";
 import "../assets/css/commentsWithReplies.css";
 import apiUser from "../apiUser";
 import { useEffect, useState } from "react";
@@ -15,6 +16,7 @@ export default function ModalReplies(props) {
     genero: "",
     bio: "",
   });
+  const [reload, setReload] = useState(false);
 
   const [replies, setReplies] = useState([]);
 
@@ -28,12 +30,13 @@ export default function ModalReplies(props) {
         const reponse2 = await apiUser.get(
           `/comentarios-animes/${props.id}/lista_comentarios_filhos`
         );
+        console.log(reponse2.data);
         setReplies(reponse2.data);
         setUser(response.data);
       } catch {}
     };
     fetchData();
-  }, []);
+  }, [reload]);
 
   const handleLike = () => {
     apiUser.patch(`/comentarios-animes/like/${props.id}`).then((response) => {
@@ -65,7 +68,10 @@ export default function ModalReplies(props) {
         emailUsuario: sessionStorage.email,
       })
       .then((response) => {
+        setReload(!reload);
         console.log(response);
+
+        comment_reponse_ipt.value = "";
       });
   };
 
@@ -83,7 +89,12 @@ export default function ModalReplies(props) {
                 <span className="">{props.name}</span>
               </div>
               <div className="infor-user-right">
-                <span onClick={handleState}>X</span>
+                <img
+                  className="close-button"
+                  src={x}
+                  alt=""
+                  onClick={handleState}
+                />
               </div>
             </div>
             <div className="main-comment">
@@ -125,8 +136,25 @@ export default function ModalReplies(props) {
                 </button>
               </div>
             </div>
+            <span>Respostas:</span>
             <div className="replies-area">
-              <span>Respostas:</span>
+              {replies &&
+                replies.map((item, index) => (
+                  <>
+                    <div className="replie-area" key={index}>
+                      <div className="replie-user-info">
+                        <div className="circle-image">
+                          <img src={item.usuarioSimplesDto.profileImage} />
+                        </div>
+                        <span className="">{item.usuarioSimplesDto.name}</span>
+                      </div>
+                      <div className="replies-text">
+                        <span>{item.texto}</span>
+                      </div>
+                    </div>
+                    <div className="separation-line"></div>
+                  </>
+                ))}
             </div>
           </div>
         </div>

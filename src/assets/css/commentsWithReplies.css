@@ -71,3 +71,32 @@
   border: none;
   color: var(--white);
 }
+
+.replies-area {
+  flex-wrap: wrap;
+  overflow: hidden;
+  overflow-y: scroll;
+  height: 200px;
+  /* margin: auto; */
+  margin-top: 10px;
+}
+
+.replies-area::-webkit-scrollbar {
+  background-color: rgba(217, 217, 217, 10%);
+  opacity: 0.1;
+  width: 5px;
+  border-radius: 10px;
+}
+.replies-area::-webkit-scrollbar-thumb {
+  background-color: var(--dark-yellow);
+  border-radius: 10px;
+}
+
+.replie-area {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  align-items: center;
+  gap: 15px;
+}

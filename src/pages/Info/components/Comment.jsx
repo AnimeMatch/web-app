@@ -29,6 +29,7 @@ export default function Comment(props) {
 
   const handleReplies = () => {
     setModalReplies(!modalReplies);
+    props.reload();
   };
 
   return (
