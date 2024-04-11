@@ -1,6 +1,6 @@
 export default function Post (props) {
     return (
-        <div>
+        <div className="trend-post">
             <div className="user-image-post"
                   style={{background: (`url("${props.userImage}")`), 
                   backgroundSize: "cover"}} />

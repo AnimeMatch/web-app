@@ -4,7 +4,17 @@ import "../../../assets/css/trendingPosts.css"
 import apiUser from "../../../apiUser";
 
 export default function PostsTrend () {
-    const [postsTrend, setPostsTrend] = useState()
+    const [postsTrend, setPostsTrend] = useState([{
+        name: "Josias Hatake",
+        content: "comentário aleatório",
+        profileImage: "https://s4.anilist.co/file/anilistcdn/character/large/b40882-dsj7IP943WFF.jpg"
+    },
+    {
+        name: "Ichigo",
+        content: "Eu sabo",
+        profileImage: "https://s4.anilist.co/file/anilistcdn/character/large/b40882-dsj7IP943WFF.jpg"
+    }
+    ])
 
     useEffect(() => {
         apiUser
@@ -19,18 +29,21 @@ export default function PostsTrend () {
 
     return (
         <>
-        <div className="body-thrending-post">
-            <span className="title-posts">Posts em alta</span>
-            <div>
-                {postsTrend &&
-                    postsTrend.map((item) => (
-                        <Post
-                            name={item.name}
-                            content={item.content}
-                            userImage={sessionStorage.profileImage}
-                        />
-                    ))
-                }
+        <div className="body-trending-post">
+            <div className="area-trending-post">
+                <span className="title-posts">Posts em alta</span>
+                <div className="posts-forum">
+                    {postsTrend &&
+                        postsTrend.map((item) => (
+                            <Post
+                                name={item.name}
+                                content={item.content}
+                                // userImage={sessionStorage.profileImage}
+                                userImage={item.profileImage}
+                            />
+                        ))
+                    }
+                </div>
             </div>
         </div>
         </>

@@ -1,5 +1,31 @@
-.body-thrending-post{
-    width: 10%;
-    height: 400px;
+.body-trending-post {
+    width: 18%;
+    height: 51vh;
     background-color: #29318E;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font-primary);
+    color: white;
+}
+
+.area-trending-post {
+    height: 90%;
+    width: 83%;
+    border: rgb(162, 145, 255) solid 2px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.title-posts {
+    width: 100%;
+    height: 10%;
+    border: rgb(0, 255, 17) solid 2px;
+}
+
+.posts-forum {
+    height: 85%;
+    border: red solid 2px;
 }
