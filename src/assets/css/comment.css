@@ -23,6 +23,7 @@
   margin: auto;
   border-radius: 9px;
   padding: 1%;
+  cursor: pointer;
 }
 .comment-title-left {
   display: flex;

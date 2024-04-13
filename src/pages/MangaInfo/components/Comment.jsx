@@ -3,8 +3,12 @@ import like from "../../../assets/images/deafault/gostar(1) 1.svg";
 import deslike from "../../../assets/images/deafault/desgostar(1) 1.svg";
 import chat from "../../../assets/images/deafault/bate-papo 2.svg";
 import apiUser from "../../../apiUser";
+import ModalReplies from "../../../components/modalReplies";
+import { useState } from "react";
 
 export default function Comment(props) {
+  const [modalReplies, setModalReplies] = useState(false);
+
   const handleLike = () => {
     apiUser.patch(`/comentarios-animes/like/${props.id}`).then((response) => {
       if (response.status == 200) {
@@ -22,10 +26,27 @@ export default function Comment(props) {
         }
       });
   };
+
+  const handleReplies = () => {
+    setModalReplies(!modalReplies);
+    props.reload();
+  };
+
   return (
     <>
+      <ModalReplies
+        state={modalReplies}
+        changeState={handleReplies}
+        image={props.image}
+        name={props.name}
+        id={props.id}
+        text={props.text}
+        replies={props.replies}
+        liked={props.liked}
+        desliked={props.desliked}
+      />
       <div className="comment-box">
-        <div className="comment-title">
+        <div className="comment-title"  onClick={handleReplies}>
           <div className="comment-title-left">
             <div className="circle-image">
               <img src={props.image} alt="" />
