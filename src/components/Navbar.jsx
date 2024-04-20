@@ -23,7 +23,11 @@ export default function Navbar() {
     genero: "",
     bio: "",
   });
-  const [image, setImage] = useState("");
+  const [reload, setReload] = useState(true);
+
+  const handleLoad = () => {
+    setReload(!reload);
+  }
 
   const toggleMenu = () => {
     setMenuOpen(!isMenuOpen);
@@ -35,6 +39,7 @@ export default function Navbar() {
     sessionStorage.removeItem("usuario");
     sessionStorage.removeItem("email");
     sessionStorage.removeItem("id");
+    handleLoad();
     toggleMenu();
   };
 
@@ -79,7 +84,7 @@ export default function Navbar() {
           console.log(error);
         });
     }
-  }, []);
+  }, [reload]);
 
   const renderAuthenticatedContent = () => {
     return (
@@ -95,7 +100,7 @@ export default function Navbar() {
 
         <div className="menu-option" style={menuStyle}>
           <ol>
-            <li style={fontStyle}>
+            <li style={fontStyle} onClick={toggleMenu}>
               <Link to="profile" className="inside-toggle-menu">
                 <div className="icon-profile"></div>
                 <span>Perfil</span>
@@ -168,7 +173,7 @@ export default function Navbar() {
             : renderUnauthenticatedContent()}
         </div>
       </nav>
-      <ModalLogin modal={modal} onClose={loginModal} onSwap={swap} />
+      <ModalLogin modal={modal} onClose={loginModal} onSwap={swap} handleLoad={handleLoad}/>
       <ModalRegister modal={modal2} onClose={registerModal} onSwap={swap} />
       <ModalUpdate modal={modal3} onClose={updateModal} />
     </>

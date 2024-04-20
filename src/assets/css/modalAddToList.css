@@ -1,106 +1,105 @@
-.modalAddToList{
-    width: 100vw;
-    height: 100vh;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    position: fixed;
-    z-index: 50;
+.modalAddToList {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  z-index: 50;
 }
 
-.overlay-modalAdd{
-    background: rgba(49,49,49,0.4);
+.overlay-modalAdd {
+  background: rgba(49, 49, 49, 0.4);
 }
 
-.modal-contentAdd{
-    color: var(--white); 
-    display: flex; 
-    position: absolute;
-    flex-direction: column;
-    top: 53%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    line-height: 1.4;
-    background: var(--dark-blue);
-    padding: 15px;
-    border-radius:var(--btn-border-radius);
-    max-width: 400px;
-    min-width: 400px;
-    border: solid 0.1px rgba(123, 123, 123, 0.4);
-    z-index: 100;
-    gap: 20px;
+.modal-contentAdd {
+  color: var(--white);
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  top: 53%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 1.4;
+  background: var(--dark-blue);
+  padding: 15px;
+  border-radius: var(--btn-border-radius);
+  max-width: 400px;
+  min-width: 400px;
+  border: solid 0.1px rgba(123, 123, 123, 0.4);
+  z-index: 100;
+  gap: 20px;
 }
 
-.header-area{
-    display: flex;
-    justify-content: center;
-    font-family: var(--font-third);
+.header-area {
+  display: flex;
+  justify-content: center;
+  font-family: var(--font-third);
 }
-.close-button{
-    position: absolute;
-    cursor: pointer;
-    width: 10px;
-    top: 3%;
-    right: 2%;
+.close-button {
+  position: absolute;
+  cursor: pointer;
+  width: 10px;
+  top: 3%;
+  right: 2%;
 }
-.modal-title-overlay{
-    font-weight: 600;
+.modal-title-overlay {
+  font-weight: 600;
 }
-.modal-title-inside{
-    font-weight: 200;
-}
-
-.listOfLists{
-    width: 100%;
-    border: solid 1px var(--dark-yellow);
-    border-radius: 4px;
+.modal-title-inside {
+  font-weight: 200;
 }
 
-.list-of-lists{
-    margin: auto;
-    margin-top: 1%;
-    height: 150px;
-    width: 90%;
-    overflow: hidden;
-    overflow-y: scroll;
-}
-.list-of-lists::-webkit-scrollbar{
-    background-color: rgba(217,217, 217, 10%);
-    opacity: 0.1;
-    width: 5px;
-    border-radius: 10px;
-}
-.list-of-lists::-webkit-scrollbar-thumb{
-    background-color: var(--dark-yellow);
-    border-radius: 10px;
-}
-.list{
-    background-color: var( --bright-blue);
-    border-radius: 4px;
-    padding-left: 4%;
-    margin: 0.5% 1.5% 1.5% ;
-    cursor: pointer;
+.listOfLists {
+  width: 100%;
+  border: solid 1px var(--dark-yellow);
+  border-radius: 4px;
 }
 
-.list-select{
-    background-color: var(--dark-yellow);
-    color: black;
-    border-radius: 4px;
-    padding-left: 4%;
-    margin: 0.5% 1.5% 1.5% ;
-    cursor: pointer;
+.list-of-lists {
+  margin: auto;
+  margin-top: 1%;
+  height: 150px;
+  width: 90%;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+.list-of-lists::-webkit-scrollbar {
+  background-color: rgba(217, 217, 217, 10%);
+  opacity: 0.1;
+  width: 5px;
+  border-radius: 10px;
+}
+.list-of-lists::-webkit-scrollbar-thumb {
+  background-color: var(--dark-yellow);
+  border-radius: 10px;
+}
+.list {
+  background-color: var(--bright-blue);
+  border-radius: 4px;
+  padding-left: 4%;
+  margin: 0.5% 1.5% 1.5%;
+  cursor: pointer;
 }
 
-.modal-footer{
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 5%;
+.list-select {
+  background-color: var(--dark-yellow);
+  color: black;
+  border-radius: 4px;
+  padding-left: 4%;
+  margin: 0.5% 1.5% 1.5%;
+  cursor: pointer;
 }
 
-.modal-add-input{
-    width: 90%;
-    margin: auto;
+.modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 5%;
 }
 
+.modal-add-input {
+  width: 90%;
+  margin: auto;
+}

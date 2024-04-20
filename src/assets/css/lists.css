@@ -1,0 +1,165 @@
+.espaçamento-obrigatorio {
+  margin-top: 3em;
+  position: relative;
+  /* border: red 1px solid; */
+}
+.return-to-profile-area {
+  padding-top: 1%;
+  /* border: red 1px solid; */
+  width: 92%;
+  margin: auto;
+  margin-top: 5rem;
+}
+.list-info-area {
+  width: 15%;
+  margin: 2% 0% 00% 4%;
+  /* border: red 1px solid; */
+}
+.list-info-area-top {
+  display: flex;
+  justify-content: space-around;
+}
+
+.list-info-area-top img {
+  width: 22px;
+}
+
+.list-info-area-name-list {
+  color: var(--white);
+  font-family: var(--font-primary);
+  font-size: 22px;
+}
+
+.list-info-area-bot {
+  display: flex;
+  padding: 6%;
+}
+
+.list-info-area-type-list {
+  color: var(--white);
+  font-family: var(--font-primary);
+  font-size: 14px;
+}
+
+.list-description-area {
+  border: solid 4px var(--dark-yellow);
+  border-radius: var(--btn-border-radius);
+  width: 92%;
+  height: 6em;
+  margin: auto;
+  padding: 1%;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  background-color: #000d22;
+}
+
+.list-description-area-title {
+  color: var(--white);
+  font-family: var(--font-primary);
+  font-size: 24px;
+}
+
+.list-description-area-text {
+  color: var(--white);
+  font-family: var(--font-primary);
+  font-size: 14px;
+}
+
+.input-search-inside-list {
+  /* border: 1px solid red; */
+  width: 85%;
+  height: 1.5em;
+  margin: auto;
+  margin-top: 1em;
+  display: flex;
+  justify-content: end;
+}
+
+.list-input-search-anime {
+  width: 40%;
+  /* height: 100%; */
+  position: relative;
+  margin-bottom: 4%;
+}
+#list-input-anime {
+  width: 10%;
+  padding-left: 9%;
+  border: 0;
+  height: 100%;
+}
+#list-input-anime-img {
+  width: 10px;
+  position: absolute;
+  height: 80%;
+  top: 1%;
+  left: 35%;
+}
+.list-search-button-anime {
+  position: absolute;
+  border-right: solid 1px rgba(0, 0, 0, 0.29);
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.list-search-button-anime:hover {
+  border-radius: 2.5px 0px 0px 2.5px;
+  position: absolute;
+  border-right: solid 1px rgba(0, 0, 0, 0.29);
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  background-color: rgb(229, 229, 229);
+}
+
+.list-anime-area-searched {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  margin: auto;
+  margin-top: 3em;
+  gap: 15px;
+}
+
+.cardImage {
+  position: relative;
+}
+
+.image {
+  position: relative;
+  z-index: 1; /* Certifique-se de que a imagem tenha um z-index maior do que o valor padrão (0) */
+}
+
+.blurRemove {
+  display: none;
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  background-color: darkgray;
+  filter: opacity(30%);
+}
+
+.removeFromListHover {
+  display: none;
+  position: absolute;
+  top: 25%;
+  left: 18%;
+  width: 65%;
+  height: 45.5%;
+  background-image: url("../images/deafault/removeX.svg");
+  background-size: cover;
+  z-index: 3;
+}
+
+.editIconList,
+.deleteIconList {
+  cursor: pointer;
+}
+
+.swal2-styled {
+  color: #111 !important;
+}

@@ -168,6 +168,26 @@
   margin-left: 5%;
 }
 
+.comments {
+  flex-wrap: wrap;
+  overflow: hidden;
+  overflow-y: scroll;
+  height: 600px;
+  margin: auto;
+  margin-top: 20px;
+}
+
+.comments::-webkit-scrollbar {
+  background-color: rgba(217, 217, 217, 10%);
+  opacity: 0.1;
+  width: 5px;
+  border-radius: 10px;
+}
+.comments::-webkit-scrollbar-thumb {
+  background-color: var(--dark-yellow);
+  border-radius: 10px;
+}
+
 .commentTitleSection {
   display: flex;
   align-items: center;

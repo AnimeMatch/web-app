@@ -5,9 +5,15 @@ import "swiper/css";
 import CardListCustomizad from "./CardListCustomized";
 import { useEffect, useState } from "react";
 import apiUser from "../../../apiUser";
+import Swal from "sweetalert2";
 
 export default function CarroselProfileAnime() {
   const [lists, setLists] = useState([]);
+  const [load, setLoad] = useState(false);
+
+  const handleLoad = () => {
+    setLoad(!load);
+  };
 
   useEffect(() => {
     apiUser
@@ -25,10 +31,59 @@ export default function CarroselProfileAnime() {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [load]);
 
   const styleModal = {
     width: "17.5rem",
+  };
+  
+  const newList = () => {
+    Swal.fire({
+      title: "Criar nova lista?",
+      text: "Escreva o nome da nova lista!",
+      input: "text",
+      showCancelButton: true,
+      cancelButtonColor: "#D5D5D5",
+      confirmButtonColor: "#FFA800",
+      confirmButtonText: "Adicionar",
+      cancelButtonText: "Cancelar",
+      width: "24em",
+      color: "#fff",
+      background: "#4641D9",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const text = result.value; // Obtém o valor do input
+
+        // Verifica se o texto não está vazio
+        if (text.trim() !== "") {
+          apiUser
+            .post(`lists/?aniUserId=${sessionStorage.id}&name=${text}&type=1`)
+            .then((response) => {
+              if (response.status == 201) {
+                Swal.fire({
+                  title: "Nova lista adicionada com sucesso!",
+                  icon: "success",
+                  width: "24em",
+                  color: "#fff",
+                  background: "#4641D9",
+                  confirmButtonColor: "#FFA800",
+                });
+                handleLoad();
+              }
+            })
+            .catch((error) => {
+              console.error("Erro ao adicionar lista:", error);
+            });
+        } else {
+          // Caso o usuário não tenha inserido nenhum texto
+          Swal.fire({
+            title: "Erro!",
+            text: "Você precisa fornecer um nome para a lista.",
+            icon: "error",
+          });
+        }
+      }
+    });
   };
 
   return (
@@ -37,7 +92,7 @@ export default function CarroselProfileAnime() {
         <div className="bg">
           <div className="title-add">
             <span> Listas de anime do usuario </span>
-            <div className="add-list"></div>
+            <div className="add-list" onClick={newList}></div>
           </div>
           <Swiper
             modules={[Navigation, Pagination, Scrollbar, A11y]}

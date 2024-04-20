@@ -64,6 +64,7 @@ class ModalLogin extends React.Component {
             sessionStorage.setItem("id", response.data.userId);
             console.log(response);
             this.props.onClose();
+            this.props.handleLoad();
             // toast.success('Login realizado com sucesso!');
           } else {
             throw new Error("Ops! Ocorreu um erro interno.");

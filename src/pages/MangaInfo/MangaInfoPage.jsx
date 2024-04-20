@@ -105,7 +105,7 @@ export default function MangaInfoPage() {
         if (response2.data) {
           response2.data.forEach((data) => {
             if (data.midiaId.idApi == id) {
-              thisManga = data.midiaId.idApi;
+              thisMidia = data.midiaId.idApi;
               idAssociativo = data.midiaListaId;
             }
           });
@@ -324,12 +324,10 @@ export default function MangaInfoPage() {
           </div>
         </div>
         <div className="commentSection">
-          <div className="commentTitleSection">
-            <span className="commentTitle">Comentarios</span>
-            <button className="btn-secundary">Comentar</button>
-          </div>
-          <div className="line"></div>
-          <CommentArea />
+        {id && <CommentArea
+         midiaId={id}
+         title={mangaData.title.romaji}
+         loginModal={loginModal}/>}
         </div>
       </div>
       {mangaData.genres.length > 0 && uriGenero && uriGenero.length > 0 && (
