@@ -10,6 +10,31 @@ export default function PostsTrend () {
         profileImage: "https://s4.anilist.co/file/anilistcdn/character/large/b40882-dsj7IP943WFF.jpg"
     },
     {
+        name: "Kakashi ratão",
+        content: "Mui bueno",
+        profileImage: "https://s4.anilist.co/file/anilistcdn/character/large/b130050-qsLThJs5VIbz.png"
+    },
+    {
+        name: "Ichigo",
+        content: "Eu sabo",
+        profileImage: "https://s4.anilist.co/file/anilistcdn/character/large/b40882-dsj7IP943WFF.jpg"
+    },
+    {
+        name: "Ichigo",
+        content: "Eu sabo",
+        profileImage: "https://s4.anilist.co/file/anilistcdn/character/large/b137773-N4O52f73dJKZ.png"
+    },
+    {
+        name: "Lá chica",
+        content: "teste aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        profileImage: "https://s4.anilist.co/file/anilistcdn/character/large/b40595-WWFvfCf4C8If.jpg"
+    },
+    {
+        name: "Ichigo",
+        content: "Eu sabo",
+        profileImage: "https://s4.anilist.co/file/anilistcdn/character/large/b40882-dsj7IP943WFF.jpg"
+    },
+    {
         name: "Ichigo",
         content: "Eu sabo",
         profileImage: "https://s4.anilist.co/file/anilistcdn/character/large/b40882-dsj7IP943WFF.jpg"

@@ -10,8 +10,8 @@ import apiUser from "../../../apiUser";
 export default function SideMenu () {
     const [user, setUser] = useState({
         id: "",
-        name: "User",
-        profileImage: "https://s4.anilist.co/file/anilistcdn/character/large/b40882-dsj7IP943WFF.jpg",
+        name: "",
+        profileImage: "",
     });
     const [searchValue, setSearchValue] = useState("");
 
@@ -22,7 +22,7 @@ export default function SideMenu () {
     };
 
     function searchFunc(){
-        // do something
+        // TODO buscar (?) (tem que buscar alguma coisa que não sei, mas tá no figma) 
     }
 
     useEffect(() => {
@@ -49,7 +49,7 @@ export default function SideMenu () {
                         backgroundSize: "cover"}} />
                     ):(<></>)}
                         {/* <span value={user.name}></span> */}
-                        <span>satoru gojou</span>
+                        <span className="username-side-menu-forum">Vulgo juninho coisa ruim</span>
                     </div>
                     <div className="search-bar">
                         <div className="input-search-profile">

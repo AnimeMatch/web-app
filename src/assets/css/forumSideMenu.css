@@ -31,9 +31,18 @@
 }
 
 .side-menu-user-image {
-    width: 12%;
-    height: 100%;
+    width: 30px;
+    height: 30px;
     cursor: pointer;
+    border-radius: 50%;
+}
+
+.username-side-menu-forum {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    transform: translateX(0);
+    width: 65%;
 }
 
 .user-info {
@@ -41,8 +50,9 @@
     /* margin: 0 auto 0 auto; */
     height: 20%;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
+    gap: 10px;
     /* border: #ff7bf2 solid 3px; */
 }
 

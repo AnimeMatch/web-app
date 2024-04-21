@@ -5,8 +5,8 @@ export default function Post (props) {
                   style={{background: (`url("${props.userImage}")`), 
                   backgroundSize: "cover"}} />
             <div className="texts-post">
-                <span className="titulo-post">{props.content}</span>
-                <span className="content-post">{props.profileImage}</span>
+                <span className="user-name-post">{props.name}</span>
+                <span className="content-post">{props.content}</span>
             </div>
         </div>
     )
