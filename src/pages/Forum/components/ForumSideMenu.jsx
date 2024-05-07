@@ -7,12 +7,12 @@ import iconImage from "../../../assets/images/logos/Icone.svg"
 import { useState, useEffect } from "react";
 import apiUser from "../../../apiUser";
 
-export default function SideMenu () {
-    const [user, setUser] = useState({
-        id: "",
-        name: "",
-        profileImage: "",
-    });
+export default function SideMenu (props) {
+    // const [user, setUser] = useState({
+    //     id: "",
+    //     name: "",
+    //     profileImage: "",
+    // });
     const [searchValue, setSearchValue] = useState("");
 
     const handleEnterKeyPress = (event) => {
@@ -25,16 +25,16 @@ export default function SideMenu () {
         // TODO buscar (?) (tem que buscar alguma coisa que não sei, mas tá no figma) 
     }
 
-    useEffect(() => {
-        apiUser
-            .get(`/users/user?email=${sessionStorage.email}`)
-            .then((response) => {
-                setUser(response.data);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    },[])
+    // useEffect(() => {
+    //     apiUser
+    //         .get(`/users/user?email=${sessionStorage.email}`)
+    //         .then((response) => {
+    //             setUser(response.data);
+    //         })
+    //         .catch((error) => {
+    //             console.log(error);
+    //         });
+    // },[])
     
     return (
         <>
@@ -42,14 +42,14 @@ export default function SideMenu () {
             <div className="box-organize-elements">
                 <div className="top-elements">
                     <div className="user-info">
-                    {user.profileImage ? (
+                    {props.profileImage ? (
                         <div className="side-menu-user-image"
-                        style={{background: (`url("${user.profileImage}")`), 
+                        style={{background: (`url("${props.profileImage}")`), 
                         // style={{background: (`url("${user.profileImage}")`), 
                         backgroundSize: "cover"}} />
                     ):(<></>)}
                         {/* <span value={user.name}></span> */}
-                        <span className="username-side-menu-forum">Vulgo juninho coisa ruim</span>
+                        <span className="username-side-menu-forum">{props.name}</span>
                     </div>
                     <div className="search-bar">
                         <div className="input-search-profile">
