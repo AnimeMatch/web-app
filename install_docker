@@ -1,0 +1,14 @@
+#!/bin/bash
+echo  "$(tput setaf 10)RUN:$(tput setaf 7) INSTALANDO DOCKER E DOCKER COMPOSE"
+sudo apt install docker.io -y
+sudo systemctl start docker
+sudo systemctl enable docker
+sudo gpasswd -a $USER docker
+# sudo newgrp docker
+sudo apt-get install ca-certificates curl gnupg
+sudo apt-get install docker-compose-plugin
+DOCKER_CONFIG=${DOCKER_CONFIG:-$HOME/.docker}
+sudo mkdir -p $DOCKER_CONFIG/cli-plugins
+sudo curl -SL https://github.com/docker/compose/releases/download/v2.17.2/docker-compose-linux-x86_64 -o $DOCKER_CONFIG/cli-plugins/docker-compose
+sudo chmod +x $DOCKER_CONFIG/cli-plugins/docker-compose
+echo  "$(tput setaf 10)[Bot assistant]:$(tput setaf 7) docker compose instalado"

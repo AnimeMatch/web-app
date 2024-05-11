@@ -1,3 +1,7 @@
+# Este documento pode criar uma imagem node que realize o papel
+# de executar "npm run build" sem que seja necessário instalar node na maquina 
+# (ou caso não seja possivel instala-lo)
+
 FROM node:latest as front-project
 WORKDIR /app
 COPY package.json package-lock.json ./
