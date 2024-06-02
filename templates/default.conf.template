@@ -8,12 +8,12 @@ server {
     }
 
     location /api {
-        proxy_pass http://${URL_LB}:8081/;
+        proxy_pass http://${URL_LB}:80/api;
         proxy_set_header Host $http_host;
     }
 
     location /apo {
-        proxy_pass http://${URL_LB}:8080/;
+        proxy_pass http://${URL_LB}:80/apo;
         proxy_set_header Host $http_host;
     }
 }
