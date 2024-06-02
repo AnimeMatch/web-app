@@ -37,4 +37,4 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: lucaslrodrigues/load_balancer_front:latest
+          tags: lucaslrodrigues/front_sprint:latest
