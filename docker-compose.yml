@@ -1,8 +1,8 @@
 version: '3'
 
 services:
-  nginx:
-    image: nginx:latest
+  site:
+    image: lucaslrodrigues/load_balancer_front:latest
     ports:
       - "80:80"
     environment:
