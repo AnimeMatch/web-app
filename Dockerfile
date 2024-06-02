@@ -12,5 +12,7 @@ RUN npm run build
 FROM nginx:latest
 COPY --from=front-project /app/dist/index.html /usr/share/nginx/html
 COPY --from=front-project /app/dist/assets /usr/share/nginx/html/assets
+COPY ./templates /etc/nginx/templates
+
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]

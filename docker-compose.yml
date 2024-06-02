@@ -5,10 +5,6 @@ services:
     image: nginx:latest
     ports:
       - "80:80"
-    volumes:
-      - ./dist/index.html:/usr/share/nginx/html/index.html
-      - ./dist/assets:/usr/share/nginx/html/assets
-      - ./templates:/etc/nginx/templates
-    env_file:
-      - ./.env
+    environment:
+      URL_LB: 10.0.0.0
     command: ["nginx", "-g", "daemon off;"]
