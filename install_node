@@ -1,0 +1,4 @@
+#!/bin/bash
+echo  "$(tput setaf 10)RUN:$(tput setaf 7) INSTALANDO Java Script versão 20"
+curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - &&\
+sudo apt-get install -y nodejs

@@ -3,7 +3,7 @@ import like from "../../../assets/images/deafault/gostar(1) 1.svg";
 import deslike from "../../../assets/images/deafault/desgostar(1) 1.svg";
 import chat from "../../../assets/images/deafault/bate-papo 2.svg";
 import apiUser from "../../../apiUser";
-import ModalReplies from "../../../components/modalReplies";
+import ModalReplies from "../../../components/ModalReplies.jsx";
 import { useState } from "react";
 
 export default function Comment(props) {

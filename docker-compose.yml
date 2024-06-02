@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  site:
+    image: lucaslrodrigues/load_balancer_front:latest
+    ports:
+      - "80:80"
+    environment:
+      URL_LB: 10.0.0.0
+    command: ["nginx", "-g", "daemon off;"]
