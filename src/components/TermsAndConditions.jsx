@@ -15,11 +15,6 @@ class TermsAndConditions extends React.Component {
           <div className="modal-term">
             <div className="overlay-modal-term" onClick={onClose}></div>
             <div className="modal-content-term">
-              <div className="fundo">
-                <div className="modal-right-content">
-                  <span className="close" onClick={onClose}>
-                    <div className="x"></div>
-                  </span>
                 <div className="content_terms">
                 <h1>Termos e Condições Gerais de Uso do Site www.animematch.com ou Aplicativo AnimeMatch</h1>
                         <p>Os serviços do AnimeMatch são fornecidos pela pessoa jurídica ou física com a seguinte Razão Social/nome: AnimeMatch, com nome fantasia AnimeMatch, inscrito no CNPJ/CPF sob o nº 000.000.000.00, titular da propriedade intelectual sobre software, website, aplicativos, conteúdos e demais ativos relacionados à plataforma AnimeMatch.</p>
@@ -74,8 +69,11 @@ class TermsAndConditions extends React.Component {
                             <p>Para a solução de controvérsias decorrentes do presente instrumento será aplicado integralmente o Direito brasileiro.</p>
                             <p>Os eventuais litígios deverão ser apresentados no foro da comarca em que se encontra a sede da empresa.</p>
                 </div>
+                <div className="modal-right-content-term">
+                  <span className="close" onClick={onClose}>
+                    <div className="x"></div>
+                  </span>
                 </div>
-              </div>
             </div>
           </div>
         )}

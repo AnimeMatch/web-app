@@ -626,3 +626,7 @@ input[type="checkbox"]:checked::before {
   flex-wrap: wrap;
   font-size: 18px;
 }
+
+#termE {
+  cursor: pointer;
+}
