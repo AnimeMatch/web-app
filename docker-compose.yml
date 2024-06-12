@@ -6,5 +6,5 @@ services:
     ports:
       - "80:80"
     environment:
-      URL_LB: 10.0.0.0
+      URL_LB: 10.0.0.1
     command: ["nginx", "-g", "daemon off;"]
