@@ -58,6 +58,7 @@ export default function Navbar() {
 
   const fontStyle = {
     display: isMenuOpen ? "flex" : "none",
+    cursor: "pointer"
   };
 
   const registerModal = () => {
