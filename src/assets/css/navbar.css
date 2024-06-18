@@ -630,3 +630,10 @@ input[type="checkbox"]:checked::before {
 #termE {
   cursor: pointer;
 }
+
+.code{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 3px;
+}
