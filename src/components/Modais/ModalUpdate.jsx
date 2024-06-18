@@ -1,28 +1,26 @@
 import React, { useState } from "react";
 import apiUser from "../../apiUser";
+import Qrcode from "qrcode";
 
 const ModalUpdate = ({ modal, onClose, onSwap }) => {
-  const [password, setPassword] = useState();
-  const [name, setName] = useState();
+
+  const [qrcode, setQrcode] = useState();
 
   const atualizar = (e) => {
     e.preventDefault();
     apiUser
       .put(
-        "/users/",
-        {
-          password: password,
-          name: name,
-          id: sessionStorage.id,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
+        "/users/addA2f?email=" + sessionStorage.email
       )
       .then((response) => {
-        onClose();
+        // setQrcode(response.data);
+        Qrcode.toDataURL(response.data, (err, imageUrl) => {
+          if (err) {
+              console.error("Error generating QR code:", err);
+          }
+          setQrcode(imageUrl);
+      });
+        // onClose();
       })
       .catch((error) => {
         console.log(error.message);
@@ -41,39 +39,22 @@ const ModalUpdate = ({ modal, onClose, onSwap }) => {
                 <span className="close" onClick={onClose}>
                   <div className="x"></div>
                 </span>
-                <h1>Atualizar</h1>
+                <h1>Gerenciar Conta</h1>
                 <div className="update-header-modal">
-                  <span className="">Nenhum dos itens é obrigatorio.</span>
+                  <span className="">Ativar autentificação de dois fatores ?</span>
                 </div>
-                <form action="" method="post" className="form2">
-                  <div className="e-mail">
-                    <label htmlFor="password">Nome de usuario</label>
-                    <input
-                      type="text"
-                      name=""
-                      id="registerUserName"
-                      placeholder="Batatinha123"
-                      onChange={(e) => setName(e.target.value)}
-                    />
-                  </div>
-                  <div className="senha">
-                    <label htmlFor="password">Senha</label>
-                    <input
-                      type="password"
-                      name=""
-                      id="registerPassword"
-                      placeholder="&#10625;&#10625;&#10625;&#10625;&#10625;&#10625;&#10625;&#10625;&#10625;&#10625;"
-                      onChange={(e) => setPassword(e.target.value)}
-                    />
-                  </div>
-
                   <div className="gambiarra2">
-                    <button className="btn-secundary" onClick={atualizar}>
-                      {" "}
-                      Atualizar{" "}
+                    <button className="btn-secundary" onClick={atualizar}>     
+                      Ativar
                     </button>
                   </div>
-                </form>
+                  <span>Escanei o codigo com o app de Auth google</span>
+                    {qrcode && (
+                    <div>
+                      <img src={qrcode} alt="" />
+                    </div>
+                    )}
+                    <span></span>
               </div>
             </div>
           </div>
