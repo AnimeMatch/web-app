@@ -24,17 +24,20 @@ export default function ForumPag() {
         });
   },[])
   return (
-    <>
-    <div className="forum-page-body">
-      <SideMenu
-        profileImage={user.profileImage}
-      />
-      <CenterContent
-        profileImage={user.profileImage}
-        name={user.name}
-      />
-      <TrendingPosts/>
-    </div>
+    <>{sessionStorage.email
+      &&
+      <div className="forum-page-body">
+        <SideMenu
+          profileImage={user.profileImage}
+          name={user.name}
+        />
+        <CenterContent
+          profileImage={user.profileImage}
+          name={user.name}
+        />
+        <TrendingPosts/>
+      </div>
+    }
     </>
   );
 }

@@ -159,12 +159,13 @@ export default function Navbar() {
               <Link to={"search/manga/"} className="link">
                 Manga
               </Link>
-            </li>
-            <li>
-              <Link to={"forum/"} className="link">
-                Fórum
-              </Link>
-            </li>
+            </li>{sessionStorage.email &&
+              <li>
+                <Link to={"forum/"} className="link">
+                  Fórum
+                </Link>
+              </li>
+            }
           </ol>
         </div>
         <div className="userArea">

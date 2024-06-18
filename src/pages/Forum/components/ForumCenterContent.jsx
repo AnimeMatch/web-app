@@ -4,19 +4,41 @@ import "../../../assets/css/forumCenterContent.css"
 import apiUser from "../../../apiUser";
 
 export default function CenterContent (props) {
-    const [topicos, setTopicos] = useState([])
+    const [topicosPaginado, setTopicos] = useState()
     const [contentTopico, setContentTopico] = useState()
 
     useEffect(() => {
+        const params = {
+            page: 1,
+            porPagina: 10,
+          };
         apiUser
-            .get(`/topicos`)
+            .get(`/topicos/paginado`, { params })
             .then((response) => {
                 setTopicos(response.data);
             })
             .catch((error) => {
               console.log(error);
             });
+            console.log(topicosPaginado)
     },[])
+
+    function carregarTopico() {
+        const params = {
+            page: 1,
+            porPagina: 10,
+          };
+        apiUser
+            .get(`/topicos/paginado`, { params })
+            .then((response) => {
+                setTopicos(response.data);
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+            console.log(topicosPaginado)
+    }
+
 
     const handleContentChange = (event) => {
         setContentTopico(event.target.value);
@@ -28,20 +50,20 @@ export default function CenterContent (props) {
         .post("/topicos", 
         {
             titulo: contentTopico,
-            idMidia: profileImageUpdate,
-            genero: generoUpdate,
-            bio: bioUpdate
+            idMidia: 20931,
+            usuario: {id: sessionStorage.id}
         })
         .then((response) => {
-            console.log("\nUSER EDITADO COM SUCESSO\n")
+            console.log("\nTOPICO CRIADO\n")
             console.log(response)
             // card de requisição bem sucedida
         })
         .catch((error) => {
-            console.log(`\nFALHA AO EDITAR USUÁRIO. ERRO:\n`)
+            console.log(`\nFALHA AO CRIAR TOPICO\n`)
             console.log(error.response)
             // card de requisição mal sucedida
         });
+        carregarTopico()
     }
 
     return (
@@ -67,12 +89,16 @@ export default function CenterContent (props) {
                 </div>
             </div>
             <div className="topicos-column">
-                {topicos &&
-                        topicos.map((item) => (
+                {topicosPaginado &&
+                        topicosPaginado.topicos.map((item) => (
                             <Topico
-                                name={item.usuario.name}
-                                content={item.titulo}
-                                userImage={item.usuario.profileImage}
+                                key={item.topico.id}
+                                id={item.topico.id}
+                                name={item.topico.usuario.name}
+                                content={item.topico.titulo}
+                                userImage={item.topico.usuario.profileImage}
+                                likes={item.likes}
+                                comentarios={item.comentarios}
                             />
                         ))
                     }

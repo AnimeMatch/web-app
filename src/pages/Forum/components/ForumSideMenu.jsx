@@ -24,17 +24,7 @@ export default function SideMenu (props) {
     function searchFunc(){
         // TODO buscar (?) (tem que buscar alguma coisa que não sei, mas tá no figma) 
     }
-
-    // useEffect(() => {
-    //     apiUser
-    //         .get(`/users/user?email=${sessionStorage.email}`)
-    //         .then((response) => {
-    //             setUser(response.data);
-    //         })
-    //         .catch((error) => {
-    //             console.log(error);
-    //         });
-    // },[])
+    
     
     return (
         <>
@@ -49,10 +39,10 @@ export default function SideMenu (props) {
                         backgroundSize: "cover"}} />
                     ):(<></>)}
                         {/* <span value={user.name}></span> */}
-                        <span className="username-side-menu-forum">{props.name}</span>
+                        <div className="username-side-menu-forum">{props.name}</div>
                     </div>
                     <div className="search-bar">
-                        <div className="input-search-profile">
+                        {/* <div className="input-search-profile">
                             <div
                                 className="search-button-perfil"
                                 onClick={() =>
@@ -69,7 +59,7 @@ export default function SideMenu (props) {
                                 onChange={(e) => setSearchValue(e.target.value)}
                                 onKeyDown={handleEnterKeyPress}
                             />
-                        </div>
+                        </div> */}
                     </div>
                    
                     <div className="side-menu-navigation-buttons">
