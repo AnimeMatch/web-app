@@ -1,0 +1,95 @@
+.search-anime-header{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    align-items: center;
+    margin: auto;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.input-search-anime{
+    width: 40%;
+    height: 32px;
+    position: relative;
+    margin-bottom: 4%;
+}
+#input-anime{
+    width: 100%;
+    padding-left: 9%;
+    border: 0;
+    height: 100%;
+}
+#input-anime-img{
+    width: 10px;
+    position: absolute;
+    height: 100%;
+    top: 1%;
+    left: 35%;
+}
+.search-button-anime{
+    position: absolute;
+    border-right: solid 1px rgba(0, 0, 0, 0.29);
+    width: 30px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.search-button-anime:hover{
+    border-radius: 2.5px 0px 0px 2.5px;
+    position: absolute;
+    border-right: solid 1px rgba(0, 0, 0, 0.29);
+    width: 30px;
+    height: 38.2px;
+    cursor: pointer;
+    background-color: rgb(229, 229, 229);
+}
+
+.header-info{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.header-info{
+    color: var(--white);
+    font-family: var(--font-third);
+    font-weight: 600;
+    font-size: 32px;
+}
+
+#select-genre{
+    border-radius: 4px;
+    font-family: var(--font-third);
+    font-weight: 600;
+}
+
+/*area dos animes*/
+.anime-area-searched{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    margin: auto;
+    gap: 15px;
+}
+
+.card-anime-search-area{
+    color: var(--white);
+
+}
+
+.card-anime-search-area .image{
+    height: 200px;
+    width: 140px;
+}
+
+.anime-search-btns{
+    margin: auto;
+    margin-bottom: 2%;
+    width: 90%;
+    justify-content: space-between;
+    display: flex;
+}

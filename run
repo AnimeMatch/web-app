@@ -1,0 +1,27 @@
+#!/bin/bash
+sudo apt-get update && sudo apt upgrade -y
+node --version
+if ! [ $? -eq 0 ]
+then
+    bash install_node
+fi
+
+node --version
+if ! [ $? -eq 0 ]
+then
+    echo  "$(tput setaf 10)RUN:$(tput setaf 7) [WARMING] FALHA NA INSTALAÇÃO DO NODE, BUILD INTERROMPIDO"
+else
+    cd ./web-app
+    npm i
+    npm run build
+
+    # Instalação do docker e docker compose
+    bash install_docker
+    docker compose version
+    if [ $? -eq 0 ]
+    then
+        sg docker -c '
+        docker compose up -d
+        '
+    fi
+fi

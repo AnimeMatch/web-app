@@ -1,0 +1,13 @@
+/* Tablets, dispositivos menores que desktops, mas maiores que smartphones */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    .container-4{
+        margin-bottom: 6rem;
+    }
+
+
+    .image-gender{
+        height: 6rem;
+        width: 6rem;
+    }
+    
+}

@@ -1,136 +1,183 @@
-import '../assets/css/navbar.css';
-import logo from '../assets/images/logos/logoNavbar.png';
-import imgLogin from '../assets/images/backgrounds/4258797 1.svg';
-import imgRegister from '../assets/images/backgrounds/4302417 1.svg'; 
-import facebookLogo from '../assets/images/logos/facebook 1.svg';
-import googleLogo from '../assets/images/logos/search 1.svg';
-import twitterLogo from '../assets/images/logos/twitter 1.svg';
-import { useState } from 'react';
+import "../assets/css/navbar.css";
+import "../assets/css/responsive/navbarTablet.css";
+import React, { useEffect } from "react";
+import logo from "../assets/images/logos/logoNavbar.png";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import ModalLogin from "./Modais/ModalLogin.jsx";
+import ModalRegister from "./Modais/ModalRegister.jsx";
+import ModalUpdate from "./Modais/ModalUpdate.jsx";
+import apiUser from "../apiUser.js";
 
-export default function Navbar(){
+export default function Navbar() {
+  const [modal, setModal] = useState(false);
+  const [modal2, setModal2] = useState(false);
+  const [modal3, setModal3] = useState(false);
+  const [isMenuOpen, setMenuOpen] = useState(false);
+  const [user, setUser] = useState({
+    name: "",
+    email: "",
+    profileImage: "",
+    coverImage: "",
+    criacao: "",
+    genero: "",
+    bio: "",
+  });
+  const [reload, setReload] = useState(true);
 
-    const [modal, setModal] = useState(false);
-    const [modal2,setModal2] = useState(false);
+  const handleLoad = () => {
+    setReload(!reload);
+  }
 
-    const loginModal = () => {
-        setModal(!modal)
+  const toggleMenu = () => {
+    setMenuOpen(!isMenuOpen);
+    // document.body.style.overflow =  "scroll" ;
+  };
+
+  const handleLogout = () => {
+    sessionStorage.removeItem("authToken");
+    sessionStorage.removeItem("usuario");
+    sessionStorage.removeItem("email");
+    sessionStorage.removeItem("id");
+    handleLoad();
+    toggleMenu();
+  };
+
+  const loginModal = () => {
+    setModal(!modal);
+  };
+
+  const menuStyle = {
+    opacity: isMenuOpen ? "1" : "0",
+    transform: isMenuOpen ? "translateY(10%)" : "translateY(-10%)",
+    transition: "transform 0.5s ease-out",
+    top: "8%",
+    left: "81%",
+    height: isMenuOpen ? "auto" : "0",
+  };
+
+  const fontStyle = {
+    display: isMenuOpen ? "flex" : "none",
+    cursor: "pointer"
+  };
+
+  const registerModal = () => {
+    setModal2(!modal2);
+  };
+
+  const updateModal = () => {
+    setModal3(!modal3);
+  };
+
+  const swap = () => {
+    setModal(!modal);
+    setModal2(!modal2);
+  };
+
+  useEffect(() => {
+    if (sessionStorage.getItem("authToken")) {
+      apiUser
+        .get(`/users/user?email=${sessionStorage.email}`)
+        .then((response) => {
+          setUser(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
+  }, [reload]);
 
-    const regsiterModal = () => {
-        setModal2(!modal2)
-    }
-
-    const swap = () =>{
-        setModal(!modal)
-        setModal2(!modal2)
-    }
-
+  const renderAuthenticatedContent = () => {
     return (
-        <>
-            <nav className='navbar'>
-                <div className="brandingArea">
-                    <img src={logo} alt="" />
-                    <span id='title'>Anime Match</span>
-                </div>
-                <div className="navigationItens">
-                    <ol className='navList'>
-                        <li>Anime</li>
-                        <li>Manga</li>
-                        <li>Forum</li>
-                    </ol>
-                </div>
-                <div className='userArea'>
-                    <button className='btn-primary'
-                    onClick={loginModal}
-                     id='btn-login'>
-                       <span id='login'> Login</span>
-                    </button>
-                    <button className='btn-secundary'
-                    onClick={regsiterModal}>
-                        <span>Cadastro</span>
-                    </button>
-                </div>
-            </nav>
-            {modal &&
-                <div className="modal-login">
-                    <div className="overlay-modal" onClick={loginModal}></div>
-                    <div className="modal-content login">
-                        <img src={imgLogin} alt="" id='loginImg'/>
-                        <div className='modal-right-content'>
-                            <span className="close" onClick={loginModal}>X</span>
-                            <h1>Login</h1>
-                            <form action="" method="post" className='form'>
-                                <label htmlFor="email">E-mail</label>
-                                <input type="email" name="" id="" placeholder='email@example.com'/>
-                                <span className='tinyText'><a href="" id='fEmail'>Esqueceu seu e-mail?</a></span>
-                                <label htmlFor="password">Senha</label>
-                                <input type="password" name="" id=""placeholder='**************'/>
-                                <div className='underLabel'>
-                                    <div className="remember">
-                                        <input type="checkbox" name="" id="" />
-                                        <span className='tinyText'>Lembrar de mim</span>
-                                    </div>
-                                    <span className='tinyText'><a href="">Esqueceu sua senha?</a></span>
-                                </div>
-                                <button className='btn-secundary'> Login </button>
-                                <div className="separate"></div>
-                                <div className="register">
-                                    <span id='topRegister'>Ou se conectar com</span>
-                                    <div className="socialLogos">
-                                        <img src={googleLogo} id='google' alt="google" />
-                                        <img src={facebookLogo} id='facebook' alt="facebook" />
-                                        <img src={twitterLogo} id='twitter' alt="twitter" />
-                                    </div>
-                                    <span id='botRegister'>Não tem conta ? <a id='registerBtn'
-                                    onClick={swap}>Cadastre-se</a></span>
+      <>
+        <div className="margin">
+          <div className="user-menu" onClick={toggleMenu}>
+            <span className="user-menu-name">{user.name}</span>
+            <div className="perfil-image">
+              <img src={user.profileImage} alt="" id="" />
+            </div>
+          </div>
+        </div>
 
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            }
-            {modal2 &&
-                <div className="modal-register">
-                     <div className="overlay-modal" onClick={regsiterModal}></div>
-                    <div className="modal-content login">
-                        <img src={imgRegister} alt="" id='loginImg'/>
-                        <div className='modal-right-content'>
-                            <span className="close" onClick={regsiterModal}>X</span>
-                            <h1>Cadastro</h1>
-                            <form action="" method="post" className='form'>
-                                <label htmlFor="email">E-mail</label>
-                                <input type="email" name="" id="" placeholder='email@example.com'/>
-                                <label htmlFor="password">Nome de usuario</label>
-                                <input type="password" name="" id=""placeholder='**************'/>
-                                <label htmlFor="password">Senha</label>
-                                <input type="password" name="" id=""placeholder='**************'/>
-                                <label htmlFor="password">Confirme sua Senha</label>
-                                <input type="password" name="" id=""placeholder='**************'/>
-                                <div className='underLabel'>
-                                    <div className="remember">
-                                        <input type="checkbox" name="" id="" />
-                                        <span className='tinyText'>Sim, compreendo e concordo com os Termos de Serviços e Política de Privacidade do Anime Match.</span>
-                                    </div>
-                                </div>
-                                <button className='btn-secundary'> Cadastrar </button>
-                                <div className="separate"></div>
-                                <div className="register">
-                                    <span id='topRegister'>Ou se conectar com</span>
-                                    <div className="socialLogos">
-                                        <img src={googleLogo} id='google' alt="google" />
-                                        <img src={facebookLogo} id='facebook' alt="facebook" />
-                                        <img src={twitterLogo} id='twitter' alt="twitter" />
-                                    </div>
-                                    <span id='botRegister'>Não tem conta ? <a id='registerBtn'
-                                    onClick={swap}>Cadastre-se</a></span>
+        <div className="menu-option" style={menuStyle}>
+          <ol>
+            <li style={fontStyle} onClick={toggleMenu}>
+              <Link to="profile" className="inside-toggle-menu">
+                <div className="icon-profile"></div>
+                <span>Perfil</span>
+              </Link>
+            </li>
+            <li style={fontStyle} onClick={updateModal}>
+              <div className="icon-settings"></div>
+              <span>Gerenciar conta</span>
+            </li>
+            <li style={fontStyle}>
+              <Link
+                to="/"
+                onClick={handleLogout}
+                className="inside-toggle-menu"
+              >
+                <div className="icon-exit"></div>
+                <span>Sair</span>
+              </Link>
+            </li>
+          </ol>
+        </div>
+      </>
+    );
+  };
 
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+  const renderUnauthenticatedContent = () => {
+    return (
+      <>
+        <button className="btn-primary" onClick={loginModal} id="btn-login">
+          <span id="login"> Login</span>
+        </button>
+        <button className="btn-secundary" onClick={registerModal}>
+          <span>Cadastro</span>
+        </button>
+      </>
+    );
+  };
+
+  return (
+    <>
+      <nav className="navbar">
+        <Link to="/">
+          <div className="brandingArea">
+            <img src={logo} alt="" />
+            <span id="title">Anime Match</span>
+          </div>
+        </Link>
+        <div className="navigationItens">
+          <ol className="navList">
+            <li>
+              <Link to={"search/anime/"} className="link">
+                Anime
+              </Link>
+            </li>
+            <li>
+              <Link to={"search/manga/"} className="link">
+                Manga
+              </Link>
+            </li>{sessionStorage.email &&
+              <li>
+                <Link to={"forum/"} className="link">
+                  Fórum
+                </Link>
+              </li>
             }
-        </>
-    )
+          </ol>
+        </div>
+        <div className="userArea">
+          {sessionStorage.getItem("authToken")
+            ? renderAuthenticatedContent()
+            : renderUnauthenticatedContent()}
+        </div>
+      </nav>
+      <ModalLogin modal={modal} onClose={loginModal} onSwap={swap} handleLoad={handleLoad}/>
+      <ModalRegister modal={modal2} onClose={registerModal} onSwap={swap} />
+      <ModalUpdate modal={modal3} onClose={updateModal} />
+    </>
+  );
 }

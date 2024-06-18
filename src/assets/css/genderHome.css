@@ -1,0 +1,51 @@
+.container-4{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 8rem;
+    gap: 3rem;
+}
+
+.option-gender{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+    color: var(--white);
+    font-family: var(--font-primary);
+    font-size: var(--font-size-title);
+}
+
+.image-gender{
+    height: 8rem;
+    width: 8rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    transition: .4s;
+}
+
+.image-gender:hover{
+    filter: drop-shadow(0px 0px 8px var(--bright-blue));
+    transition: .6s;
+}
+
+.shounen{
+    background-image: url("../images/backgrounds/0396a078a999a1b0521bd48e5ff20bc7.svg");
+}
+
+.shoujo{
+    background-image: url("../images/backgrounds/e60b8d97c1d4ae223f3913d6aa85468e.svg");  
+}
+
+.seinen{
+    background-image: url("../images/backgrounds/72f46dbea296dc31902430c4fbd5e583.svg");
+}
+
+.isekai{
+    background-image: url("../images/backgrounds/3e3ba4d763b406b6307d11343b23316e.svg");
+}
+
+.slice-of-life{
+    background-image: url("../images/backgrounds/3a807bb82ad2d6446270e1ee34e30052.svg");
+}

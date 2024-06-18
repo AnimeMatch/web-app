@@ -1,0 +1,47 @@
+/* Tablets, dispositivos menores que desktops, mas maiores que smartphones */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    .container2{
+        height: 24em;
+        margin-bottom: 5rem;
+    }
+    
+    .mensagem{
+        height: 32em;
+        width: 50%;
+        padding: 1rem;
+    }
+    
+    .bg-2 span{
+        font-size: 1.3em;
+        margin-top: 1.5rem;
+    }
+    
+    .text-card{
+        margin-top: .2em;
+        height: 12rem;
+        width: 100%;
+    }
+    
+    .go-forum .btn-secundary{
+        width: 5rem;
+        height: 1.4rem;
+        font-size: .5rem;
+        margin-bottom: 0rem;
+    }
+
+    
+    .bg-2 .line{
+        border: 1px solid var(--white);
+        width: 70%;
+        margin-bottom: .5rem;
+    }
+
+    .bg-2{
+        justify-content: center;
+    }
+
+    .line{
+        margin-top: 0px;
+    }
+  }
+  

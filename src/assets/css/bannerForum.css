@@ -1,0 +1,64 @@
+.container2{
+    background-image: url("../images/backgrounds/Frame50.svg");
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: contain;
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+    align-items: end;
+    height: 32em;
+    margin-bottom: 10rem;
+}
+
+.mensagem{
+    display: flex;
+    height: 32em;
+    width: 50%;
+    padding: 1rem;
+}
+
+.bg-2{
+    width: 100%;
+    background-image: url("../images/backgrounds/Group354.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--white);
+    justify-content: end;
+}
+
+.bg-2 span{
+    font-size: 1.8em;
+    font-family: var(--font-third);
+    text-decoration: underline;
+}
+
+.text-card{
+    margin-top: .8em;
+    height: 16rem;
+    width: 100%;
+    background-image: url(../images/backgrounds/Group353.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.go-forum .btn-secundary{
+    width: 8rem;
+    height: 2rem;
+    margin-bottom: 2.3rem;
+}
+
+.go-forum .btn-secundary::before{
+    width: 200px;
+}
+
+.bg-2 .line{
+    border: 1px solid var(--white);
+    width: 70%;
+    margin-bottom: .7rem;
+}

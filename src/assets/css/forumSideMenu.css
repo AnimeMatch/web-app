@@ -1,0 +1,100 @@
+.body-side-menu-forum {
+    width: 16%;
+    height: 75vh;
+    background-color: #29318E;
+    display: flex;
+    border-radius: 8px;
+    font-family: var(--font-primary);
+    color: white;
+    font-size: 14px;
+    font-weight: 460;
+}
+
+.box-organize-elements {
+    height: 95%;
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    /* border: rgb(0, 255, 106) 2px solid; */
+}
+
+.top-elements {
+    width: 90%;
+    height: 39.3%;
+    display: flex;
+    flex-direction: column;
+    /* border: rgb(224, 44, 21) 2px solid; */
+    justify-content: space-between;
+}
+
+.side-menu-user-image {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.username-side-menu-forum {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    transform: translateX(0);
+    width: 65%;
+}
+
+.user-info {
+    width: 100%;
+    /* margin: 0 auto 0 auto; */
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    /* border: #ff7bf2 solid 3px; */
+}
+
+.top-elements .search-bar .input-search-profile{
+    width: 100%;
+}
+
+.side-menu-navigation-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 50%;
+    /* border: red solid 3px; */
+}
+
+.side-menu-navigation-buttons .side-menu-button{
+    /* border: red solid 3px; */
+    width: 100%;
+    height: 30%;
+    background-color: #000712;
+    display: flex;
+    align-items: center;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.side-menu-navigation-buttons .side-menu-button span,
+.side-menu-navigation-buttons .side-menu-button img{
+    margin-left: 5%;
+}
+
+.side-menu-exit {
+    width: 30%;
+    padding: 3% 3%;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    background-color: #000712;
+    cursor: pointer;
+}
+
+.side-menu-exit img, .side-menu-exit span{
+    margin-left: 10%;
+}

@@ -1,0 +1,81 @@
+.comment-box {
+  background-color: #39a5e2;
+  display: flex;
+  flex-direction: column;
+  padding-top: 1%;
+  border-radius: 9px;
+  margin-bottom: 4%;
+}
+
+.circle-image img {
+  border-radius: 50%;
+  height: 45px;
+  object-fit: cover;
+  width: 45px;
+}
+.comment-title {
+  background-color: #000712;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  margin: auto;
+  border-radius: 9px;
+  padding: 1%;
+  cursor: pointer;
+}
+.comment-title-left {
+  display: flex;
+  align-items: center;
+  width: 60%;
+  gap: 5%;
+}
+.comment-childrens {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.comment-name {
+  font-size: 24px;
+}
+
+.comment-childrens-total {
+  font-size: 14px;
+}
+.comment-date {
+  font-size: 16px;
+}
+
+.comment-content {
+  width: 90%;
+  margin: auto;
+  color: #000712;
+  font-family: var(--font-third);
+  font-weight: 500;
+  padding: 1%;
+}
+
+.comment-footer {
+  background-color: #000712;
+  opacity: 0.73;
+  padding: 2%;
+  padding-left: 5%;
+}
+.comment-reviews {
+  display: flex;
+  gap: 5%;
+}
+
+.comment-like,
+.comment-deslike {
+  display: flex;
+  align-items: center;
+  color: var(--white);
+  gap: 10px;
+  cursor: pointer;
+}
+.comment-like img,
+.comment-deslike img {
+  width: 24px;
+}

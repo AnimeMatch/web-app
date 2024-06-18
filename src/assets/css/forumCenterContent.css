@@ -1,0 +1,136 @@
+.center-body {
+    width: 46%;
+    height: auto;
+    /* background-color: #29318E; */
+    /* border: rgb(79, 209, 56) solid 3px; */
+    border-radius: 8px;
+}
+
+.coment-area-topico {
+    /* border: rgb(24, 161, 159) solid 3px; */
+    border-bottom: solid white 1px;
+    height: 10rem;
+}
+
+.commentario-postar {
+    gap: 10px;
+    width: 95%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 7px;
+}
+
+.center-body-title {
+    padding: 5px;
+    font-size: 17pt;
+    color: white;
+}
+
+.commentario-postar textarea{
+    width: 94%;
+    background-color: #E2AD39;
+    color: black;
+    text-align: start;
+    outline: none;
+    border-radius: 4px;
+    scrollbar-width: none;
+    resize: none;
+}
+
+::placeholder{
+    color: black;
+}
+
+.coment-area-topico img {
+    background-size: cover;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.comentario-postar-buttom {
+    width: 95%;
+    margin: auto;
+    display: flex;
+    justify-content: end;
+}
+
+.comentario-postar-buttom button{
+    border-radius: 5px;
+    width: 5rem;
+    height: 1.5rem;
+    background-color: #65A1FF;
+}
+
+.topicos-column {
+    /* border: red solid 3px; */
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0px;
+    gap: 20px;
+}
+
+.topico-body{
+    background-color: #0C0E28;
+    border-radius: 8px;
+    height: 150px;
+    color: white;
+}
+
+.top-topico{
+    /* border: red solid 1px; */
+    width: 95%;
+    height: 95%;
+    margin: auto;
+    display: flex;
+    padding: 5px;
+}
+
+.user-image-topico {
+    height: 30px;
+    width: 30px;
+    background-size: cover;
+    border-radius: 50%;
+}
+
+.topico-texts {
+    /* border: green solid 1px; */
+    height: 100%;
+    width: 90%;
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.user-name-topico {
+    /* border: rgb(154, 236, 255) solid 3px; */
+    height: 20%;
+    width: 100%;
+    font-weight: 600;
+}
+
+.content-text-topico {
+    /* border: rgb(246, 221, 94) solid 3px; */
+    height: 40%;
+    width: 100%;
+}
+
+.iteracoes-topico {
+    height: 20%;
+    width: 100%;
+    /* border: #5ef6df solid 3px; */
+    display: flex;
+    /* justify-content: space-around; */
+    gap: 50%;
+}
+
+.iteracoes-topico-item {
+    width: 7%;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}

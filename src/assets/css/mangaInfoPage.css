@@ -1,0 +1,208 @@
+.mangaOverview {
+  margin: auto;
+  margin-top: 3.2%;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  gap: 70px;
+  color: var(--white);
+}
+
+.addToList {
+  margin-top: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+.add {
+  height: 36px;
+  width: 150px;
+  background-color: var(--dark-yellow);
+  border-radius: 4%;
+}
+#isFavorite {
+  width: 38px;
+}
+
+.usersOverview {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  width: 50%;
+  margin-left: 0%;
+}
+.titleDelimiter {
+  white-space: nowrap;
+  width: 70%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.textInfo {
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.titleManga {
+  font-size: 36px;
+}
+.releaseYear {
+  font-size: 24px;
+}
+#description {
+  font-size: 18px;
+}
+.topInfo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  width: 95%;
+  justify-content: space-between;
+}
+.viewers {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+.iconViewers {
+  width: 25px;
+}
+
+.characterTitle {
+  font-family: var(--font-third);
+  top: 50%;
+  margin: 10px;
+}
+
+/* .swiper,
+.listTitle {
+  margin: auto;
+  width: 90%;
+} */
+.charactersList .swiper-button-prev,
+.charactersList .swiper-button-next {
+  color: rgba(1, 1, 1, 0.7);
+  /* top: 10%; */
+  height: 100%;
+}
+
+.charactersList .swiper-slide {
+  height: 125px;
+  text-align: center;
+  font-size: 12px;
+  background: var(--contrast-dark-blue);
+  color: var(--white);
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.charactersList .swiper-slide img {
+  height: 100px;
+  width: 75px;
+  display: block;
+  object-fit: cover;
+  border-radius: 0%;
+}
+.charactersList {
+  height: 175px;
+  width: 97%;
+  background-color: var(--contrast-dark-blue);
+  position: relative;
+  border-radius: 9px;
+}
+/* Outra sessão */
+.sideBar {
+  margin-left: 5%;
+  margin-top: 3%;
+  width: 230px;
+  font-family: var(--font-third);
+  color: var(--white);
+}
+.externalLinksArea {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 6%;
+  font-weight: 600;
+}
+.externalLink {
+  background-color: var(--contrast-dark-blue);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.externalIcon {
+  width: 20px;
+}
+
+.infoSideBar {
+  background-color: var(--contrast-dark-blue);
+  padding: 15px;
+}
+
+.infoBlock {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2%;
+}
+
+.infoTitle {
+  font-weight: 600;
+  font-size: 16px;
+}
+.infoText {
+  font-size: 10px;
+}
+/* outra sessao */
+.secondLayerInfo {
+  display: flex;
+  margin-bottom: 2%;
+}
+
+.commentSection {
+  width: 75%;
+  margin-top: 3%;
+  margin-right: 5%;
+  margin-left: 5%;
+}
+
+.comments {
+  flex-wrap: wrap;
+  overflow: hidden;
+  overflow-y: scroll;
+  height: 600px;
+  margin: auto;
+  margin-top: 20px;
+}
+
+.comments::-webkit-scrollbar {
+  background-color: rgba(217, 217, 217, 10%);
+  opacity: 0.1;
+  width: 5px;
+  border-radius: 10px;
+}
+.comments::-webkit-scrollbar-thumb {
+  background-color: var(--dark-yellow);
+  border-radius: 10px;
+}
+
+.commentTitleSection {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.line {
+  width: 100%;
+  margin-top: 10px;
+  border: 1px solid var(--white);
+  border-radius: 9px;
+}
+.commentTitle {
+  font-family: var(--font-third);
+  font-size: 20px;
+  font-weight: 200;
+  color: var(--white);
+}
+/*  */
